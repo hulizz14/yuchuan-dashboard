@@ -100,29 +100,183 @@
         </table>
     </div>
 
-    <!-- 三、全年结算时间轴 -->
+        <!-- 三、全年结算甘特图 -->
     <div class="section">
-        <div class="section-title">三、全年结算时间轴</div>
+        <div class="section-title">三、全年结算甘特图</div>
         
-        <div class="category-title">Q1（1-3月）- 8项</div>
-        <div class="milestone-item"><div class="milestone-date">1月</div><div style="margin-left:15px">0项</div></div>
-        <div class="milestone-item"><div class="milestone-date">2月</div><div style="margin-left:15px">0项</div></div>
-        <div class="milestone-item"><div class="milestone-date urgent">3月</div><div style="margin-left:15px"><strong>8项</strong>（3.15有3项，3.30有3项）</div></div>
-
-        <div class="category-title">Q2（4-6月）- 8项</div>
-        <div class="milestone-item"><div class="milestone-date warning">4月</div><div style="margin-left:15px">3项</div></div>
-        <div class="milestone-item"><div class="milestone-date warning">5月</div><div style="margin-left:15px">3项</div></div>
-        <div class="milestone-item"><div class="milestone-date">6月</div><div style="margin-left:15px">2项</div></div>
-
-        <div class="category-title">Q3（7-9月）- 2项</div>
-        <div class="milestone-item"><div class="milestone-date">7月</div><div style="margin-left:15px">2项</div></div>
-        <div class="milestone-item"><div class="milestone-date">8月</div><div style="margin-left:15px">0项</div></div>
-        <div class="milestone-item"><div class="milestone-date">9月</div><div style="margin-left:15px">0项</div></div>
-
-        <div class="category-title">Q4（10-12月）- 6项</div>
-        <div class="milestone-item"><div class="milestone-date">10月</div><div style="margin-left:15px">1项</div></div>
-        <div class="milestone-item"><div class="milestone-date warning">11月</div><div style="margin-left:15px">4项</div></div>
-        <div class="milestone-item"><div class="milestone-date">12月</div><div style="margin-left:15px">1项</div></div>
+        <style>
+            .gantt-container { overflow-x: auto; margin-top: 15px; }
+            .gantt-chart { min-width: 900px; position: relative; }
+            .gantt-header { display: flex; border-bottom: 2px solid #3949ab; padding-bottom: 10px; margin-bottom: 10px; }
+            .gantt-task-col { width: 200px; font-weight: bold; font-size: 11px; padding-right: 10px; }
+            .gantt-months { display: flex; flex: 1; }
+            .gantt-month { flex: 1; text-align: center; font-size: 10px; font-weight: bold; color: #666; border-right: 1px solid #eee; padding: 5px; }
+            .gantt-row { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+            .gantt-row:hover { background: #f5f7fa; }
+            .gantt-task-name { width: 200px; font-size: 10px; padding-right: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .gantt-timeline { flex: 1; position: relative; height: 20px; }
+            .gantt-bar { position: absolute; height: 16px; border-radius: 8px; font-size: 8px; color: white; display: flex; align-items: center; justify-content: center; overflow: hidden; white-space: nowrap; }
+            .gantt-bar-urgent { background: linear-gradient(90deg, #f44336, #ff7043); }
+            .gantt-bar-high { background: linear-gradient(90deg, #ff9800, #ffb74d); }
+            .gantt-bar-normal { background: linear-gradient(90deg, #2196f3, #64b5f6); }
+            .gantt-bar-done { background: linear-gradient(90deg, #4caf50, #81c784); }
+            .gantt-legend { display: flex; gap: 15px; margin-top: 15px; font-size: 10px; flex-wrap: wrap; }
+            .legend-item { display: flex; align-items: center; gap: 5px; }
+            .legend-color { width: 20px; height: 10px; border-radius: 5px; }
+        </style>
+        
+        <div class="gantt-container">
+            <div class="gantt-chart">
+                <!-- Header -->
+                <div class="gantt-header">
+                    <div class="gantt-task-col">结算项目</div>
+                    <div class="gantt-months">
+                        <div class="gantt-month">1月</div>
+                        <div class="gantt-month">2月</div>
+                        <div class="gantt-month">3月</div>
+                        <div class="gantt-month">4月</div>
+                        <div class="gantt-month">5月</div>
+                        <div class="gantt-month">6月</div>
+                        <div class="gantt-month">7月</div>
+                        <div class="gantt-month">8月</div>
+                        <div class="gantt-month">9月</div>
+                        <div class="gantt-month">10月</div>
+                        <div class="gantt-month">11月</div>
+                        <div class="gantt-month">12月</div>
+                    </div>
+                </div>
+                
+                <!-- Task Rows - 3月结算 -->
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.15 财富中心入户门及指纹锁</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-urgent" style="left: 16.67%; width: 4.17%;">3.15</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.15 天屿二期监理合同</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-done" style="left: 16.67%; width: 4.17%;">3.15✓</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.15 天屿二期监理变更协议</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-done" style="left: 16.67%; width: 4.17%;">3.15✓</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.20 财富中心精装修劳务</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-urgent" style="left: 16.67%; width: 4.17%;">3.20</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.25 财富中心公区精装修</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-urgent" style="left: 16.67%; width: 4.17%;">3.25</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.30 财富中心发电机组</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-done" style="left: 16.67%; width: 4.17%;">3.30✓</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.30 财富中心3#楼精装修</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-done" style="left: 16.67%; width: 4.17%;">3.30✓</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.30 财富中心变形缝工程</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-done" style="left: 16.67%; width: 4.17%;">3.30✓</div>
+                    </div>
+                </div>
+                
+                <!-- Q2 结算 -->
+                <div class="gantt-row">
+                    <div class="gantt-task-name">Q2 天屿二期结算（4-6月）</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-high" style="left: 25%; width: 25%;">Q2:8项</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">4月 天屿二期主体工程结算</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-high" style="left: 25%; width: 8.33%;">4月</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">5月 天屿二期装修工程结算</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-high" style="left: 33.33%; width: 8.33%;">5月</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">6月 天屿二期安装工程结算</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-high" style="left: 41.67%; width: 8.33%;">6月</div>
+                    </div>
+                </div>
+                
+                <!-- Q3 结算 -->
+                <div class="gantt-row">
+                    <div class="gantt-task-name">7月 天屿二期配套工程结算</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-normal" style="left: 50%; width: 8.33%;">7月</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">7月 合院专项工程结算</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-normal" style="left: 50%; width: 8.33%;">7月</div>
+                    </div>
+                </div>
+                
+                <!-- Q4 结算 -->
+                <div class="gantt-row">
+                    <div class="gantt-task-name">10月 天屿二期收尾结算</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-normal" style="left: 75%; width: 8.33%;">10月</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">11月 年终集中结算</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-high" style="left: 83.33%; width: 8.33%;">11月</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">12月 年度最终结算</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-normal" style="left: 91.67%; width: 8.33%;">12月</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gantt-legend">
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #f44336, #ff7043);"></div><span>紧急（3月节点）</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #ff9800, #ffb74d);"></div><span>高优先级（Q2/Q4密集）</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #2196f3, #64b5f6);"></div><span>常规</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #4caf50, #81c784);"></div><span>已完工待确认</span></div>
+        </div>
     </div>
 
     <!-- 四、风险预警 -->
