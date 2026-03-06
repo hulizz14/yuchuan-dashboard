@@ -41,26 +41,42 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 </div>
 
 <!-- 核心KPI -->
-<div class="grid grid-cols-4 gap-4 mt-6">
-<div class="card stat-card p-5 text-white">
-<div class="text-sm opacity-90">总货值</div>
-<div class="text-3xl font-bold mt-1">12.79<span class="text-lg ml-1">亿</span></div>
-<div class="text-xs mt-2 opacity-80">已售4.96亿 + 未售7.83亿</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+<!-- 总货值 -->
+<div class="p-5 rounded-xl text-white shadow-lg" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium opacity-90">💰 总货值</span>
+<span class="text-xs bg-white/20 px-2 py-1 rounded-full">100%</span>
 </div>
-<div class="card stat-green p-5 text-white">
-<div class="text-sm opacity-90">已售金额</div>
-<div class="text-3xl font-bold mt-1">4.96<span class="text-lg ml-1">亿</span></div>
-<div class="text-xs mt-2 opacity-80">590套（签约+认购）</div>
+<div class="text-3xl font-bold">12.79<span class="text-base ml-1">亿</span></div>
+<div class="mt-2 text-xs text-white/80">已售 4.96亿 | 未售 7.83亿</div>
 </div>
-<div class="card stat-orange p-5 text-white">
-<div class="text-sm opacity-90">未售金额</div>
-<div class="text-3xl font-bold mt-1">7.83<span class="text-lg ml-1">亿</span></div>
-<div class="text-xs mt-2 opacity-80">609套（待售+销控）</div>
+<!-- 已售金额 -->
+<div class="p-5 rounded-xl text-white shadow-lg" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium opacity-90">✅ 已售金额</span>
+<span class="text-xs bg-white/20 px-2 py-1 rounded-full">38.8%</span>
 </div>
-<div class="card stat-blue p-5 text-white">
-<div class="text-sm opacity-90">去化率</div>
-<div class="text-3xl font-bold mt-1">38.8<span class="text-lg ml-1">%</span></div>
-<div class="text-xs mt-2 opacity-80">回款率95.6%</div>
+<div class="text-3xl font-bold">4.96<span class="text-base ml-1">亿</span></div>
+<div class="mt-2 text-xs text-white/80">590套 | 签约+认购</div>
+</div>
+<!-- 未售金额 -->
+<div class="p-5 rounded-xl text-white shadow-lg" style="background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium opacity-90">📦 未售金额</span>
+<span class="text-xs bg-white/20 px-2 py-1 rounded-full">61.2%</span>
+</div>
+<div class="text-3xl font-bold">7.83<span class="text-base ml-1">亿</span></div>
+<div class="mt-2 text-xs text-white/80">609套 | 待售资产</div>
+</div>
+<!-- 去化率 -->
+<div class="p-5 rounded-xl text-white shadow-lg" style="background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium opacity-90">📊 去化率</span>
+<span class="text-xs bg-white/20 px-2 py-1 rounded-full">套数</span>
+</div>
+<div class="text-3xl font-bold">49.2<span class="text-base ml-1">%</span></div>
+<div class="mt-2 text-xs text-white/80">回款率 95.6%</div>
 </div>
 </div>
 
