@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工程部2026年工作计划看板（含周进度）</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f1f5f9; }
+.card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s; }
+.card:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+.stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+.stat-green { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+.stat-orange { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.stat-blue { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.table-row:hover { background: #f8fafc; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 9999px; font-weight: 600; }
+.badge-red { background: #fee2e2; color: #dc2626; }
+.badge-green { background: #dcfce7; color: #16a34a; }
+.badge-orange { background: #fef3c7; color: #d97706; }
+.badge-blue { background: #dbeafe; color: #2563eb; }
+.fade-in { animation: fadeIn 0.5s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.project-heyuan { border-left: 4px solid #3b82f6; }
+.project-gaoceng { border-left: 4px solid #10b981; }
+.project-caifu { border-left: 4px solid #f59e0b; }
+.project-anzhi { border-left: 4px solid #8b5cf6; }
+.week-header { background: #f1f5f9; font-weight: 700; color: #1e293b; padding: 12px; border-radius: 8px; margin-bottom: 12px; }
+.week-current { background: #dbeafe; border: 2px solid #3b82f6; }
+</style>
+</head>
+<body class="min-h-screen p-6">
+
+<!-- Header -->
+<header class="card mb-6 p-6 fade-in">
+<div class="flex justify-between items-center">
+<div>
+<h1 class="text-2xl font-bold text-slate-800">🏗️ 工程部2026年工作计划看板</h1>
+<p class="text-slate-500 mt-1">数据来源：工程部2026年周进度计划（2026.2.27）| 天屿花城西区合院+高层+财富中心+安置房</p>
+</div>
+<div class="text-right">
+<div class="text-sm text-slate-500">更新时间</div>
+<div class="text-lg font-semibold text-slate-700">2026-03-05</div>
+</div>
+</div>
+
+<!-- 核心KPI -->
+<div class="grid grid-cols-4 gap-4 mt-6">
+<div class="card stat-card p-5 text-white">
+<div class="text-sm opacity-90">全年工作项</div>
+<div class="text-3xl font-bold mt-1">214<span class="text-lg ml-1">项</span></div>
+<div class="text-xs mt-2 opacity-80">3月-10月周进度计划</div>
+</div>
+<div class="card stat-green p-5 text-white">
+<div class="text-sm opacity-90">本周工作项</div>
+<div class="text-3xl font-bold mt-1">12<span class="text-lg ml-1">项</span></div>
+<div class="text-xs mt-2 opacity-80">3.8-3.14（合院7+高层5）</div>
+</div>
+<div class="card stat-orange p-5 text-white">
+<div class="text-sm opacity-90">本月累计</div>
+<div class="text-3xl font-bold mt-1">45<span class="text-lg ml-1">项</span></div>
+<div class="text-xs mt-2 opacity-80">3月1日-4月4日</div>
+</div>
+<div class="card stat-blue p-5 text-white">
+<div class="text-sm opacity-90">需支付工程款</div>
+<div class="text-3xl font-bold mt-1">6<span class="text-lg ml-1">项</span></div>
+<div class="text-xs mt-2 opacity-80">本周急需资金保障</div>
+</div>
+</div>
+</header>
+
+<!-- 模块1: 项目分布统计 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">📊 工作项项目分布</h2>
+<div class="grid grid-cols-4 gap-4">
+<div class="project-heyuan p-4 bg-slate-50 rounded-lg">
+<div class="text-sm text-slate-600">西区合院</div>
+<div class="text-2xl font-bold text-blue-600">34<span class="text-sm ml-1">项</span></div>
+<div class="text-xs text-slate-500 mt-1">占比15.9%</div>
+</div>
+<div class="project-gaoceng p-4 bg-slate-50 rounded-lg">
+<div class="text-sm text-slate-600">西区高层</div>
+<div class="text-2xl font-bold text-green-600">6<span class="text-sm ml-1">项</span></div>
+<div class="text-xs text-slate-500 mt-1">占比2.8%</div>
+</div>
+<div class="project-caifu p-4 bg-slate-50 rounded-lg">
+<div class="text-sm text-slate-600">财富中心</div>
+<div class="text-2xl font-bold text-orange-600">1<span class="text-sm ml-1">项</span></div>
+<div class="text-xs text-slate-500 mt-1">占比0.5%</div>
+</div>
+<div class="project-anzhi p-4 bg-slate-50 rounded-lg">
+<div class="text-sm text-slate-600">安置房</div>
+<div class="text-2xl font-bold text-purple-600">2<span class="text-sm ml-1">项</span></div>
+<div class="text-xs text-slate-500 mt-1">占比0.9%</div>
+</div>
+</div>
+</section>
+
+<!-- 模块2: 本周重点工作（3.8-3.14） -->
+<section class="card mb-6 p-6 fade-in border-2 border-blue-200">
+<h2 class="text-xl font-bold text-slate-800 mb-4">📅 本周重点工作（3.8-3.14）⚡ 当前周</h2>
+<div class="grid grid-cols-2 gap-6">
+<div class="project-gaoceng pl-4">
+<h3 class="font-bold text-green-600 mb-3">西区高层（6项）</h3>
+<div class="space-y-2">
+<div class="p-3 bg-red-50 rounded-lg border-l-4 border-red-500">
+<div class="font-medium">公区精装收尾完成、管道井封堵完成、发电机调试完成</div>
+<div class="text-xs text-red-600 mt-1">⚠️ 需支付工程款</div>
+</div>
+<div class="p-3 bg-red-50 rounded-lg border-l-4 border-red-500">
+<div class="font-medium">8#楼庭院苗木种植完成40%</div>
+<div class="text-xs text-red-600 mt-1">⚠️ 需支付工程款</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-lg">
+<div class="font-medium">消防检测完成并申请现场验收</div>
+</div>
+<div class="p-3 bg-red-50 rounded-lg border-l-4 border-red-500">
+<div class="font-medium">自来水加压设备进场及水箱安装进场施工</div>
+<div class="text-xs text-red-600 mt-1">⚠️ 需支付工程款</div>
+</div>
+<div class="p-3 bg-red-50 rounded-lg border-l-4 border-red-500">
+<div class="font-medium">四网外线进场完成</div>
+<div class="text-xs text-red-600 mt-1">⚠️ 需支付工程款</div>
+</div>
+<div class="p-3 bg-red-50 rounded-lg border-l-4 border-red-500">
+<div class="font-medium">人防设备调试完成</div>
+<div class="text-xs text-red-600 mt-1">⚠️ 需支付工程款</div>
+</div>
+</div>
+</div>
+<div class="project-heyuan pl-4">
+<h3 class="font-bold text-blue-600 mb-3">西区合院（5项）</h3>
+<div class="space-y-2">
+<div class="p-3 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+<div class="font-medium">1#10#楼顶板滤水层完成并开始土方回填</div>
+<div class="text-xs text-yellow-700 mt-1">📋 载铜总包正常复工复产</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-lg">
+<div class="font-medium">2#7#30#31#32#楼墙体砌筑完成30%</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-lg">
+<div class="font-medium">9#28#楼地下室底板钢筋绑扎完成30%</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-lg">
+<div class="font-medium">5#6#楼完成四层楼板浇筑</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-lg">
+<div class="font-medium">29#楼外墙涂料完成20%</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+<strong>💡 重点提示：</strong> 本周有6项工作标注"需支付工程款"，涉及高层收尾阶段资金支付，请提前做好资金安排。
+</div>
+</section>
+
+<!-- 模块3: 下周工作计划（3.15-3.21） -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">📅 下周工作计划（3.15-3.21）</h2>
+<div class="grid grid-cols-2 gap-6">
+<div class="project-gaoceng pl-4">
+<h3 class="font-bold text-green-600 mb-3">西区高层（4项）</h3>
+<div class="space-y-2">
+<div class="p-3 bg-slate-50 rounded-lg">
+<div class="font-medium">8#楼庭院苗木种植完成80%</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-lg">
+<div class="font-medium">自来水加压设备及水箱安装完成60%</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-lg">
+<div class="font-medium">四网完成施工内容并申请验收</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-lg">
+<div class="font-medium">消防、人防完成现场验收及落实整改回复</div>
+</div>
+</div>
+</div>
+<div class="project-heyuan pl-4">
+<h3 class="font-bold text-blue-600 mb-3">西区合院（5项）</h3>
+<div class="space-y-2">
+<div class="p-3 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+<div class="font-medium">1#10#楼顶板土方回填完成，雨污水、燃气管道完成50%</div>
+<div class="text-xs text-yellow-700 mt-1">📋 3.10前确定供应商</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-lg">
+<div class="font-medium">2#7#30#31#32#楼墙体砌筑完成100%、抹灰完成30%</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-lg">
+<div class="font-medium">9#28#楼地下室底板浇筑完成、顶板支模30%</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-lg">
+<div class="font-medium">5#6#楼完成五层楼板浇筑</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-lg">
+<div class="font-medium">29#楼外墙涂料完成50%</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 模块4: 3月全月工作一览 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">📊 3月全月工作进度一览</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-sm">
+<thead>
+<tr class="border-b border-slate-200 bg-slate-50">
+<th class="py-3 px-2 text-left font-semibold text-slate-600">周期</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">合院工作</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">高层工作</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">其他</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">合计</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">重点事项</th>
+</tr>
+</thead>
+<tbody>
+<tr class="table-row border-b border-slate-100">
+<td class="py-3 px-2 font-medium">3.1-3.7</td>
+<td class="py-3 px-2 text-center">1</td>
+<td class="py-3 px-2 text-center">1</td>
+<td class="py-3 px-2 text-center">2</td>
+<td class="py-3 px-2 text-center font-bold">4</td>
+<td class="py-3 px-2 text-xs text-slate-500">复工复产准备</td>
+</tr>
+<tr class="table-row border-b border-slate-100 bg-blue-50 border-2 border-blue-200">
+<td class="py-3 px-2 font-bold text-blue-600">3.8-3.14 ⭐当前</td>
+<td class="py-3 px-2 text-center">5</td>
+<td class="py-3 px-2 text-center">6</td>
+<td class="py-3 px-2 text-center">1</td>
+<td class="py-3 px-2 text-center font-bold">12</td>
+<td class="py-3 px-2 text-xs text-red-600">6项需支付工程款</td>
+</tr>
+<tr class="table-row border-b border-slate-100">
+<td class="py-3 px-2 font-medium">3.15-3.21</td>
+<td class="py-3 px-2 text-center">5</td>
+<td class="py-3 px-2 text-center">4</td>
+<td class="py-3 px-2 text-center">0</td>
+<td class="py-3 px-2 text-center font-bold">9</td>
+<td class="py-3 px-2 text-xs text-slate-500">3.10前确定供应商</td>
+</tr>
+<tr class="table-row border-b border-slate-100">
+<td class="py-3 px-2 font-medium">3.22-3.28</td>
+<td class="py-3 px-2 text-center">7</td>
+<td class="py-3 px-2 text-center">3</td>
+<td class="py-3 px-2 text-center">0</td>
+<td class="py-3 px-2 text-center font-bold">10</td>
+<td class="py-3 px-2 text-xs text-slate-500">6#楼封顶</td>
+</tr>
+<tr class="table-row border-b border-slate-100">
+<td class="py-3 px-2 font-medium">3.29-4.4</td>
+<td class="py-3 px-2 text-center">6</td>
+<td class="py-3 px-2 text-center">4</td>
+<td class="py-3 px-2 text-center">0</td>
+<td class="py-3 px-2 text-center font-bold">10</td>
+<td class="py-3 px-2 text-xs text-slate-500">5#楼封顶、29#楼涂料完成</td>
+</tr>
+<tr class="bg-blue-50 font-bold">
+<td class="py-3 px-2">3月合计</td>
+<td class="py-3 px-2 text-center">24</td>
+<td class="py-3 px-2 text-center">18</td>
+<td class="py-3 px-2 text-center">3</td>
+<td class="py-3 px-2 text-center">45</td>
+<td class="py-3 px-2">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+</body>
+</html>

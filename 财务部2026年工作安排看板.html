@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>财务部2026年工作安排看板</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f1f5f9; }
+.card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s; }
+.card:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+.stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+.stat-green { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+.stat-orange { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.stat-blue { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.table-row:hover { background: #f8fafc; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 9999px; font-weight: 600; }
+.badge-red { background: #fee2e2; color: #dc2626; }
+.badge-green { background: #dcfce7; color: #16a34a; }
+.badge-orange { background: #fef3c7; color: #d97706; }
+.badge-blue { background: #dbeafe; color: #2563eb; }
+.badge-purple { background: #f3e8ff; color: #9333ea; }
+.fade-in { animation: fadeIn 0.5s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.category-zijin { border-left: 4px solid #3b82f6; }
+.category-neikong { border-left: 4px solid #10b981; }
+.category-zhangwu { border-left: 4px solid #f59e0b; }
+.category-shuiwu { border-left: 4px solid #8b5cf6; }
+</style>
+</head>
+<body class="min-h-screen p-6">
+
+<!-- Header -->
+<header class="card mb-6 p-6 fade-in">
+<div class="flex justify-between items-center">
+<div>
+<h1 class="text-2xl font-bold text-slate-800">💰 财务部2026年工作安排看板</h1>
+<p class="text-slate-500 mt-1">数据来源：2026年度工作安排财务 | 资金/内控/帐务/税务</p>
+</div>
+<div class="text-right">
+<div class="text-sm text-slate-500">更新时间</div>
+<div class="text-lg font-semibold text-slate-700">2026-03-05</div>
+</div>
+</div>
+
+<!-- 核心KPI -->
+<div class="grid grid-cols-4 gap-4 mt-6">
+<div class="card stat-card p-5 text-white">
+<div class="text-sm opacity-90">总任务数</div>
+<div class="text-3xl font-bold mt-1">7<span class="text-lg ml-1">项</span></div>
+<div class="text-xs mt-2 opacity-80">4大类工作</div>
+</div>
+<div class="card stat-green p-5 text-white">
+<div class="text-sm opacity-90">日常性工作</div>
+<div class="text-3xl font-bold mt-1">5<span class="text-lg ml-1">项</span></div>
+<div class="text-xs mt-2 opacity-80">资金/内控/帐务/税务</div>
+</div>
+<div class="card stat-orange p-5 text-white">
+<div class="text-sm opacity-90">重点专项</div>
+<div class="text-3xl font-bold mt-1">2<span class="text-lg ml-1">项</span></div>
+<div class="text-xs mt-2 opacity-80">资金+税务</div>
+</div>
+<div class="card stat-blue p-5 text-white">
+<div class="text-sm opacity-90">3月关键节点</div>
+<div class="text-3xl font-bold mt-1">3<span class="text-lg ml-1">项</span></div>
+<div class="text-xs mt-2 opacity-80">贷款到期/土地解押</div>
+</div>
+</div>
+</header>
+
+<!-- 模块1: 工作分类概览 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">📊 工作分类概览</h2>
+<div class="grid grid-cols-4 gap-4">
+<div class="category-zijin p-4 bg-slate-50 rounded-lg">
+<div class="font-bold text-blue-600">资金管理</div>
+<div class="text-2xl font-bold mt-1">2<span class="text-sm">项</span></div>
+<div class="text-xs text-slate-500 mt-1">日常+重点专项</div>
+</div>
+<div class="category-neikong p-4 bg-slate-50 rounded-lg">
+<div class="font-bold text-green-600">内控管理</div>
+<div class="text-2xl font-bold mt-1">1<span class="text-sm">项</span></div>
+<div class="text-xs text-slate-500 mt-1">流程审核/结算复核</div>
+</div>
+<div class="category-zhangwu p-4 bg-slate-50 rounded-lg">
+<div class="font-bold text-orange-600">帐务管理</div>
+<div class="text-2xl font-bold mt-1">1<span class="text-sm">项</span></div>
+<div class="text-xs text-slate-500 mt-1">日常账务/报表/台账</div>
+</div>
+<div class="category-shuiwu p-4 bg-slate-50 rounded-lg">
+<div class="font-bold text-purple-600">税务管理</div>
+<div class="text-2xl font-bold mt-1">3<span class="text-sm">项</span></div>
+<div class="text-xs text-slate-500 mt-1">2日常+1重点专项</div>
+</div>
+</div>
+</section>
+
+<!-- 模块2: 3月融资关键节点（重点） -->
+<section class="card mb-6 p-6 fade-in border-2 border-red-200">
+<h2 class="text-xl font-bold text-slate-800 mb-4">🔥 3月融资关键节点（重点专项）</h2>
+<div class="space-y-4">
+<div class="p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
+<div class="flex justify-between items-start">
+<div>
+<div class="font-bold text-red-800">⚠️ 上饶银行贷款到期</div>
+<div class="text-sm text-red-600 mt-1">2笔贷款到期，需提前准备续贷/还款资金</div>
+</div>
+<div class="text-right">
+<div class="badge badge-red">3月份</div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-orange-50 rounded-lg border-l-4 border-orange-500">
+<div class="flex justify-between items-start">
+<div>
+<div class="font-bold text-orange-800">九江银行土地解押+在建抵押</div>
+<div class="text-sm text-orange-600 mt-1">天屿花城西区土地解押，办理在建抵押</div>
+</div>
+<div class="text-right">
+<div class="badge badge-orange">3月份</div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+<div class="flex justify-between items-start">
+<div>
+<div class="font-bold text-yellow-800">配合营销解押+按揭准入</div>
+<div class="text-sm text-yellow-600 mt-1">已售房源解押、按揭准入办理、按揭放款跟进</div>
+</div>
+<div class="text-right">
+<div class="badge badge-orange">重点专项</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 模块3: 下半年融资计划 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">📅 下半年融资续贷计划</h2>
+<div class="space-y-3">
+<div class="flex items-center p-3 bg-slate-50 rounded-lg">
+<div class="bg-blue-600 text-white px-3 py-1 rounded text-sm font-bold min-w-[100px] text-center">8月份</div>
+<div class="ml-4 flex-1">
+<div class="font-semibold">农行袁州支行2笔贷款续贷 + 邮储世纪星1笔续贷</div>
+</div>
+</div>
+<div class="flex items-center p-3 bg-slate-50 rounded-lg">
+<div class="bg-purple-600 text-white px-3 py-1 rounded text-sm font-bold min-w-[100px] text-center">9月份</div>
+<div class="ml-4 flex-1">
+<div class="font-semibold">农行禹川农业1笔续贷</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 模块4: 土增清算专项 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">📊 土增清算重点专项</h2>
+<div class="grid grid-cols-2 gap-6">
+<div class="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-500">
+<div class="flex justify-between items-start">
+<div>
+<div class="font-bold text-purple-800">安置房土增清算</div>
+<div class="text-sm text-purple-600 mt-1">5月底前完成</div>
+</div>
+<div class="badge badge-purple">5.31截止</div>
+</div>
+<div class="text-xs text-slate-500 mt-2">第三方事务所合作</div>
+</div>
+<div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+<div class="flex justify-between items-start">
+<div>
+<div class="font-bold text-blue-800">天屿花城+财富中心土增清算</div>
+<div class="text-sm text-blue-600 mt-1">10月底前完成资料准备</div>
+</div>
+<div class="badge badge-blue">10.31截止</div>
+</div>
+<div class="text-xs text-slate-500 mt-2">第三方事务所合作</div>
+</div>
+</div>
+</section>
+
+<!-- 模块5: 日常工作清单 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">🔄 日常工作清单</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-sm">
+<thead>
+<tr class="border-b border-slate-200 bg-slate-50">
+<th class="py-3 px-2 text-left font-semibold text-slate-600">类别</th>
+<th class="py-3 px-2 text-left font-semibold text-slate-600">工作内容</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">责任人</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">经办人</th>
+</tr>
+</thead>
+<tbody>
+<tr class="table-row border-b border-slate-100 category-zijin">
+<td class="py-3 px-2"><span class="badge badge-blue">资金</span></td>
+<td class="py-3 px-2">跟进集团资金状态，督促保证金、监管资金、工抵房、应收款项回流</td>
+<td class="py-3 px-2 text-center">欧阳新琳</td>
+<td class="py-3 px-2 text-center">易春涛、欧阳新琳</td>
+</tr>
+<tr class="table-row border-b border-slate-100 category-zijin">
+<td class="py-3 px-2"><span class="badge badge-blue">资金</span></td>
+<td class="py-3 px-2">工程款支付、日常费用支付、工资支付、银行对账、日记账登记</td>
+<td class="py-3 px-2 text-center">欧阳新琳</td>
+<td class="py-3 px-2 text-center">易春涛</td>
+</tr>
+<tr class="table-row border-b border-slate-100 category-neikong">
+<td class="py-3 px-2"><span class="badge badge-green">内控</span></td>
+<td class="py-3 px-2">各类流程审核、工程量结算复核、成本台账更新</td>
+<td class="py-3 px-2 text-center">欧阳新琳</td>
+<td class="py-3 px-2 text-center">欧阳新琳</td>
+</tr>
+<tr class="table-row border-b border-slate-100 category-zhangwu">
+<td class="py-3 px-2"><span class="badge badge-orange">帐务</span></td>
+<td class="py-3 px-2">日常账务处理、结账报表、台账更新</td>
+<td class="py-3 px-2 text-center">漆吕玲</td>
+<td class="py-3 px-2 text-center">各公司会计</td>
+</tr>
+<tr class="table-row border-b border-slate-100 category-shuiwu">
+<td class="py-3 px-2"><span class="badge badge-purple">税务</span></td>
+<td class="py-3 px-2">纳税申报、发票开具、应对税务预警检查、股转纳税审核</td>
+<td class="py-3 px-2 text-center">漆吕玲</td>
+<td class="py-3 px-2 text-center">各公司会计</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- 模块6: 风险提醒 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">⚠️ 风险提醒</h2>
+<div class="space-y-3">
+<div class="p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
+<div class="font-bold text-red-700">🔴 3月融资压力大</div>
+<div class="text-sm text-red-600 mt-1">上饶银行2笔到期+九江银行土地解押，需提前准备资金和手续</div>
+</div>
+<div class="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+<div class="font-bold text-yellow-700">🟡 土增清算时间紧</div>
+<div class="text-sm text-yellow-600 mt-1">安置房土增清算5月底截止，需尽快启动第三方事务所合作</div>
+</div>
+<div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+<div class="font-bold text-blue-700">📋 营销配合需求</div>
+<div class="text-sm text-blue-600 mt-1">已售房源解押、按揭准入需与营销部密切配合，及时提供资料</div>
+</div>
+</div>
+</section>
+
+</body>
+</html>

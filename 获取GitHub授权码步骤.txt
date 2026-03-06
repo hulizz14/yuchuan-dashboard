@@ -1,0 +1,35 @@
+# GitHub 部署操作指南
+
+## 第一步：获取临时授权码（Token）
+
+1. 打开 https://github.com
+2. 登录账号：602398037@qq.com
+3. 点击右上角头像 → Settings
+4. 左侧菜单最下方 → Developer settings
+5. 左侧 Personal access tokens → Tokens (classic)
+6. 点击 Generate new token (classic)
+7. 填写：
+   - Note: 临时部署看板
+   - Expiration: 7 days（7天后自动失效）
+   - 勾选权限：✅ repo（完整仓库权限）
+8. 点击 Generate token
+9. **复制生成的token**（一串ghp_开头的字符）
+
+## 第二步：发送给我
+
+把复制的token发给我，我会：
+1. 创建 yuchuan-dashboard 仓库
+2. 上传所有看板文件
+3. 开启GitHub Pages
+4. 告诉你访问地址
+
+## 第三步：删除Token（部署完成后）
+
+部署成功后，你可以立即删除这个token，保证安全。
+
+---
+
+**⚠️ 安全提示：**
+- Token 7天后自动失效
+- 只能操作仓库，不能修改密码或其他敏感信息
+- 部署完成立即删除

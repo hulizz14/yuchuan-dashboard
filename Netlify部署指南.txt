@@ -1,0 +1,47 @@
+# Netlify Drop 快速部署指南
+
+## 获得独立网址（手机浏览器直接访问）
+
+### 步骤1：准备好文件
+我已经打包好所有文件：
+- 文件夹：`yuchuan-dashboard`（包含9个HTML文件）
+
+### 步骤2：访问 Netlify Drop
+1. 打开手机或电脑浏览器
+2. 访问：https://app.netlify.com/drop
+
+### 步骤3：上传文件
+1. 解压 `yuchuan-dashboard.zip`
+2. 把解压后的整个文件夹**拖拽**到网页中
+3. 等待上传完成（约10秒）
+
+### 步骤4：获得网址
+- 上传完成后，立即显示类似：
+  `https://xxx-xxx-xxx.netlify.app`
+- 这个网址就是您的看板地址
+- 手机浏览器打开即可查看
+
+### 特点：
+- ✅ 无需注册账号
+- ✅ 无需技术知识
+- ✅ 全球CDN加速，手机秒开
+- ✅ 支持自定义域名（可选）
+- ✅ 免费且稳定
+
+### 备用方案（如果Netlify打不开）：
+**Cloudflare Pages**
+1. 访问 https://pages.cloudflare.com
+2. 需要注册账号（可用邮箱）
+3. 上传方式相同
+
+**Surge.sh**
+1. 访问 https://surge.sh
+2. 命令行部署（需要技术指导）
+
+---
+
+**推荐：Netlify Drop 最简单，2分钟搞定！**
+
+准备好部署包：`yuchuan-dashboard.zip`（已生成）
+
+需要我现在上传吗？或者你自己操作？

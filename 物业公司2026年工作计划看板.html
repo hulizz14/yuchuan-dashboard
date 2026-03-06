@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物业公司2026年工作计划看板</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f1f5f9; }
+.card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s; }
+.card:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+.stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+.stat-green { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+.stat-orange { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.stat-blue { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.table-row:hover { background: #f8fafc; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 9999px; font-weight: 600; }
+.badge-red { background: #fee2e2; color: #dc2626; }
+.badge-green { background: #dcfce7; color: #16a34a; }
+.badge-orange { background: #fef3c7; color: #d97706; }
+.badge-blue { background: #dbeafe; color: #2563eb; }
+.fade-in { animation: fadeIn 0.5s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.month-header { background: #f8fafc; font-weight: 600; color: #475569; }
+.project-tianyu { border-left: 4px solid #3b82f6; }
+.project-caifu { border-left: 4px solid #10b981; }
+.gantt-bar { height: 24px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 11px; font-weight: 600; }
+.gantt-tianyu { background: #3b82f6; }
+.gantt-caifu { background: #10b981; }
+</style>
+</head>
+<body class="min-h-screen p-6">
+
+<!-- Header -->
+<header class="card mb-6 p-6 fade-in">
+<div class="flex justify-between items-center">
+<div>
+<h1 class="text-2xl font-bold text-slate-800">🏢 物业公司2026年工作计划看板</h1>
+<p class="text-slate-500 mt-1">数据来源：物业公司2026年收支预算明细报表 | 负责人：张斌</p>
+</div>
+<div class="text-right">
+<div class="text-sm text-slate-500">更新时间</div>
+<div class="text-lg font-semibold text-slate-700">2026-03-05</div>
+</div>
+</div>
+
+<!-- 核心KPI -->
+<div class="grid grid-cols-4 gap-4 mt-6">
+<div class="card stat-card p-5 text-white">
+<div class="text-sm opacity-90">年度收入目标</div>
+<div class="text-3xl font-bold mt-1">1,565<span class="text-lg ml-1">万</span></div>
+<div class="text-xs mt-2 opacity-80">天屿花城1067万+财富中心498万</div>
+</div>
+<div class="card stat-green p-5 text-white">
+<div class="text-sm opacity-90">现金流收入</div>
+<div class="text-3xl font-bold mt-1">1,123<span class="text-lg ml-1">万</span></div>
+<div class="text-xs mt-2 opacity-80">占总收入71.8%</div>
+</div>
+<div class="card stat-orange p-5 text-white">
+<div class="text-sm opacity-90">预算总成本</div>
+<div class="text-3xl font-bold mt-1">865<span class="text-lg ml-1">万</span></div>
+<div class="text-xs mt-2 opacity-80">人力670万+管理195万</div>
+</div>
+<div class="card stat-blue p-5 text-white">
+<div class="text-sm opacity-90">目标利润</div>
+<div class="text-3xl font-bold mt-1">509<span class="text-lg ml-1">万</span></div>
+<div class="text-xs mt-2 opacity-80">利润率32.5%</div>
+</div>
+</div>
+</header>
+
+<!-- 模块1: 年度工作甘特图 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">📅 2026年月度工作甘特图</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-sm">
+<thead>
+<tr class="border-b border-slate-200">
+<th class="py-3 px-2 text-left font-semibold text-slate-600 w-32">项目</th>
+<th class="py-3 px-1 text-center font-semibold text-slate-600 w-16">1月</th>
+<th class="py-3 px-1 text-center font-semibold text-slate-600 w-16">2月</th>
+<th class="py-3 px-1 text-center font-semibold text-slate-600 w-16">3月</th>
+<th class="py-3 px-1 text-center font-semibold text-slate-600 w-16">4月</th>
+<th class="py-3 px-1 text-center font-semibold text-slate-600 w-16">5月</th>
+<th class="py-3 px-1 text-center font-semibold text-slate-600 w-16">6月</th>
+<th class="py-3 px-1 text-center font-semibold text-slate-600 w-16">7月</th>
+<th class="py-3 px-1 text-center font-semibold text-slate-600 w-16">8月</th>
+<th class="py-3 px-1 text-center font-semibold text-slate-600 w-16">9月</th>
+<th class="py-3 px-1 text-center font-semibold text-slate-600 w-16">10月</th>
+<th class="py-3 px-1 text-center font-semibold text-slate-600 w-16">11月</th>
+<th class="py-3 px-1 text-center font-semibold text-slate-600 w-16">12月</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-slate-100">
+<td class="py-2 px-2 font-medium project-tianyu">天屿花城</td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-tianyu">4项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-tianyu">4项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-tianyu">5项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-tianyu">5项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-tianyu">4项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-tianyu">4项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-tianyu">4项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-tianyu">4项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-tianyu">4项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-tianyu">4项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-tianyu">3项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-tianyu">6项</div></td>
+</tr>
+<tr class="border-b border-slate-100">
+<td class="py-2 px-2 font-medium project-caifu">财富中心</td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-caifu">5项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-caifu">4项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-caifu">5项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-caifu">6项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-caifu">5项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-caifu">5项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-caifu">6项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-caifu">5项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-caifu">5项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-caifu">6项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-caifu">5项</div></td>
+<td class="py-2 px-1"><div class="gantt-bar gantt-caifu">7项</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 flex gap-4">
+<div class="flex items-center"><div class="w-4 h-4 bg-blue-500 rounded mr-2"></div><span class="text-sm text-slate-600">天屿花城：51项工作</span></div>
+<div class="flex items-center"><div class="w-4 h-4 bg-green-500 rounded mr-2"></div><span class="text-sm text-slate-600">财富中心：63项工作</span></div>
+</div>
+</section>
+
+<!-- 模块2: 经营指标追踪 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">📊 经营指标追踪</h2>
+<div class="grid grid-cols-2 gap-6">
+<div>
+<h3 class="text-sm font-semibold text-slate-600 mb-3">物业费收缴率目标</h3>
+<div class="space-y-3">
+<div class="p-4 bg-blue-50 rounded-lg">
+<div class="flex justify-between items-center">
+<span class="font-medium">天屿花城</span>
+<span class="text-2xl font-bold text-blue-600">70%</span>
+</div>
+<div class="text-sm text-slate-500 mt-1">目标：物业费746万/年</div>
+</div>
+<div class="p-4 bg-green-50 rounded-lg">
+<div class="flex justify-between items-center">
+<span class="font-medium">财富中心</span>
+<span class="text-2xl font-bold text-green-600">79%</span>
+</div>
+<div class="text-sm text-slate-500 mt-1">目标：物业费360万/年</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-slate-600 mb-3">其他关键指标</h3>
+<div class="space-y-3">
+<div class="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+<span>收房率目标</span>
+<span class="font-semibold">天屿50%(160户) | 财富90%(100户)</span>
+</div>
+<div class="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+<span>社区活动</span>
+<span class="font-semibold">≥6次/年</span>
+</div>
+<div class="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+<span>暖心服务活动</span>
+<span class="font-semibold">≥2次/年</span>
+</div>
+<div class="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+<span>设施设备完好率</span>
+<span class="font-semibold">≥95%</span>
+</div>
+<div class="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+<span>外拓项目</span>
+<span class="font-semibold">≥1个/年</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 模块3: 重点工作清单 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">📋 3月重点工作清单</h2>
+<div class="grid grid-cols-2 gap-6">
+<!-- 天屿花城3月工作 -->
+<div class="project-tianyu pl-4">
+<h3 class="font-bold text-blue-600 mb-3">天屿花城项目</h3>
+<div class="space-y-3">
+<div class="p-3 bg-slate-50 rounded-lg border-l-4 border-blue-500">
+<div class="font-medium">物业费催缴、收房</div>
+<div class="text-sm text-slate-500 mt-1">催缴物业费85万、完成办理收房8户</div>
+<div class="text-xs text-slate-400 mt-1">完成日期：2026-03-30 | 责任人：张斌</div></div>
+<div class="p-3 bg-slate-50 rounded-lg border-l-4 border-blue-500">
+<div class="font-medium">消防设备维保跟进</div>
+<div class="text-sm text-slate-500 mt-1">完成消防设备设施维保合同签订</div>
+<div class="text-xs text-slate-400 mt-1">完成日期：2026-03-30 | 责任人：张斌</div></div>
+<div class="p-3 bg-slate-50 rounded-lg border-l-4 border-blue-500">
+<div class="font-medium">第一季度社区活动</div>
+<div class="text-sm text-slate-500 mt-1">开展社区文化活动1次</div>
+<div class="text-xs text-slate-400 mt-1">完成日期：2026-03-30 | 责任人：张斌</div></div>
+<div class="p-3 bg-slate-50 rounded-lg border-l-4 border-blue-500">
+<div class="font-medium">园区绿化补种</div>
+<div class="text-sm text-slate-500 mt-1">枯死苗木移除、补种、浇灌及防虫</div>
+<div class="text-xs text-slate-400 mt-1">完成日期：2026-03-30 | 责任人：张斌</div></div>
+<div class="p-3 bg-slate-50 rounded-lg border-l-4 border-blue-500">
+<div class="font-medium">空置房巡查</div>
+<div class="text-sm text-slate-500 mt-1">空置房巡查2次/月，发现问题及时上报</div>
+<div class="text-xs text-slate-400 mt-1">完成日期：2026-03-30 | 责任人：张斌</div></div>
+</div>
+</div>
+<!-- 财富中心3月工作 -->
+<div class="project-caifu pl-4">
+<h3 class="font-bold text-green-600 mb-3">财富中心项目</h3>
+<div class="space-y-3">
+<div class="p-3 bg-slate-50 rounded-lg border-l-4 border-green-500">
+<div class="font-medium">物业费催缴、收房</div>
+<div class="text-sm text-slate-500 mt-1">催缴物业费30万、收房2户</div>
+<div class="text-xs text-slate-400 mt-1">完成日期：2026-03-31 | 责任人：张斌</div></div>
+<div class="p-3 bg-slate-50 rounded-lg border-l-4 border-green-500">
+<div class="font-medium">消防设备维保跟进</div>
+<div class="text-sm text-slate-500 mt-1">完成消防设备设施维保合同签订</div>
+<div class="text-xs text-slate-400 mt-1">完成日期：2026-03-31 | 责任人：张斌</div></div>
+<div class="p-3 bg-slate-50 rounded-lg border-l-4 border-green-500">
+<div class="font-medium">装修管控</div>
+<div class="text-sm text-slate-500 mt-1">加强装修巡查，管控违规装修</div>
+<div class="text-xs text-slate-400 mt-1">完成日期：2026-03-31 | 责任人：张斌</div></div>
+<div class="p-3 bg-slate-50 rounded-lg border-l-4 border-green-500">
+<div class="font-medium">第一季度社区活动</div>
+<div class="text-sm text-slate-500 mt-1">开展社区文化活动1次</div>
+<div class="text-xs text-slate-400 mt-1">完成日期：2026-03-31 | 责任人：张斌</div></div>
+<div class="p-3 bg-slate-50 rounded-lg border-l-4 border-green-500">
+<div class="font-medium">园区设施维护</div>
+<div class="text-sm text-slate-500 mt-1">公共设施设备日常维护</div>
+<div class="text-xs text-slate-400 mt-1">完成日期：2026-03-31 | 责任人：张斌</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 模块4: 全年工作概览 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">📊 全年工作概览</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-sm">
+<thead>
+<tr class="border-b border-slate-200 bg-slate-50">
+<th class="py-3 px-2 text-left font-semibold text-slate-600">工作类别</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">天屿花城</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">财富中心</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">合计</th>
+</tr>
+</thead>
+<tbody>
+<tr class="table-row border-b border-slate-100">
+<td class="py-3 px-2">物业费催缴</td>
+<td class="py-3 px-2 text-center">12次</td>
+<td class="py-3 px-2 text-center">12次</td>
+<td class="py-3 px-2 text-center font-semibold">24次</td>
+</tr>
+<tr class="table-row border-b border-slate-100">
+<td class="py-3 px-2">收房工作</td>
+<td class="py-3 px-2 text-center">12次</td>
+<td class="py-3 px-2 text-center">12次</td>
+<td class="py-3 px-2 text-center font-semibold">24次</td>
+</tr>
+<tr class="table-row border-b border-slate-100">
+<td class="py-3 px-2">社区活动</td>
+<td class="py-3 px-2 text-center">6次</td>
+<td class="py-3 px-2 text-center">6次</td>
+<td class="py-3 px-2 text-center font-semibold">12次</td>
+</tr>
+<tr class="table-row border-b border-slate-100">
+<td class="py-3 px-2">设备维保</td>
+<td class="py-3 px-2 text-center">6次</td>
+<td class="py-3 px-2 text-center">12次</td>
+<td class="py-3 px-2 text-center font-semibold">18次</td>
+</tr>
+<tr class="table-row border-b border-slate-100">
+<td class="py-3 px-2">安全检查</td>
+<td class="py-3 px-2 text-center">8次</td>
+<td class="py-3 px-2 text-center">8次</td>
+<td class="py-3 px-2 text-center font-semibold">16次</td>
+</tr>
+<tr class="table-row border-b border-slate-100">
+<td class="py-3 px-2">绿化养护</td>
+<td class="py-3 px-2 text-center">6次</td>
+<td class="py-3 px-2 text-center">4次</td>
+<td class="py-3 px-2 text-center font-semibold">10次</td>
+</tr>
+<tr class="bg-blue-50 font-bold">
+<td class="py-3 px-2">全年合计</td>
+<td class="py-3 px-2 text-center">51项</td>
+<td class="py-3 px-2 text-center">63项</td>
+<td class="py-3 px-2 text-center">114项</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+</body>
+</html>

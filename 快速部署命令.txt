@@ -1,0 +1,66 @@
+# 快速部署命令（复制粘贴执行）
+
+## 步骤1：打开终端
+在电脑上打开 终端(Terminal) 或 CMD
+
+## 步骤2：复制粘贴以下命令（一行一行执行）
+
+```bash
+# 进入桌面
+cd ~/Desktop
+
+# 下载部署包（用我发给你的zip）
+# 先解压 yuchuan-dashboard.zip 到桌面
+
+# 进入文件夹
+cd yuchuan-dashboard
+
+# 初始化Git
+git init
+git add .
+git commit -m "Initial commit"
+git branch -m main
+
+# 配置你的信息
+git config user.email "602398037@qq.com"
+git config user.name "禹川集团"
+```
+
+## 步骤3：在GitHub上创建空仓库
+
+1. 打开 https://github.com
+2. 登录账号
+3. 点击右上角 + → New repository
+4. 仓库名：yuchuan-dashboard
+5. 选择 Public
+6. 不要勾选 README 或 .gitignore
+7. 点击 Create repository
+
+## 步骤4：连接并上传（复制页面上的命令）
+
+创建仓库后，GitHub会显示类似这样的命令：
+
+```bash
+git remote add origin https://github.com/602398037/yuchuan-dashboard.git
+git branch -M main
+git push -u origin main
+```
+
+复制这三行，在终端粘贴执行。
+输入用户名：602398037
+输入密码：135246Zss
+
+## 步骤5：开启GitHub Pages
+
+1. 在GitHub仓库页面，点击 Settings
+2. 左侧菜单点击 Pages
+3. Source 选择 Deploy from a branch
+4. Branch 选择 main，/ (root)
+5. 点击 Save
+
+## 完成！
+
+等待2分钟，访问：
+https://602398037.github.io/yuchuan-dashboard
+
+手机浏览器打开即可查看！
