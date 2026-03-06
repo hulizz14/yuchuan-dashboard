@@ -61,6 +61,52 @@
   enabled: true
   recipient: ou_27f0fe412eed068ebd912269bd996fa7
 
+# 自我改进代理 - 每日反思
+- task: 每日反思与优化
+  schedule: "0 23 * * *"
+  action: |
+    1. 读取当日 memory/YYYY-MM-DD.md 工作记录
+    2. 分析今日任务完成情况：
+       - 完成任务数统计
+       - 用户反馈和修改次数
+       - 响应时间和准确率评估
+    3. 识别改进机会：
+       - 重复出现的问题
+       - 用户偏好变化
+       - 流程优化空间
+    4. 更新 MEMORY.md 用户画像
+    5. 生成明日优化目标
+    6. 记录到 SELF_IMPROVING.md 反思日志
+  enabled: true
+
+# 自我改进代理 - 周度总结
+- task: 周度工作总结与优化
+  schedule: "0 22 * * 0"
+  action: |
+    1. 汇总本周所有工作记录 (memory/)
+    2. 生成周度数据报告：
+       - 对话次数统计
+       - 任务完成率分析
+       - 技能使用频率排名
+    3. 识别高频任务模式
+    4. 优化下周工作流程
+    5. 生成改进建议并通知用户
+    6. 更新 SELF_IMPROVING.md 周度总结
+  enabled: true
+
+# 自我改进代理 - 月度进化
+- task: 月度能力评估与规划
+  schedule: "0 21 28-31 * *"
+  action: |
+    1. 深度分析月度工作数据
+    2. 评估技能使用效果和价值
+    3. 识别能力缺口和学习方向
+    4. 规划下月技能提升计划
+    5. 更新 AGENTS.md 能力档案
+    6. 生成分月度进化报告
+  enabled: true
+  condition: "is_last_day_of_month"
+
 # 每天早上8点汇报所有学习情况和学习进度
 - task: 每日学习进度汇报
   schedule: "0 8 * * *"
