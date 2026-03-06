@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>财富中心资产看板 v5.0 - 分楼栋版</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
@@ -23,63 +23,102 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .building-section { border-left: 4px solid #3b82f6; padding-left: 16px; margin-bottom: 24px; }
 .building-title { font-size: 18px; font-weight: bold; color: #1e293b; margin-bottom: 12px; }
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  body { padding: 12px !important; }
+  .mobile-header { flex-direction: column !important; text-align: center; }
+  .mobile-header > div:last-child { text-align: center !important; margin-top: 12px; }
+  .mobile-grid-2 { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+  .mobile-grid-1 { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .mobile-p-3 { padding: 12px !important; }
+  .mobile-p-4 { padding: 16px !important; }
+  .mobile-text-sm { font-size: 12px !important; }
+  .mobile-text-base { font-size: 14px !important; }
+  .mobile-text-lg { font-size: 16px !important; }
+  .mobile-text-xl { font-size: 18px !important; }
+  .mobile-text-2xl { font-size: 20px !important; }
+  .mobile-text-3xl { font-size: 24px !important; }
+  .mobile-stat-card { padding: 12px !important; }
+  .mobile-stat-card .text-3xl { font-size: 20px !important; }
+  .mobile-stat-card .text-lg { font-size: 12px !important; }
+  .mobile-stat-card .text-xs { font-size: 10px !important; }
+  .mobile-building-section { padding-left: 12px !important; margin-bottom: 16px !important; }
+  .mobile-building-title { font-size: 15px !important; }
+  .mobile-chart-container { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .mobile-chart-bar { height: 20px !important; }
+  .mobile-chart-bar .text-xs { font-size: 10px !important; padding-right: 4px !important; }
+  .mobile-overflow-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+  .mobile-table th, .mobile-table td { padding: 8px 4px !important; font-size: 11px !important; white-space: nowrap; }
+  .mobile-table .badge { font-size: 10px !important; padding: 1px 4px !important; }
+  .mobile-section-title { font-size: 16px !important; margin-bottom: 12px !important; }
+  .mobile-subtitle { font-size: 12px !important; }
+  .mobile-risk-box { padding: 12px !important; }
+  .mobile-risk-box .text-3xl { font-size: 22px !important; }
+}
+
+/* 小屏幕手机优化 */
+@media (max-width: 375px) {
+  .mobile-grid-2 { grid-template-columns: 1fr !important; }
+  .mobile-stat-card .text-3xl { font-size: 18px !important; }
+}
 </style>
 </head>
 <body class="min-h-screen p-6">
 
 <!-- Header -->
-<header class="card mb-6 p-6 fade-in">
-<div class="flex justify-between items-center">
+<header class="card mb-6 p-6 fade-in mobile-p-4">
+<div class="flex justify-between items-center mobile-header">
 <div>
-<h1 class="text-2xl font-bold text-slate-800">🏢 财富中心资产看板</h1>
-<p class="text-slate-500 mt-1">数据来源：销售台帐 | 分楼栋展示 | 已售=签约+认购</p>
+<h1 class="text-2xl font-bold text-slate-800 mobile-text-xl">🏢 财富中心资产看板</h1>
+<p class="text-slate-500 mt-1 mobile-text-sm mobile-subtitle">数据来源：销售台帐 | 分楼栋展示 | 已售=签约+认购</p>
 </div>
 <div class="text-right">
-<div class="text-sm text-slate-500">更新时间</div>
-<div class="text-lg font-semibold text-slate-700">2026-03-05 16:45</div>
+<div class="text-sm text-slate-500 mobile-text-sm">更新时间</div>
+<div class="text-lg font-semibold text-slate-700 mobile-text-base">2026-03-05 16:45</div>
 </div>
 </div>
 
 <!-- 核心KPI -->
-<div class="grid grid-cols-4 gap-4 mt-6">
-<div class="card stat-card p-5 text-white">
-<div class="text-sm opacity-90">总货值</div>
-<div class="text-3xl font-bold mt-1">12.79<span class="text-lg ml-1">亿</span></div>
-<div class="text-xs mt-2 opacity-80">已售4.96亿 + 未售7.83亿</div>
+<div class="grid grid-cols-4 gap-4 mt-6 mobile-grid-2">
+<div class="card stat-card p-5 text-white mobile-stat-card">
+<div class="text-sm opacity-90 mobile-text-sm">总货值</div>
+<div class="text-3xl font-bold mt-1 mobile-text-3xl">12.79<span class="text-lg ml-1">亿</span></div>
+<div class="text-xs mt-2 opacity-80 mobile-text-sm">已售4.96亿 + 未售7.83亿</div>
 </div>
-<div class="card stat-green p-5 text-white">
-<div class="text-sm opacity-90">已售金额</div>
-<div class="text-3xl font-bold mt-1">4.96<span class="text-lg ml-1">亿</span></div>
-<div class="text-xs mt-2 opacity-80">590套（签约+认购）</div>
+<div class="card stat-green p-5 text-white mobile-stat-card">
+<div class="text-sm opacity-90 mobile-text-sm">已售金额</div>
+<div class="text-3xl font-bold mt-1 mobile-text-3xl">4.96<span class="text-lg ml-1">亿</span></div>
+<div class="text-xs mt-2 opacity-80 mobile-text-sm">590套（签约+认购）</div>
 </div>
-<div class="card stat-orange p-5 text-white">
-<div class="text-sm opacity-90">未售金额</div>
-<div class="text-3xl font-bold mt-1">7.83<span class="text-lg ml-1">亿</span></div>
-<div class="text-xs mt-2 opacity-80">609套（待售+销控）</div>
+<div class="card stat-orange p-5 text-white mobile-stat-card">
+<div class="text-sm opacity-90 mobile-text-sm">未售金额</div>
+<div class="text-3xl font-bold mt-1 mobile-text-3xl">7.83<span class="text-lg ml-1">亿</span></div>
+<div class="text-xs mt-2 opacity-80 mobile-text-sm">609套（待售+销控）</div>
 </div>
-<div class="card stat-blue p-5 text-white">
-<div class="text-sm opacity-90">去化率</div>
-<div class="text-3xl font-bold mt-1">38.8<span class="text-lg ml-1">%</span></div>
-<div class="text-xs mt-2 opacity-80">回款率95.6%</div>
+<div class="card stat-blue p-5 text-white mobile-stat-card">
+<div class="text-sm opacity-90 mobile-text-sm">去化率</div>
+<div class="text-3xl font-bold mt-1 mobile-text-3xl">38.8<span class="text-lg ml-1">%</span></div>
+<div class="text-xs mt-2 opacity-80 mobile-text-sm">回款率95.6%</div>
 </div>
 </div>
 </header>
 
 <!-- 模块1: 基础数据（分楼栋） -->
-<section class="card mb-6 p-6 fade-in">
-<h2 class="text-xl font-bold text-slate-800 mb-4">📊 基础数据（分楼栋）</h2>
+<section class="card mb-6 p-6 fade-in mobile-p-4">
+<h2 class="text-xl font-bold text-slate-800 mb-4 mobile-section-title">📊 基础数据（分楼栋）</h2>
 
-<div class="overflow-x-auto">
-<table class="w-full text-sm">
+<div class="overflow-x-auto mobile-overflow-x">
+<table class="w-full text-sm mobile-table">
 <thead>
 <tr class="border-b border-slate-200 bg-slate-50">
 <th class="py-3 px-2 text-left font-semibold text-slate-600">楼栋</th>
 <th class="py-3 px-2 text-left font-semibold text-slate-600">业态</th>
-<th class="py-3 px-2 text-center font-semibold text-slate-600">总套数</th>
-<th class="py-3 px-2 text-center font-semibold text-slate-600">已售套数</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">总套</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">已售</th>
 <th class="py-3 px-2 text-center font-semibold text-slate-600">已售金额</th>
-<th class="py-3 px-2 text-center font-semibold text-slate-600">去化率</th>
-<th class="py-3 px-2 text-center font-semibold text-slate-600">未售套数</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">去化</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">未售</th>
 <th class="py-3 px-2 text-center font-semibold text-slate-600">未售金额</th>
 </tr>
 </thead>
@@ -114,65 +153,65 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 </section>
 
 <!-- 模块2: 已售数据（纯CSS图表） -->
-<section class="card mb-6 p-6 fade-in">
-<h2 class="text-xl font-bold text-slate-800 mb-4">💰 已售数据分析（图表）</h2>
-<div class="grid grid-cols-2 gap-6">
+<section class="card mb-6 p-6 fade-in mobile-p-4">
+<h2 class="text-xl font-bold text-slate-800 mb-4 mobile-section-title">💰 已售数据分析（图表）</h2>
+<div class="grid grid-cols-2 gap-6 mobile-chart-container">
 <!-- 已售业态分布 -->
 <div>
-<h3 class="text-sm font-semibold text-slate-600 mb-4">已售业态分布（金额）</h3>
+<h3 class="text-sm font-semibold text-slate-600 mb-4 mobile-subtitle">已售业态分布（金额）</h3>
 <div class="space-y-3">
 <div class="flex items-center">
-<div class="w-20 text-sm">写字楼</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 43%">2.13亿</div>
+<div class="w-20 text-sm mobile-text-sm">写字楼</div>
+<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden mobile-chart-bar">
+<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white mobile-text-sm" style="width: 43%">2.13亿</div>
 </div>
 </div>
 <div class="flex items-center">
-<div class="w-20 text-sm">公寓</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-green-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 41%">2.01亿</div>
+<div class="w-20 text-sm mobile-text-sm">公寓</div>
+<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden mobile-chart-bar">
+<div class="bg-green-500 h-full flex items-center justify-end pr-2 text-xs text-white mobile-text-sm" style="width: 41%">2.01亿</div>
 </div>
 </div>
 <div class="flex items-center">
-<div class="w-20 text-sm">底商</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-orange-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 10%">0.50亿</div>
+<div class="w-20 text-sm mobile-text-sm">底商</div>
+<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden mobile-chart-bar">
+<div class="bg-orange-500 h-full flex items-center justify-end pr-2 text-xs text-white mobile-text-sm" style="width: 10%">0.50亿</div>
 </div>
 </div>
 <div class="flex items-center">
-<div class="w-20 text-sm">独立商业</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-purple-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 6%">0.32亿</div>
+<div class="w-20 text-sm mobile-text-sm">独立商业</div>
+<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden mobile-chart-bar">
+<div class="bg-purple-500 h-full flex items-center justify-end pr-2 text-xs text-white mobile-text-sm" style="width: 6%">0.32亿</div>
 </div>
 </div>
 </div>
 </div>
 <!-- 已售楼栋分布 -->
 <div>
-<h3 class="text-sm font-semibold text-slate-600 mb-4">已售楼栋分布（金额）</h3>
+<h3 class="text-sm font-semibold text-slate-600 mb-4 mobile-subtitle">已售楼栋分布（金额）</h3>
 <div class="space-y-3">
 <div class="flex items-center">
-<div class="w-16 text-sm">1号楼</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 100%">2.31亿</div>
+<div class="w-16 text-sm mobile-text-sm">1号楼</div>
+<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden mobile-chart-bar">
+<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white mobile-text-sm" style="width: 100%">2.31亿</div>
 </div>
 </div>
 <div class="flex items-center">
-<div class="w-16 text-sm">2号楼</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 88%">2.03亿</div>
+<div class="w-16 text-sm mobile-text-sm">2号楼</div>
+<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden mobile-chart-bar">
+<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white mobile-text-sm" style="width: 88%">2.03亿</div>
 </div>
 </div>
 <div class="flex items-center">
-<div class="w-16 text-sm">6/7/8号</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 14%">0.32亿</div>
+<div class="w-16 text-sm mobile-text-sm">6/7/8号</div>
+<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden mobile-chart-bar">
+<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white mobile-text-sm" style="width: 14%">0.32亿</div>
 </div>
 </div>
 <div class="flex items-center">
-<div class="w-16 text-sm">3号楼</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 13%">0.30亿</div>
+<div class="w-16 text-sm mobile-text-sm">3号楼</div>
+<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden mobile-chart-bar">
+<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white mobile-text-sm" style="width: 13%">0.30亿</div>
 </div>
 </div>
 </div>
@@ -181,41 +220,41 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 </section>
 
 <!-- 模块3: 未售数据（分楼栋展示 - 重点） -->
-<section class="card mb-6 p-6 fade-in border-2 border-orange-200">
-<div class="flex items-center mb-4">
+<section class="card mb-6 p-6 fade-in border-2 border-orange-200 mobile-p-4">
+<div class="flex items-center mb-4 flex-wrap">
 <span class="text-2xl mr-2">📦</span>
-<h2 class="text-xl font-bold text-slate-800">未售数据明细（重点）</span>
-<span class="ml-2 px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded">609套 | 7.83亿</span>
+<h2 class="text-xl font-bold text-slate-800 mobile-section-title">未售数据明细（重点）</h2>
+<span class="ml-2 px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded mobile-text-sm">609套 | 7.83亿</span>
 </div>
 
-<div class="grid grid-cols-3 gap-4">
+<div class="grid grid-cols-3 gap-4 mobile-grid-1">
 <!-- 1号楼未售 -->
-<div class="building-section">
-<div class="building-title">1号楼未售</div>
+<div class="building-section mobile-building-section">
+<div class="building-title mobile-building-title">1号楼未售</div>
 <div class="space-y-2">
 <div class="p-3 bg-red-50 rounded-lg">
 <div class="flex justify-between">
-<span class="text-sm">写字楼</span>
-<span class="font-bold text-red-600">104套</span>
+<span class="text-sm mobile-text-sm">写字楼</span>
+<span class="font-bold text-red-600 mobile-text-sm">104套</span>
 </div>
-<div class="text-xs text-slate-500 mt-1">2.33亿 | 去化率47.7%</div>
+<div class="text-xs text-slate-500 mt-1 mobile-text-sm">2.33亿 | 去化率47.7%</div>
 </div>
 <div class="p-3 bg-orange-50 rounded-lg">
 <div class="flex justify-between">
-<span class="text-sm">底商</span>
-<span class="font-bold text-orange-600">5套</span>
+<span class="text-sm mobile-text-sm">底商</span>
+<span class="font-bold text-orange-600 mobile-text-sm">5套</span>
 </div>
-<div class="text-xs text-slate-500 mt-1">0.13亿 | 去化率54.5%</div>
+<div class="text-xs text-slate-500 mt-1 mobile-text-sm">0.13亿 | 去化率54.5%</div>
 </div>
 <div class="p-3 bg-yellow-50 rounded-lg">
 <div class="flex justify-between">
-<span class="text-sm">顶层</span>
-<span class="font-bold text-yellow-600">1套</span>
+<span class="text-sm mobile-text-sm">顶层</span>
+<span class="font-bold text-yellow-600 mobile-text-sm">1套</span>
 </div>
-<div class="text-xs text-slate-500 mt-1">0.22亿 | 去化率0%</div>
+<div class="text-xs text-slate-500 mt-1 mobile-text-sm">0.22亿 | 去化率0%</div>
 </div>
 <div class="p-3 bg-blue-100 rounded-lg font-semibold">
-<div class="flex justify-between">
+<div class="flex justify-between mobile-text-sm">
 <span>小计</span>
 <span>110套 | 2.68亿</span>
 </div>
@@ -224,32 +263,32 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 </div>
 
 <!-- 2号楼未售 -->
-<div class="building-section">
-<div class="building-title">2号楼未售</div>
+<div class="building-section mobile-building-section">
+<div class="building-title mobile-building-title">2号楼未售</div>
 <div class="space-y-2">
 <div class="p-3 bg-orange-50 rounded-lg">
 <div class="flex justify-between">
-<span class="text-sm">公寓</span>
-<span class="font-bold text-orange-600">168套</span>
+<span class="text-sm mobile-text-sm">公寓</span>
+<span class="font-bold text-orange-600 mobile-text-sm">168套</span>
 </div>
-<div class="text-xs text-slate-500 mt-1">0.79亿 | 去化率70.3%</div>
+<div class="text-xs text-slate-500 mt-1 mobile-text-sm">0.79亿 | 去化率70.3%</div>
 </div>
 <div class="p-3 bg-green-50 rounded-lg">
 <div class="flex justify-between">
-<span class="text-sm">底商</span>
-<span class="font-bold text-green-600">6套</span>
+<span class="text-sm mobile-text-sm">底商</span>
+<span class="font-bold text-green-600 mobile-text-sm">6套</span>
 </div>
-<div class="text-xs text-slate-500 mt-1">0.14亿 | 去化率68.4%</div>
+<div class="text-xs text-slate-500 mt-1 mobile-text-sm">0.14亿 | 去化率68.4%</div>
 </div>
 <div class="p-3 bg-yellow-50 rounded-lg">
 <div class="flex justify-between">
-<span class="text-sm">顶层</span>
-<span class="font-bold text-yellow-600">1套</span>
+<span class="text-sm mobile-text-sm">顶层</span>
+<span class="font-bold text-yellow-600 mobile-text-sm">1套</span>
 </div>
-<div class="text-xs text-slate-500 mt-1">0.22亿 | 去化率0%</div>
+<div class="text-xs text-slate-500 mt-1 mobile-text-sm">0.22亿 | 去化率0%</div>
 </div>
 <div class="p-3 bg-blue-100 rounded-lg font-semibold">
-<div class="flex justify-between">
+<div class="flex justify-between mobile-text-sm">
 <span>小计</span>
 <span>175套 | 1.15亿</span>
 </div>
@@ -258,32 +297,32 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 </div>
 
 <!-- 3号楼未售 -->
-<div class="building-section">
-<div class="building-title">3号楼未售</div>
+<div class="building-section mobile-building-section">
+<div class="building-title mobile-building-title">3号楼未售</div>
 <div class="space-y-2">
 <div class="p-3 bg-red-50 rounded-lg border border-red-200">
 <div class="flex justify-between">
-<span class="text-sm font-semibold">公寓</span>
-<span class="font-bold text-red-600">318套</span>
+<span class="text-sm font-semibold mobile-text-sm">公寓</span>
+<span class="font-bold text-red-600 mobile-text-sm">318套</span>
 </div>
-<div class="text-xs text-red-500 mt-1">⚠️ 2.63亿 | 去化率仅11.7%</div>
+<div class="text-xs text-red-500 mt-1 mobile-text-sm">⚠️ 2.63亿 | 去化率仅11.7%</div>
 </div>
 <div class="p-3 bg-orange-50 rounded-lg">
 <div class="flex justify-between">
-<span class="text-sm">底商</span>
-<span class="font-bold text-orange-600">5套</span>
+<span class="text-sm mobile-text-sm">底商</span>
+<span class="font-bold text-orange-600 mobile-text-sm">5套</span>
 </div>
-<div class="text-xs text-slate-500 mt-1">0.05亿 | 去化率54.5%</div>
+<div class="text-xs text-slate-500 mt-1 mobile-text-sm">0.05亿 | 去化率54.5%</div>
 </div>
 <div class="p-3 bg-yellow-50 rounded-lg">
 <div class="flex justify-between">
-<span class="text-sm">顶层</span>
-<span class="font-bold text-yellow-600">1套</span>
+<span class="text-sm mobile-text-sm">顶层</span>
+<span class="font-bold text-yellow-600 mobile-text-sm">1套</span>
 </div>
-<div class="text-xs text-slate-500 mt-1">0.23亿 | 去化率0%</div>
+<div class="text-xs text-slate-500 mt-1 mobile-text-sm">0.23亿 | 去化率0%</div>
 </div>
 <div class="p-3 bg-blue-100 rounded-lg font-semibold">
-<div class="flex justify-between">
+<div class="flex justify-between mobile-text-sm">
 <span>小计</span>
 <span>324套 | 2.91亿</span>
 </div>
@@ -292,72 +331,72 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 </div>
 </div>
 
-<div class="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-<strong class="text-red-700">🔴 重点关注：</strong>
-<span class="text-red-600">3号楼公寓未售318套（2.63亿），去化率仅11.7%，需重点关注销售策略！</span>
+<div class="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg mobile-risk-box">
+<strong class="text-red-700 mobile-text-sm">🔴 重点关注：</strong>
+<span class="text-red-600 mobile-text-sm">3号楼公寓未售318套（2.63亿），去化率仅11.7%，需重点关注销售策略！</span>
 </div>
 </section>
 
 <!-- 模块4: 已售未回款 -->
-<section class="card mb-6 p-6 fade-in">
-<h2 class="text-xl font-bold text-slate-800 mb-4">⚠️ 已售未回款数据</h2>
-<div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
-<div class="flex justify-between items-center">
+<section class="card mb-6 p-6 fade-in mobile-p-4">
+<h2 class="text-xl font-bold text-slate-800 mb-4 mobile-section-title">⚠️ 已售未回款数据</h2>
+<div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 mobile-risk-box">
+<div class="flex justify-between items-center mobile-header">
 <div>
-<div class="text-sm text-slate-600">未回款合计</div>
-<div class="text-3xl font-bold text-red-600">2,196<span class="text-sm">万元</span></div>
+<div class="text-sm text-slate-600 mobile-text-sm">未回款合计</div>
+<div class="text-3xl font-bold text-red-600 mobile-text-3xl">2,196<span class="text-sm">万元</span></div>
 </div>
 <div class="text-right">
-<div class="text-sm text-slate-600">已售金额</div>
-<div class="text-xl font-bold text-slate-700">4.96亿</div>
-<div class="text-sm text-slate-500">回款率: 95.6%</div>
+<div class="text-sm text-slate-600 mobile-text-sm">已售金额</div>
+<div class="text-xl font-bold text-slate-700 mobile-text-lg">4.96亿</div>
+<div class="text-sm text-slate-500 mobile-text-sm">回款率: 95.6%</div>
 </div>
 </div>
 </div>
-<div class="grid grid-cols-2 gap-6">
+<div class="grid grid-cols-2 gap-6 mobile-grid-1">
 <div>
-<h4 class="font-semibold text-slate-700 mb-3">已签约未回款</h4>
+<h4 class="font-semibold text-slate-700 mb-3 mobile-text-sm">已签约未回款</h4>
 <div class="space-y-2">
 <div class="flex justify-between p-3 bg-slate-50 rounded-lg">
-<span class="text-sm">正常签约</span>
-<span class="font-semibold text-green-600">105万</span>
+<span class="text-sm mobile-text-sm">正常签约</span>
+<span class="font-semibold text-green-600 mobile-text-sm">105万</span>
 </div>
 <div class="flex justify-between p-3 bg-slate-50 rounded-lg">
-<span class="text-sm">工抵签约</span>
-<span class="font-semibold text-orange-600">0万</span>
+<span class="text-sm mobile-text-sm">工抵签约</span>
+<span class="font-semibold text-orange-600 mobile-text-sm">0万</span>
 </div>
-<div class="flex justify-between p-3 bg-blue-50 rounded-lg font-semibold">
+<div class="flex justify-between p-3 bg-blue-50 rounded-lg font-semibold mobile-text-sm">
 <span>小计</span>
 <span>105万</span>
 </div>
 </div>
 </div>
 <div>
-<h4 class="font-semibold text-slate-700 mb-3">已认购未回款</h4>
+<h4 class="font-semibold text-slate-700 mb-3 mobile-text-sm">已认购未回款</h4>
 <div class="space-y-2">
 <div class="flex justify-between p-3 bg-slate-50 rounded-lg">
-<span class="text-sm">正常认购</span>
-<span class="font-semibold text-green-600">441万</span>
+<span class="text-sm mobile-text-sm">正常认购</span>
+<span class="font-semibold text-green-600 mobile-text-sm">441万</span>
 </div>
 <div class="flex justify-between p-3 bg-slate-50 rounded-lg">
-<span class="text-sm">工抵认购</span>
-<span class="font-semibold text-orange-600">1,650万</span>
+<span class="text-sm mobile-text-sm">工抵认购</span>
+<span class="font-semibold text-orange-600 mobile-text-sm">1,650万</span>
 </div>
-<div class="flex justify-between p-3 bg-blue-50 rounded-lg font-semibold">
+<div class="flex justify-between p-3 bg-blue-50 rounded-lg font-semibold mobile-text-sm">
 <span>小计</span>
 <span>2,091万</span>
 </div>
 </div>
 </div>
 </div>
-<div class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-<strong>💡 风险提示:</strong> 工抵认购未回款1,650万元占比较高，需与债权方确认结算进度。正常认购未回款441万元需尽快推进签约转化。
+<div class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg mobile-risk-box">
+<strong class="mobile-text-sm">💡 风险提示:</strong> <span class="mobile-text-sm">工抵认购未回款1,650万元占比较高，需与债权方确认结算进度。正常认购未回款441万元需尽快推进签约转化。</span>
 </div>
 </section>
 
 <script>
 // 页面交互脚本
-console.log('财富中心看板已加载');
+console.log('财富中心看板已加载 - 移动端优化版');
 </script>
 
 </body>
