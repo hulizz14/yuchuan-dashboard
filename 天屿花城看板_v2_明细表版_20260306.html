@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天屿花城资产看板 v2.0 - 明细表版</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f1f5f9; }
+.card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s; }
+.card:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+.fade-in { animation: fadeIn 0.5s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body class="min-h-screen p-6">
+
+<!-- Header -->
+<header class="card mb-6 p-6 fade-in">
+<div class="text-center mb-4">
+<h1 class="text-2xl md:text-3xl font-bold text-slate-800">🏘️ 天屿花城资产看板</h1>
+<p class="text-slate-500 mt-2">数据来源：明细表 | 分岛展示 | 七大岛屿资产分布</p>
+</div>
+
+<div class="flex justify-center items-center gap-6 mb-6">
+<div class="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full">
+<svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+</svg>
+<span class="text-sm text-slate-600">数据日期：</span>
+<span class="text-sm font-bold text-blue-600">2026-03-02</span>
+</div>
+<div class="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-full">
+<svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<span class="text-sm text-slate-600">数据状态：</span>
+<span class="text-sm font-bold text-green-600">明细表</span>
+</div>
+</div>
+
+<!-- 核心KPI -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+<div class="p-5 rounded-xl text-white shadow-lg" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium opacity-90">💰 总货值</span>
+<span class="text-xs bg-white/20 px-2 py-1 rounded-full">100%</span>
+</div>
+<div class="text-3xl font-bold">40.51<span class="text-base ml-1">亿</span></div>
+<div class="mt-2 text-xs text-white/80">已售25.93亿 | 未售12.22亿</div>
+</div>
+<div class="p-5 rounded-xl text-white shadow-lg" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium opacity-90">✅ 已售金额</span>
+<span class="text-xs bg-white/20 px-2 py-1 rounded-full">64.0%</span>
+</div>
+<div class="text-3xl font-bold">25.93<span class="text-base ml-1">亿</span></div>
+<div class="mt-2 text-xs text-white/80">2,902套 | 签约+备案</div>
+</div>
+<div class="p-5 rounded-xl text-white shadow-lg" style="background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium opacity-90">📦 未售金额</span>
+<span class="text-xs bg-white/20 px-2 py-1 rounded-full">30.2%</span>
+</div>
+<div class="text-3xl font-bold">12.22<span class="text-base ml-1">亿</span></div>
+<div class="mt-2 text-xs text-white/80">1,429套 | 待售资产</div>
+</div>
+<div class="p-5 rounded-xl text-white shadow-lg" style="background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium opacity-90">📊 去化率</span>
+<span class="text-xs bg-white/20 px-2 py-1 rounded-full">套数</span>
+</div>
+<div class="text-3xl font-bold">66.8<span class="text-base ml-1">%</span></div>
+<div class="mt-2 text-xs text-white/80">七大岛屿综合</div>
+</div>
+</div>
+</header>
+
+<!-- 基础数据表格 -->
+<section class="card mb-6 p-6 fade-in">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center text-xl">📊</div>
+<div>
+<h2 class="text-xl font-bold text-slate-800">基础数据（明细表）</h2>
+<p class="text-sm text-slate-500">各岛屿业态销售明细</p>
+</div>
+</div>
+</div>
+
+<div class="overflow-x-auto rounded-xl border border-slate-200">
+<table class="w-full text-sm">
+<thead>
+<tr class="bg-slate-100">
+<th class="py-3 px-2 text-left font-bold text-slate-700 border-b-2 border-slate-300">岛屿</th>
+<th class="py-3 px-2 text-left font-bold text-slate-700 border-b-2 border-slate-300">业态</th>
+<th class="py-3 px-2 text-center font-bold text-slate-700 border-b-2 border-slate-300">总套数</th>
+<th class="py-3 px-2 text-center font-bold text-green-700 border-b-2 border-slate-300 bg-green-50/50">已售套数</th>
+<th class="py-3 px-2 text-center font-bold text-green-700 border-b-2 border-slate-300 bg-green-50/50">已售金额</th>
+<th class="py-3 px-2 text-center font-bold text-slate-700 border-b-2 border-slate-300">去化率</th>
+<th class="py-3 px-2 text-center font-bold text-orange-700 border-b-2 border-slate-300 bg-orange-50/50">未售套数</th>
+<th class="py-3 px-2 text-center font-bold text-orange-700 border-b-2 border-slate-300 bg-orange-50/50">未售金额</th>
+</tr>
+</thead>
+<tbody>
+<!-- 牡丹岛 -->
+<tr class="border-b border-pink-200"><td class="py-3 px-2 font-bold text-pink-700 bg-pink-50" style="border-left:4px solid #ec4899">牡丹岛</td><td class="py-3 px-2">高层</td><td class="text-center">866</td><td class="text-center font-bold text-green-600">434</td><td class="text-center">5.96亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">50.1%</span></td><td class="text-center font-bold text-orange-600">424</td><td class="text-center">6.63亿</td></tr>
+<tr class="border-b border-pink-200"><td class="py-3 px-2 font-bold text-pink-700 bg-pink-50" style="border-left:4px solid #ec4899">牡丹岛</td><td class="py-3 px-2">合院(住宅)</td><td class="text-center">202</td><td class="text-center font-bold text-green-600">1</td><td class="text-center">0.02亿</td><td class="text-center"><span class="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-bold rounded">0.5%</span></td><td class="text-center font-bold text-orange-600">199</td><td class="text-center">4.79亿</td></tr>
+<tr class="border-b border-pink-200"><td class="py-3 px-2 font-bold text-pink-700 bg-pink-50" style="border-left:4px solid #ec4899">牡丹岛</td><td class="py-3 px-2">合院(商业)</td><td class="text-center">14</td><td class="text-center font-bold text-green-600">0</td><td class="text-center">—</td><td class="text-center"><span class="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-bold rounded">0%</span></td><td class="text-center font-bold text-orange-600">14</td><td class="text-center">0.32亿</td></tr>
+<tr class="border-b-2 border-pink-300"><td class="py-3 px-2 font-bold text-pink-700 bg-pink-50" style="border-left:4px solid #ec4899">牡丹岛</td><td class="py-3 px-2">地下停车位</td><td class="text-center">618</td><td class="text-center font-bold text-green-600">401</td><td class="text-center">—</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">64.9%</span></td><td class="text-center font-bold text-orange-600">217</td><td class="text-center">—</td></tr>
+<!-- 杜鹃岛 -->
+<tr class="border-b border-purple-200"><td class="py-3 px-2 font-bold text-purple-700 bg-purple-50" style="border-left:4px solid #a855f7">杜鹃岛</td><td class="py-3 px-2">双拼别墅</td><td class="text-center">8</td><td class="text-center font-bold text-green-600">7</td><td class="text-center">0.20亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">87.5%</span></td><td class="text-center font-bold text-orange-600">1</td><td class="text-center">0.05亿</td></tr>
+<tr class="border-b border-purple-200"><td class="py-3 px-2 font-bold text-purple-700 bg-purple-50" style="border-left:4px solid #a855f7">杜鹃岛</td><td class="py-3 px-2">联排别墅</td><td class="text-center">2</td><td class="text-center font-bold text-green-600">2</td><td class="text-center">0.08亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b-2 border-purple-300"><td class="py-3 px-2 font-bold text-purple-700 bg-purple-50" style="border-left:4px solid #a855f7">杜鹃岛</td><td class="py-3 px-2">地下停车位</td><td class="text-center">6</td><td class="text-center font-bold text-green-600">0</td><td class="text-center">—</td><td class="text-center"><span class="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-bold rounded">0%</span></td><td class="text-center font-bold text-orange-600">6</td><td class="text-center">—</td></tr>
+<!-- 桃花岛 -->
+<tr class="border-b border-rose-200"><td class="py-3 px-2 font-bold text-rose-700 bg-rose-50" style="border-left:4px solid #f43f5e">桃花岛</td><td class="py-3 px-2">双拼别墅</td><td class="text-center">144</td><td class="text-center font-bold text-green-600">137</td><td class="text-center">3.28亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">95.1%</span></td><td class="text-center font-bold text-orange-600">5</td><td class="text-center">0.26亿</td></tr>
+<tr class="border-b border-rose-200"><td class="py-3 px-2 font-bold text-rose-700 bg-rose-50" style="border-left:4px solid #f43f5e">桃花岛</td><td class="py-3 px-2">独栋别墅</td><td class="text-center">3</td><td class="text-center font-bold text-green-600">2</td><td class="text-center">0.06亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">66.7%</span></td><td class="text-center font-bold text-orange-600">1</td><td class="text-center">0.07亿</td></tr>
+<tr class="border-b-2 border-rose-300"><td class="py-3 px-2 font-bold text-rose-700 bg-rose-50" style="border-left:4px solid #f43f5e">桃花岛</td><td class="py-3 px-2">联排别墅</td><td class="text-center">89</td><td class="text-center font-bold text-green-600">89</td><td class="text-center">1.04亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<!-- 樱花岛 -->
+<tr class="border-b border-cyan-200"><td class="py-3 px-2 font-bold text-cyan-700 bg-cyan-50" style="border-left:4px solid #06b6d4">樱花岛</td><td class="py-3 px-2">双拼别墅</td><td class="text-center">222</td><td class="text-center font-bold text-green-600">222</td><td class="text-center">4.01亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b-2 border-cyan-300"><td class="py-3 px-2 font-bold text-cyan-700 bg-cyan-50" style="border-left:4px solid #06b6d4">樱花岛</td><td class="py-3 px-2">联排别墅</td><td class="text-center">55</td><td class="text-center font-bold text-green-600">55</td><td class="text-center">0.62亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<!-- 桂花岛 -->
+<tr class="border-b border-emerald-200"><td class="py-3 px-2 font-bold text-emerald-700 bg-emerald-50" style="border-left:4px solid #10b981">桂花岛</td><td class="py-3 px-2">双拼别墅</td><td class="text-center">56</td><td class="text-center font-bold text-green-600">56</td><td class="text-center">0.91亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b border-emerald-200"><td class="py-3 px-2 font-bold text-emerald-700 bg-emerald-50" style="border-left:4px solid #10b981">桂花岛</td><td class="py-3 px-2">联排别墅</td><td class="text-center">25</td><td class="text-center font-bold text-green-600">25</td><td class="text-center">0.29亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b-2 border-emerald-300"><td class="py-3 px-2 font-bold text-emerald-700 bg-emerald-50" style="border-left:4px solid #10b981">桂花岛</td><td class="py-3 px-2">独立商业</td><td class="text-center">22</td><td class="text-center font-bold text-green-600">8</td><td class="text-center">0.05亿</td><td class="text-center"><span class="px-2 py-0.5 bg-orange-100 text-orange-700 text-xs font-bold rounded">36.4%</span></td><td class="text-center font-bold text-orange-600">14</td><td class="text-center">0.10亿</td></tr>
+<!-- 玉兰岛 -->
+<tr class="border-b border-amber-200"><td class="py-3 px-2 font-bold text-amber-700 bg-amber-50" style="border-left:4px solid #f59e0b">玉兰岛</td><td class="py-3 px-2">双拼别墅</td><td class="text-center">78</td><td class="text-center font-bold text-green-600">78</td><td class="text-center">1.44亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b border-amber-200"><td class="py-3 px-2 font-bold text-amber-700 bg-amber-50" style="border-left:4px solid #f59e0b">玉兰岛</td><td class="py-3 px-2">普宅毛坯</td><td class="text-center">48</td><td class="text-center font-bold text-green-600">48</td><td class="text-center">0.37亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b border-amber-200"><td class="py-3 px-2 font-bold text-amber-700 bg-amber-50" style="border-left:4px solid #f59e0b">玉兰岛</td><td class="py-3 px-2">洋房(6F)</td><td class="text-center">48</td><td class="text-center font-bold text-green-600">48</td><td class="text-center">0.28亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b border-amber-200"><td class="py-3 px-2 font-bold text-amber-700 bg-amber-50" style="border-left:4px solid #f59e0b">玉兰岛</td><td class="py-3 px-2">联排别墅</td><td class="text-center">31</td><td class="text-center font-bold text-green-600">31</td><td class="text-center">0.39亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b-2 border-amber-300"><td class="py-3 px-2 font-bold text-amber-700 bg-amber-50" style="border-left:4px solid #f59e0b">玉兰岛</td><td class="py-3 px-2">地下停车位</td><td class="text-center">98</td><td class="text-center font-bold text-green-600">54</td><td class="text-center">—</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">55.1%</span></td><td class="text-center font-bold text-orange-600">44</td><td class="text-center">—</td></tr>
+<!-- 紫薇岛 -->
+<tr class="border-b border-violet-200"><td class="py-3 px-2 font-bold text-violet-700 bg-violet-50" style="border-left:4px solid #8b5cf6">紫薇岛</td><td class="py-3 px-2">底商</td><td class="text-center">63</td><td class="text-center font-bold text-green-600">63</td><td class="text-center">0.40亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b border-violet-200"><td class="py-3 px-2 font-bold text-violet-700 bg-violet-50" style="border-left:4px solid #8b5cf6">紫薇岛</td><td class="py-3 px-2">平层</td><td class="text-center">210</td><td class="text-center font-bold text-green-600">210</td><td class="text-center">1.19亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b border-violet-200"><td class="py-3 px-2 font-bold text-violet-700 bg-violet-50" style="border-left:4px solid #8b5cf6">紫薇岛</td><td class="py-3 px-2">精装公寓</td><td class="text-center">258</td><td class="text-center font-bold text-green-600">258</td><td class="text-center">1.03亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b border-violet-200"><td class="py-3 px-2 font-bold text-violet-700 bg-violet-50" style="border-left:4px solid #8b5cf6">紫薇岛</td><td class="py-3 px-2">普宅毛坯</td><td class="text-center">174</td><td class="text-center font-bold text-green-600">174</td><td class="text-center">1.12亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b border-violet-200"><td class="py-3 px-2 font-bold text-violet-700 bg-violet-50" style="border-left:4px solid #8b5cf6">紫薇岛</td><td class="py-3 px-2">洋房(6F)</td><td class="text-center">120</td><td class="text-center font-bold text-green-600">120</td><td class="text-center">0.68亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b border-violet-200"><td class="py-3 px-2 font-bold text-violet-700 bg-violet-50" style="border-left:4px solid #8b5cf6">紫薇岛</td><td class="py-3 px-2">联排别墅</td><td class="text-center">56</td><td class="text-center font-bold text-green-600">56</td><td class="text-center">0.68亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b border-violet-200"><td class="py-3 px-2 font-bold text-violet-700 bg-violet-50" style="border-left:4px solid #8b5cf6">紫薇岛</td><td class="py-3 px-2">双拼别墅</td><td class="text-center">96</td><td class="text-center font-bold text-green-600">96</td><td class="text-center">1.60亿</td><td class="text-center"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">100%</span></td><td class="text-center font-bold text-slate-400">0</td><td class="text-center text-slate-400">—</td></tr>
+<tr class="border-b-2 border-violet-300"><td class="py-3 px-2 font-bold text-violet-700 bg-violet-50" style="border-left:4px solid #8b5cf6">紫薇岛</td><td class="py-3 px-2">地下停车位</td><td class="text-center">733</td><td class="text-center font-bold text-green-600">227</td><td class="text-center">—</td><td class="text-center"><span class="px-2 py-0.5 bg-orange-100 text-orange-700 text-xs font-bold rounded">31.0%</span></td><td class="text-center font-bold text-orange-600">504</td><td class="text-center">—</td></tr>
+<!-- 合计 -->
+<tr class="bg-slate-800 text-white font-bold">
+<td class="py-3 px-2" colspan="2">项目合计</td>
+<td class="text-center">4,346</td>
+<td class="text-center text-green-400">2,902</td>
+<td class="text-center">25.93亿</td>
+<td class="text-center">66.8%</td>
+<td class="text-center text-orange-400">1,429</td>
+<td class="text-center">12.22亿</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- 风险提示 -->
+<section class="card mb-6 p-6 fade-in border-2 border-red-200">
+<h2 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+<span class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center text-xl">🚨</span>
+<span>重点风险资产</span>
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-red-50 border border-red-200 rounded-xl p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-1 bg-red-500 text-white text-xs rounded">高风险</span>
+<span class="font-bold text-slate-700">牡丹岛合院（住宅）</span>
+</div>
+<div class="text-2xl font-bold text-red-600">199套 | 4.79亿</div>
+<div class="text-sm text-slate-600 mt-1">去化率仅0.5%，严重滞销</div>
+</div>
+<div class="bg-red-50 border border-red-200 rounded-xl p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-1 bg-red-500 text-white text-xs rounded">高风险</span>
+<span class="font-bold text-slate-700">牡丹岛合院（商业）</span>
+</div>
+<div class="text-2xl font-bold text-red-600">14套 | 0.32亿</div>
+<div class="text-sm text-slate-600 mt-1">去化率0%，完全滞销</div>
+</div>
+<div class="bg-orange-50 border border-orange-200 rounded-xl p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-1 bg-orange-500 text-white text-xs rounded">中风险</span>
+<span class="font-bold text-slate-700">紫薇岛地下停车位</span>
+</div>
+<div class="text-2xl font-bold text-orange-600">504套</div>
+<div class="text-sm text-slate-600 mt-1">去化率31.0%，去化缓慢</div>
+</div>
+<div class="bg-orange-50 border border-orange-200 rounded-xl p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-1 bg-orange-500 text-white text-xs rounded">中风险</span>
+<span class="font-bold text-slate-700">桂花岛独立商业</span>
+</div>
+<div class="text-2xl font-bold text-orange-600">14套 | 0.10亿</div>
+<div class="text-sm text-slate-600 mt-1">去化率36.4%，需关注</div>
+</div>
+</div>
+</section>
+
+<script>console.log('天屿花城明细表看板已加载');</script>
+</body>
+</html>
