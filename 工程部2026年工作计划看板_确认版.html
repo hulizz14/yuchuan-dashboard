@@ -182,8 +182,49 @@
             font-size: 13px;
         }
         
+        /* 周工作计划样式 */
+        .week-plan-header {
+            background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .week-plan-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            margin-bottom: 20px;
+        }
+        .week-plan-table th {
+            background: #3949ab;
+            color: white;
+            padding: 8px 6px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .week-plan-table td {
+            padding: 8px 6px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .week-plan-table tr:nth-child(even) {
+            background: #f5f7fa;
+        }
+        .week-plan-table .batch-1 { color: #4caf50; font-weight: 600; }
+        .week-plan-table .batch-2 { color: #2196f3; font-weight: 600; }
+        .week-plan-table .batch-3 { color: #ff9800; font-weight: 600; }
+        .week-plan-table .batch-4 { color: #f44336; font-weight: 600; }
+        .week-plan-table .batch-5 { color: #9c27b0; font-weight: 600; }
+        .status-done { background: #e8f5e9; color: #2e7d32; padding: 2px 6px; border-radius: 4px; font-size: 10px; }
+        .status-progress { background: #fff3e0; color: #ef6c00; padding: 2px 6px; border-radius: 4px; font-size: 10px; }
+        .status-pending { background: #eceff1; color: #546e7a; padding: 2px 6px; border-radius: 4px; font-size: 10px; }
+        .status-urgent { background: #ffebee; color: #c62828; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; }
+        
         @media (max-width: 768px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .week-plan-table { font-size: 10px; }
+            .week-plan-table th, .week-plan-table td { padding: 6px 4px; }
         }
     </style>
 </head>
@@ -411,6 +452,434 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <!-- 周工作计划详情（3-4月） -->
+    <div class="section">
+        <div class="section-title">📋 周工作计划详情（3-4月）</div>
+        
+        <!-- 3月第1周 -->
+        <div class="week-plan-header">3月第1周（3.1-3.7）- 10项任务 | 当前状态：进行中</div>
+        <table class="week-plan-table">
+            <thead>
+                <tr>
+                    <th style="width:8%">批次</th>
+                    <th style="width:10%">楼栋</th>
+                    <th style="width:35%">任务内容</th>
+                    <th style="width:8%">工期</th>
+                    <th style="width:12%">责任方</th>
+                    <th style="width:12%">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="batch-1">第一批</td>
+                    <td>1#10#</td>
+                    <td>拆架（已完成）</td>
+                    <td>3天</td>
+                    <td>总包</td>
+                    <td><span class="status-done">✅ 已完成</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-1">第一批</td>
+                    <td>1#10#</td>
+                    <td>顶板防水（已完成）</td>
+                    <td>3天</td>
+                    <td>总包</td>
+                    <td><span class="status-done">✅ 已完成</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-1">第一批</td>
+                    <td>1#10#</td>
+                    <td>防水保护层（已完成）</td>
+                    <td>3天</td>
+                    <td>总包</td>
+                    <td><span class="status-done">✅ 已完成</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-1">第一批</td>
+                    <td>1#10#</td>
+                    <td>滤水层</td>
+                    <td>7天</td>
+                    <td>总包</td>
+                    <td><span class="status-progress">🟡 进行中</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-2">第二批</td>
+                    <td>29#-34#</td>
+                    <td>拆架</td>
+                    <td>49天</td>
+                    <td>总包</td>
+                    <td><span class="status-progress">🟡 进行中</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-2">第二批</td>
+                    <td>30#-32#</td>
+                    <td>墙体砌筑及内外抹灰</td>
+                    <td>21天</td>
+                    <td>总包</td>
+                    <td><span class="status-progress">🟡 进行中</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-3">第三批</td>
+                    <td>2#</td>
+                    <td>墙体砌筑及内外抹灰</td>
+                    <td>21天</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-3">第三批</td>
+                    <td>5#6#</td>
+                    <td>主体结构封顶</td>
+                    <td>31天</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr style="background:#ffebee">
+                    <td class="batch-4">第四批</td>
+                    <td>9#28#</td>
+                    <td><strong>⚠️ 基础开挖（紧急）</strong></td>
+                    <td>12天</td>
+                    <td>总包</td>
+                    <td><span class="status-urgent">🔴 紧急</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-4">第四批</td>
+                    <td>9#28#</td>
+                    <td>主体封顶</td>
+                    <td>52天</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background:#fff3e0; padding:10px; border-radius:6px; margin-bottom:20px; font-size:12px; color:#e65100">
+            <strong>⚠️ 本周关键节点：</strong>3月10日前确定燃气方案及合同（1#10#）+ 围墙/门头供应商 | 立即启动9#28#楼基础开挖
+        </div>
+
+        <!-- 3月第2周 -->
+        <div class="week-plan-header">3月第2周（3.8-3.14）- 7项任务 | 当前周</div>
+        <table class="week-plan-table">
+            <thead>
+                <tr>
+                    <th style="width:8%">批次</th>
+                    <th style="width:10%">楼栋</th>
+                    <th style="width:35%">任务内容</th>
+                    <th style="width:8%">工期</th>
+                    <th style="width:12%">责任方</th>
+                    <th style="width:12%">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="batch-1">第一批</td>
+                    <td>1#10#</td>
+                    <td>滤水层（收尾）</td>
+                    <td>3天</td>
+                    <td>总包</td>
+                    <td><span class="status-progress">🟡 进行中</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-2">第二批</td>
+                    <td>29#-34#</td>
+                    <td>拆架</td>
+                    <td>进行中</td>
+                    <td>总包</td>
+                    <td><span class="status-progress">🟡 进行中</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-2">第二批</td>
+                    <td>30#-32#</td>
+                    <td>砌筑抹灰</td>
+                    <td>进行中</td>
+                    <td>总包</td>
+                    <td><span class="status-progress">🟡 进行中</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-3">第三批</td>
+                    <td>2#</td>
+                    <td>砌筑抹灰</td>
+                    <td>进行中</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-3">第三批</td>
+                    <td>5#6#</td>
+                    <td>主体封顶</td>
+                    <td>进行中</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr style="background:#ffebee">
+                    <td class="batch-4">第四批</td>
+                    <td>9#28#</td>
+                    <td><strong>⚠️ 基础开挖（紧急）</strong></td>
+                    <td>进行中</td>
+                    <td>总包</td>
+                    <td><span class="status-urgent">🔴 紧急</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-4">第四批</td>
+                    <td>9#28#</td>
+                    <td>主体封顶</td>
+                    <td>进行中</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 3月第3周 -->
+        <div class="week-plan-header">3月第3周（3.15-3.21）- 7项任务</div>
+        <table class="week-plan-table">
+            <thead>
+                <tr>
+                    <th style="width:8%">批次</th>
+                    <th style="width:10%">楼栋</th>
+                    <th style="width:35%">任务内容</th>
+                    <th style="width:8%">工期</th>
+                    <th style="width:12%">责任方</th>
+                    <th style="width:12%">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="batch-1">第一批</td>
+                    <td>1#10#</td>
+                    <td>回填土</td>
+                    <td>5天</td>
+                    <td>甲方分包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-1">第一批</td>
+                    <td>1#10#</td>
+                    <td>雨污水及燃气</td>
+                    <td>11天</td>
+                    <td>甲方分包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-2">第二批</td>
+                    <td>30#-32#</td>
+                    <td>砌筑抹灰（收尾）</td>
+                    <td>3天</td>
+                    <td>总包</td>
+                    <td><span class="status-progress">🟡 进行中</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-2">第二批</td>
+                    <td>30#-32#</td>
+                    <td>外保温及涂料</td>
+                    <td>21天</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-3">第三批</td>
+                    <td>2#</td>
+                    <td>砌筑抹灰（收尾）</td>
+                    <td>3天</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-3">第三批</td>
+                    <td>2#</td>
+                    <td>外保温及涂料</td>
+                    <td>21天</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-4">第四批</td>
+                    <td>9#28#</td>
+                    <td>主体封顶</td>
+                    <td>进行中</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 3月第4周 -->
+        <div class="week-plan-header">3月第4周（3.22-3.28）- 9项任务</div>
+        <table class="week-plan-table">
+            <thead>
+                <tr>
+                    <th style="width:8%">批次</th>
+                    <th style="width:10%">楼栋</th>
+                    <th style="width:35%">任务内容</th>
+                    <th style="width:8%">工期</th>
+                    <th style="width:12%">责任方</th>
+                    <th style="width:12%">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="batch-1">第一批</td>
+                    <td>1#10#</td>
+                    <td>雨污水及燃气</td>
+                    <td>进行中</td>
+                    <td>甲方分包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-1">第一批</td>
+                    <td>1#10#</td>
+                    <td>围墙、铺装、门头</td>
+                    <td>25天</td>
+                    <td>甲方分包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-2">第二批</td>
+                    <td>30#-32#</td>
+                    <td>外保温及涂料</td>
+                    <td>进行中</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-2">第二批</td>
+                    <td>30#-32#</td>
+                    <td>外架拆除</td>
+                    <td>8天</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-3">第三批</td>
+                    <td>2#</td>
+                    <td>外保温及涂料</td>
+                    <td>进行中</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-3">第三批</td>
+                    <td>2#</td>
+                    <td>外架拆除</td>
+                    <td>8天</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr style="background:#e8f5e9">
+                    <td class="batch-3">第三批</td>
+                    <td>5#6#</td>
+                    <td><strong>主体封顶（预计完成）</strong></td>
+                    <td>-</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-4">第四批</td>
+                    <td>9#28#</td>
+                    <td>主体封顶</td>
+                    <td>进行中</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td>配套</td>
+                    <td>全部</td>
+                    <td>室外道路硬化及铺装</td>
+                    <td>188天</td>
+                    <td>甲方分包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background:#ffebee; padding:10px; border-radius:6px; margin-bottom:20px; font-size:12px; color:#c62828">
+            <strong>🎯 关键里程碑：</strong>3/22-3/28 5#6#楼封顶完成
+        </div>
+
+        <!-- 4月第1周 -->
+        <div class="week-plan-header">4月第1周（4.1-4.7）- 9项任务</div>
+        <table class="week-plan-table">
+            <thead>
+                <tr>
+                    <th style="width:8%">批次</th>
+                    <th style="width:10%">楼栋</th>
+                    <th style="width:35%">任务内容</th>
+                    <th style="width:8%">工期</th>
+                    <th style="width:12%">责任方</th>
+                    <th style="width:12%">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="batch-1">第一批</td>
+                    <td>1#10#</td>
+                    <td>围墙、铺装、门头</td>
+                    <td>进行中</td>
+                    <td>甲方分包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-1">第一批</td>
+                    <td>1#10#</td>
+                    <td>室外绿化种植</td>
+                    <td>20天</td>
+                    <td>甲方分包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-2">第二批</td>
+                    <td>29#-34#</td>
+                    <td>拆架</td>
+                    <td>进行中</td>
+                    <td>总包</td>
+                    <td><span class="status-progress">🟡 进行中</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-2">第二批</td>
+                    <td>30#-32#</td>
+                    <td>外保温涂料（收尾）</td>
+                    <td>进行中</td>
+                    <td>总包</td>
+                    <td><span class="status-progress">🟡 进行中</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-3">第三批</td>
+                    <td>5#6#7#</td>
+                    <td>砌筑抹灰</td>
+                    <td>20天</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td class="batch-4">第四批</td>
+                    <td>9#28#</td>
+                    <td>主体封顶</td>
+                    <td>进行中</td>
+                    <td>总包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td>配套</td>
+                    <td>全部</td>
+                    <td>室外道路硬化</td>
+                    <td>进行中</td>
+                    <td>甲方分包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+                <tr>
+                    <td>配套</td>
+                    <td>全部</td>
+                    <td>景观绿化</td>
+                    <td>进行中</td>
+                    <td>甲方分包</td>
+                    <td><span class="status-pending">⏳ 待开始</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background:#fff3e0; padding:10px; border-radius:6px; margin-bottom:20px; font-size:12px; color:#e65100">
+            <strong>⚠️ 关键节点：</strong>4/10前确定绿化供应商（1#10#）
+        </div>
+
     </div>
 
     <!-- 风险预警 -->
