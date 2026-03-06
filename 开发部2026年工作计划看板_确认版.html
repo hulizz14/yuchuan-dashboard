@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发部2026年工作计划看板（确认版）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f7fa; padding: 20px; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%); color: white; padding: 25px; border-radius: 12px; margin-bottom: 20px; }
+        .header h1 { font-size: 24px; margin-bottom: 8px; }
+        .header p { opacity: 0.9; font-size: 13px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px; }
+        .stat-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; }
+        .stat-card .number { font-size: 28px; font-weight: bold; color: #1a237e; }
+        .stat-card.warning .number { color: #f44336; }
+        .stat-card.success .number { color: #4caf50; }
+        .stat-card.info .number { color: #2196f3; }
+        .stat-card .label { font-size: 12px; color: #666; margin-top: 5px; }
+        .section { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 20px; }
+        .section-title { font-size: 16px; font-weight: bold; color: #333; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0; }
+        .category-title { font-size: 15px; font-weight: bold; color: #1a237e; margin: 20px 0 10px 0; padding-left: 12px; border-left: 4px solid #3949ab; }
+        .work-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+        .work-table th { background: #3949ab; color: white; padding: 10px 8px; text-align: left; }
+        .work-table td { padding: 10px 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+        .work-table tr:nth-child(even) { background: #f5f7fa; }
+        .work-table tr:hover { background: #e8eaf6; }
+        .num { color: #666; font-size: 10px; margin-right: 5px; }
+        .badge { display: inline-block; padding: 2px 6px; border-radius: 10px; font-size: 10px; margin-left: 5px; }
+        .badge-red { background: #ffebee; color: #c62828; }
+        .badge-orange { background: #fff3e0; color: #e65100; }
+        .badge-green { background: #e8f5e9; color: #2e7d32; }
+        .badge-blue { background: #e3f2fd; color: #1565c0; }
+        .project-card { padding: 15px; margin: 10px 0; background: #f5f7fa; border-radius: 8px; border-left: 4px solid #3949ab; }
+        .project-title { font-weight: bold; color: #1a237e; }
+        .project-desc { font-size: 12px; color: #666; margin-top: 5px; }
+        .milestone-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+        .milestone-date { background: #1a237e; color: white; padding: 5px 12px; border-radius: 15px; font-size: 12px; min-width: 90px; text-align: center; }
+        .milestone-date.urgent { background: #f44336; }
+        .milestone-date.warning { background: #ff9800; }
+        .risk-item { padding: 15px; margin-bottom: 12px; border-radius: 8px; border-left: 4px solid; }
+        .risk-high { background: #ffebee; border-left-color: #f44336; }
+        .risk-medium { background: #fff3e0; border-left-color: #ff9800; }
+        .risk-low { background: #e3f2fd; border-left-color: #2196f3; }
+        .risk-title { font-weight: bold; font-size: 14px; margin-bottom: 5px; }
+        .status-done { color: #4caf50; font-weight: bold; }
+        .status-progress { color: #ff9800; font-weight: bold; }
+        .status-pending { color: #f44336; font-weight: bold; }
+        @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } .work-table { font-size: 10px; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏢 开发部2026年工作计划看板</h1>
+        <p>持续性工作 | 项目专项 | 关键里程碑 | 风险管控</p>
+    </div>
+
+    <!-- 统计卡片 -->
+    <div class="stats-grid">
+        <div class="stat-card"><div class="number">21</div><div class="label">总任务数</div></div>
+        <div class="stat-card success"><div class="number">3</div><div class="label">持续性工作</div></div>
+        <div class="stat-card info"><div class="number">18</div><div class="label">项目专项工作</div></div>
+        <div class="stat-card warning"><div class="number">4</div><div class="label">关键里程碑</div></div>
+    </div>
+
+    <!-- 一、持续性工作（日常） -->
+    <div class="section">
+        <div class="section-title">一、持续性工作（日常）</div>
+        
+        <table class="work-table">
+            <thead><tr><th>序号</th><th>工作内容</th><th>完成时效</th><th>工作流程</th></tr></thead>
+            <tbody>
+                <tr><td><span class="num">1</span></td><td><strong>产权证办理</strong></td><td>一次性客户<strong style="color:#f44336">5天内</strong><br>按揭客户<strong style="color:#f44336">10天内</strong></td><td>根据客户缴纳契税情况完成</td></tr>
+                <tr><td><span class="num">2</span></td><td><strong>合同备案</strong></td><td>收到合同后<strong style="color:#f44336">3天内</strong></td><td>维修金改票→备案→送银行</td></tr>
+                <tr><td><span class="num">3</span></td><td><strong>预告/预告预抵办理</strong></td><td>银行审核通过后<strong style="color:#f44336">1天内</strong></td><td>资料整理→盖章→扫描→受理</td></tr>
+            </tbody>
+        </table>
+        
+        <div style="background:#e3f2fd;padding:12px;border-radius:8px;margin-top:15px;border-left:4px solid #2196f3">
+            <strong style="color:#1565c0">📋 预售监管资金提取：</strong><span style="font-size:12px">根据财务提供可提取资料3天内完成提取工作</span>
+        </div>
+    </div>
+
+    <!-- 二、天屿花城项目专项 -->
+    <div class="section">
+        <div class="section-title">二、天屿花城项目专项工作</div>
+        
+        <div style="background:#fff3e0;padding:12px;border-radius:8px;margin-bottom:15px;border-left:4px solid #ff9800">
+            <strong style="color:#e65100">🏘️ 天屿花城西地块（8栋楼）竣工验收：</strong><span style="font-size:12px">计划时间 3.11 - 5.15 | 责任人：林丽虹 | 当前进度：已完成防雷、白蚁、抗震</span>
+        </div>
+
+        <table class="work-table">
+            <thead><tr><th>序号</th><th>工作任务</th><th>开始时间</th><th>完成时间</th><th>当前状态</th><th>完成标准</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td><strong>竣工验收</strong></td><td>3.11</td><td><strong style="color:#f44336">5.15</strong></td><td><span class="status-progress">进行中</span></td><td>取得竣工备案表</td></tr>
+                <tr><td>2</td><td><strong>实测绘报告</strong></td><td>5.16</td><td>5.22</td><td><span class="status-pending">未开始</span></td><td>取得实测绘报告</td></tr>
+                <tr><td>3</td><td><strong>物业承接查验</strong></td><td>5.22</td><td>5.30</td><td><span class="status-pending">未开始</span></td><td>取得物业承接查验证明</td></tr>
+                <tr style="background:#ffebee"><td>4</td><td><strong>总证办理</strong></td><td>5.30</td><td><strong style="color:#f44336">6.10</strong></td><td>-</td><td>取得总证</td></tr>
+                <tr><td>5</td><td><strong>预售监管账户解除</strong></td><td>6.11</td><td>6.15</td><td><span class="status-pending">未开始</span></td><td>取得总证后办理</td></tr>
+            </tbody>
+        </table>
+        
+        <div style="background:#e8f5e9;padding:12px;border-radius:8px;margin-top:15px;border-left:4px solid #4caf50">
+            <strong style="color:#2e7d32">✅ 预售证办理（合院）：</strong><span style="font-size:12px">1#、10#、35#、36#预售许可证<strong>已办理完成</strong>，其余根据营销部计划，外立面完工后10天内完成</span>
+        </div>
+    </div>
+
+    <!-- 三、全年工作甘特图 -->
+    <div class="section">
+        <div class="section-title">三、全年工作甘特图</div>
+        
+        <style>
+            .gantt-container { overflow-x: auto; margin-top: 15px; }
+            .gantt-chart { min-width: 900px; position: relative; }
+            .gantt-header { display: flex; border-bottom: 2px solid #3949ab; padding-bottom: 10px; margin-bottom: 10px; }
+            .gantt-task-col { width: 200px; font-weight: bold; font-size: 11px; padding-right: 10px; }
+            .gantt-months { display: flex; flex: 1; }
+            .gantt-month { flex: 1; text-align: center; font-size: 10px; font-weight: bold; color: #666; border-right: 1px solid #eee; padding: 5px; }
+            .gantt-row { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+            .gantt-row:hover { background: #f5f7fa; }
+            .gantt-task-name { width: 200px; font-size: 10px; padding-right: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .gantt-timeline { flex: 1; position: relative; height: 20px; }
+            .gantt-bar { position: absolute; height: 16px; border-radius: 8px; font-size: 8px; color: white; display: flex; align-items: center; justify-content: center; overflow: hidden; white-space: nowrap; }
+            .gantt-bar-urgent { background: linear-gradient(90deg, #f44336, #ff7043); }
+            .gantt-bar-high { background: linear-gradient(90deg, #ff9800, #ffb74d); }
+            .gantt-bar-normal { background: linear-gradient(90deg, #2196f3, #64b5f6); }
+            .gantt-bar-done { background: linear-gradient(90deg, #4caf50, #81c784); }
+            .gantt-bar-ongoing { background: linear-gradient(90deg, #9c27b0, #ce93d8); }
+            .gantt-legend { display: flex; gap: 15px; margin-top: 15px; font-size: 10px; flex-wrap: wrap; }
+            .legend-item { display: flex; align-items: center; gap: 5px; }
+            .legend-color { width: 20px; height: 10px; border-radius: 5px; }
+        </style>
+        
+        <div class="gantt-container">
+            <div class="gantt-chart">
+                <!-- Header -->
+                <div class="gantt-header">
+                    <div class="gantt-task-col">工作任务</div>
+                    <div class="gantt-months">
+                        <div class="gantt-month">1月</div>
+                        <div class="gantt-month">2月</div>
+                        <div class="gantt-month">3月</div>
+                        <div class="gantt-month">4月</div>
+                        <div class="gantt-month">5月</div>
+                        <div class="gantt-month">6月</div>
+                        <div class="gantt-month">7月</div>
+                        <div class="gantt-month">8月</div>
+                        <div class="gantt-month">9月</div>
+                        <div class="gantt-month">10月</div>
+                        <div class="gantt-month">11月</div>
+                        <div class="gantt-month">12月</div>
+                    </div>
+                </div>
+                
+                <!-- 持续性工作 -->
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🔵 产权证办理（日常）</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-ongoing" style="left: 0%; width: 100%;">全年持续</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🔵 合同备案（日常）</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-ongoing" style="left: 0%; width: 100%;">全年持续</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🔵 预告/预告预抵办理（日常）</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-ongoing" style="left: 0%; width: 100%;">全年持续</div>
+                    </div>
+                </div>
+                
+                <!-- 天屿花城项目 -->
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🟡 天屿花城西地块竣工验收</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-high" style="left: 16.67%; width: 25%;">3.11-5.15</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🔵 实测绘报告</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-normal" style="left: 37.5%; width: 4.17%;">5.16-5.22</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🔵 物业承接查验</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-normal" style="left: 41.67%; width: 4.17%;">5.22-5.30</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🔴 总证办理（关键节点）</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-urgent" style="left: 41.67%; width: 8.33%;">5.30-6.10</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🔵 预售监管账户解除</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-normal" style="left: 50%; width: 4.17%;">6.11-6.15</div>
+                    </div>
+                </div>
+                
+                <!-- 预售证办理 -->
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🟢 预售证办理（合院1#10#35#36#）</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-done" style="left: 0%; width: 8.33%;">已完成✓</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🟡 预售证办理（其余合院）</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-high" style="left: 50%; width: 16.67%;">外立面完工后10天</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gantt-legend">
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #f44336, #ff7043);"></div><span>紧急（关键节点）</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #ff9800, #ffb74d);"></div><span>高优先级（项目专项）</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #2196f3, #64b5f6);"></div><span>常规</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #4caf50, #81c784);"></div><span>已完成</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #9c27b0, #ce93d8);"></div><span>持续进行（日常）</span></div>
+        </div>
+    </div>
+
+    <!-- 四、风险预警 -->
+    <div class="section">
+        <div class="section-title">四、风险预警</div>
+        
+        <div class="risk-item risk-medium">
+            <div class="risk-title">🟡 8#楼验收延期风险</div>
+            <div style="font-size:12px;color:#666">西地块竣工验收计划中，8#楼相关验收（防雷、白蚁、抗震）尚未完成，可能影响整体5.15验收节点</div>
+        </div>
+        
+        <div class="risk-item risk-low">
+            <div class="risk-title">🟡 预售监管资金提取时效</div>
+            <div style="font-size:12px;color:#666">根据财务提供可提取资料3天内完成提取工作，需加强与财务部门沟通协调</div>
+        </div>
+    </div>
+
+</body>
+</html>
