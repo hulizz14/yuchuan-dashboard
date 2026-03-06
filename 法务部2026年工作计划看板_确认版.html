@@ -174,5 +174,161 @@
         </div>
     </div>
 
+
+    <!-- 甘特图：2026年任务时间线 -->
+    <div class="section">
+        <div class="section-title">📅 2026年任务时间线（甘特图）</div>
+        
+        <style>
+            .gantt-container { overflow-x: auto; margin-top: 15px; }
+            .gantt-chart { min-width: 900px; position: relative; }
+            .gantt-header { display: flex; border-bottom: 2px solid #3949ab; padding-bottom: 10px; margin-bottom: 10px; }
+            .gantt-task-col { width: 200px; font-weight: bold; font-size: 11px; padding-right: 10px; }
+            .gantt-months { display: flex; flex: 1; }
+            .gantt-month { flex: 1; text-align: center; font-size: 10px; font-weight: bold; color: #666; border-right: 1px solid #eee; padding: 5px; }
+            .gantt-row { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+            .gantt-row:hover { background: #f5f7fa; }
+            .gantt-task-name { width: 200px; font-size: 10px; padding-right: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .gantt-timeline { flex: 1; position: relative; height: 20px; }
+            .gantt-bar { position: absolute; height: 16px; border-radius: 8px; font-size: 8px; color: white; display: flex; align-items: center; justify-content: center; overflow: hidden; white-space: nowrap; }
+            .gantt-bar-urgent { background: linear-gradient(90deg, #f44336, #ff7043); }
+            .gantt-bar-high { background: linear-gradient(90deg, #ff9800, #ffb74d); }
+            .gantt-bar-normal { background: linear-gradient(90deg, #2196f3, #64b5f6); }
+            .gantt-bar-ongoing { background: linear-gradient(90deg, #4caf50, #81c784); }
+            .gantt-legend { display: flex; gap: 15px; margin-top: 15px; font-size: 10px; flex-wrap: wrap; }
+            .legend-item { display: flex; align-items: center; gap: 5px; }
+            .legend-color { width: 20px; height: 10px; border-radius: 5px; }
+        </style>
+        
+        <div class="gantt-container">
+            <div class="gantt-chart">
+                <!-- Header -->
+                <div class="gantt-header">
+                    <div class="gantt-task-col">任务</div>
+                    <div class="gantt-months">
+                        <div class="gantt-month">1月</div>
+                        <div class="gantt-month">2月</div>
+                        <div class="gantt-month">3月</div>
+                        <div class="gantt-month">4月</div>
+                        <div class="gantt-month">5月</div>
+                        <div class="gantt-month">6月</div>
+                        <div class="gantt-month">7月</div>
+                        <div class="gantt-month">8月</div>
+                        <div class="gantt-month">9月</div>
+                        <div class="gantt-month">10月</div>
+                        <div class="gantt-month">11月</div>
+                        <div class="gantt-month">12月</div>
+                    </div>
+                </div>
+                
+                <!-- Task Rows -->
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.1.1 断供案诉讼费退费</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-urgent" style="left: 16.67%; width: 4.17%;">3.15</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.1.2 断供案强制执行申请</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-urgent" style="left: 16.67%; width: 8.33%;">3.30</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.1.3 每月催收统计（持续）</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-ongoing" style="left: 0%; width: 100%;">全年</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.2.1 赛威特VS中耀案终结</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-urgent" style="left: 16.67%; width: 8.33%;">3.30</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.2.2 中耀分期款675万</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-high" style="left: 16.67%; width: 33.33%;">3-6月</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.2.4 钱伟平案二审开庭</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-urgent" style="left: 18.5%; width: 2%;">3.18</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.2.6 宜春方满案执行和解</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-urgent" style="left: 16.67%; width: 8.33%;">3.30</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.3.2 易少龙易少芳挽损案</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-high" style="left: 0%; width: 50%;">1-6月</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.3.3 桂花岛4户逾期交付</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-high" style="left: 16.67%; width: 58.33%;">3.30-9.30</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.4.3 海库仓补核实</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-urgent" style="left: 16.67%; width: 4.17%;">3.15</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">3.4.4 禹乐何正华案</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-normal" style="left: 25%; width: 16.67%;">4-5月</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">2.1 温泉水取水证办理</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-urgent" style="left: 0%; width: 41.67%;">5.31截止</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">2.2 矿泉水检测-丰水期</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-normal" style="left: 50%; width: 8.33%;">7月</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">2.2 矿泉水检测-平水期</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-normal" style="left: 66.67%; width: 8.33%;">9月</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gantt-legend">
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #f44336, #ff7043);"></div><span>紧急（3月节点）</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #ff9800, #ffb74d);"></div><span>高优先级</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #2196f3, #64b5f6);"></div><span>常规</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #4caf50, #81c784);"></div><span>持续进行</span></div>
+        </div>
+    </div>
+
 </body>
 </html>
