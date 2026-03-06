@@ -64,6 +64,10 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 </div>
 </div>
 
+</header>
+
+<!-- 数据对比模块 -->
+<section class="card mb-6 p-6 fade-in">
 <!-- 数据对比 -->
 <div class="mt-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
     <h3 class="text-sm font-semibold text-slate-700 mb-3">📈 与上次更新对比 (2026-03-05 → 2026-03-06)</h3>
@@ -96,7 +100,7 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
     </div>
     <div class="mt-3 text-xs text-slate-400 text-center">上次数据更新时间：2026-03-05</div>
 </div>
-</header>
+</section>
 
 <!-- 模块1: 基础数据（分楼栋） -->
 <section class="card mb-6 p-6 fade-in">
@@ -153,29 +157,41 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 <!-- 已售业态分布 -->
 <div>
 <h3 class="text-sm font-semibold text-slate-600 mb-4">已售业态分布（金额）</h3>
-<div class="space-y-3">
-<div class="flex items-center">
-<div class="w-20 text-sm">写字楼</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 43%">2.13亿</div>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-slate-700">写字楼</span>
+<span class="text-sm font-bold text-blue-600">2.13亿 (43%)</span>
+</div>
+<div class="bg-slate-100 rounded-full h-4 overflow-hidden">
+<div class="bg-blue-500 h-full rounded-full" style="width: 43%"></div>
 </div>
 </div>
-<div class="flex items-center">
-<div class="w-20 text-sm">公寓</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-green-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 41%">2.01亿</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-slate-700">公寓</span>
+<span class="text-sm font-bold text-green-600">2.01亿 (41%)</span>
+</div>
+<div class="bg-slate-100 rounded-full h-4 overflow-hidden">
+<div class="bg-green-500 h-full rounded-full" style="width: 41%"></div>
 </div>
 </div>
-<div class="flex items-center">
-<div class="w-20 text-sm">底商</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-orange-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 10%">0.50亿</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-slate-700">底商</span>
+<span class="text-sm font-bold text-orange-600">0.50亿 (10%)</span>
+</div>
+<div class="bg-slate-100 rounded-full h-4 overflow-hidden">
+<div class="bg-orange-500 h-full rounded-full" style="width: 10%"></div>
 </div>
 </div>
-<div class="flex items-center">
-<div class="w-20 text-sm">独立商业</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-purple-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 6%">0.32亿</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-slate-700">独立商业</span>
+<span class="text-sm font-bold text-purple-600">0.32亿 (6%)</span>
+</div>
+<div class="bg-slate-100 rounded-full h-4 overflow-hidden">
+<div class="bg-purple-500 h-full rounded-full" style="width: 6%"></div>
 </div>
 </div>
 </div>
@@ -183,29 +199,41 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 <!-- 已售楼栋分布 -->
 <div>
 <h3 class="text-sm font-semibold text-slate-600 mb-4">已售楼栋分布（金额）</h3>
-<div class="space-y-3">
-<div class="flex items-center">
-<div class="w-16 text-sm">1号楼</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 100%">2.31亿</div>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-slate-700">1号楼</span>
+<span class="text-sm font-bold text-blue-600">2.31亿</span>
+</div>
+<div class="bg-slate-100 rounded-full h-4 overflow-hidden">
+<div class="bg-blue-500 h-full rounded-full" style="width: 100%"></div>
 </div>
 </div>
-<div class="flex items-center">
-<div class="w-16 text-sm">2号楼</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 88%">2.03亿</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-slate-700">2号楼</span>
+<span class="text-sm font-bold text-blue-600">2.03亿</span>
+</div>
+<div class="bg-slate-100 rounded-full h-4 overflow-hidden">
+<div class="bg-blue-500 h-full rounded-full" style="width: 88%"></div>
 </div>
 </div>
-<div class="flex items-center">
-<div class="w-16 text-sm">6/7/8号</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 14%">0.32亿</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-slate-700">6/7/8号楼</span>
+<span class="text-sm font-bold text-blue-600">0.32亿</span>
+</div>
+<div class="bg-slate-100 rounded-full h-4 overflow-hidden">
+<div class="bg-blue-500 h-full rounded-full" style="width: 14%"></div>
 </div>
 </div>
-<div class="flex items-center">
-<div class="w-16 text-sm">3号楼</div>
-<div class="flex-1 bg-slate-100 rounded-full h-6 overflow-hidden">
-<div class="bg-blue-500 h-full flex items-center justify-end pr-2 text-xs text-white" style="width: 13%">0.30亿</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-slate-700">3号楼</span>
+<span class="text-sm font-bold text-blue-600">0.30亿</span>
+</div>
+<div class="bg-slate-100 rounded-full h-4 overflow-hidden">
+<div class="bg-blue-500 h-full rounded-full" style="width: 13%"></div>
 </div>
 </div>
 </div>
