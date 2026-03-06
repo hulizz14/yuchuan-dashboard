@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天屿花城西区合院工程计划看板（完整版）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f7fa; padding: 20px; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%); color: white; padding: 25px; border-radius: 12px; margin-bottom: 20px; }
+        .header h1 { font-size: 24px; margin-bottom: 8px; }
+        .header p { opacity: 0.9; font-size: 13px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px; }
+        .stat-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; }
+        .stat-card .number { font-size: 28px; font-weight: bold; color: #1a237e; }
+        .stat-card.warning .number { color: #f44336; }
+        .stat-card.success .number { color: #4caf50; }
+        .stat-card .label { font-size: 12px; color: #666; margin-top: 5px; }
+        .section { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 20px; }
+        .section-title { font-size: 16px; font-weight: bold; color: #333; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0; }
+        .gantt-container { overflow-x: auto; }
+        .gantt-table { width: 100%; min-width: 800px; border-collapse: collapse; font-size: 12px; }
+        .gantt-table th { background: #f5f5f5; padding: 10px 5px; text-align: left; font-weight: 600; border-bottom: 2px solid #ddd; }
+        .gantt-table td { padding: 8px 5px; border-bottom: 1px solid #eee; }
+        .gantt-bar { height: 24px; border-radius: 4px; display: flex; align-items: center; padding: 0 8px; color: white; font-size: 11px; white-space: nowrap; overflow: hidden; }
+        .batch-1 { background: #4caf50; } .batch-2 { background: #2196f3; } .batch-3 { background: #ff9800; }
+        .batch-4 { background: #f44336; } .batch-5 { background: #9c27b0; } .batch-check { background: #1a237e; }
+        .accordion-item { margin-bottom: 10px; border-radius: 8px; overflow: hidden; }
+        .accordion-header { background: linear-gradient(135deg, #3949ab 0%, #1a237e 100%); color: white; padding: 15px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
+        .accordion-header:hover { background: linear-gradient(135deg, #5c6bc0 0%, #3949ab 100%); }
+        .accordion-icon { font-size: 20px; transition: transform 0.3s; }
+        .accordion-header.active .accordion-icon { transform: rotate(180deg); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: white; }
+        .accordion-content.show { max-height: 50000px; }
+        .week-plan-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+        .week-plan-table th { background: #3949ab; color: white; padding: 8px 6px; text-align: left; }
+        .week-plan-table td { padding: 8px 6px; border-bottom: 1px solid #e0e0e0; }
+        .week-plan-table tr:nth-child(even) { background: #f5f7fa; }
+        .week-header { background: #e8eaf6; padding: 10px 15px; font-weight: bold; color: #1a237e; border-left: 4px solid #3949ab; margin: 15px 0 10px 0; }
+        .week-current { background: #fff3e0; border-left-color: #ff9800; color: #e65100; }
+        .week-alert { background: #ffebee; border-left-color: #f44336; color: #c62828; }
+        .status-done { background: #e8f5e9; color: #2e7d32; padding: 2px 6px; border-radius: 4px; font-size: 10px; }
+        .status-progress { background: #fff3e0; color: #ef6c00; padding: 2px 6px; border-radius: 4px; font-size: 10px; }
+        .status-pending { background: #eceff1; color: #546e7a; padding: 2px 6px; border-radius: 4px; font-size: 10px; }
+        .status-urgent { background: #ffebee; color: #c62828; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; }
+        .risk-item { padding: 15px; margin-bottom: 12px; border-radius: 8px; border-left: 4px solid; }
+        .risk-high { background: #ffebee; border-left-color: #f44336; }
+        .risk-medium { background: #fff3e0; border-left-color: #ff9800; }
+        .milestone-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+        .milestone-date { background: #1a237e; color: white; padding: 5px 12px; border-radius: 15px; font-size: 12px; min-width: 80px; text-align: center; }
+        .milestone-date.urgent { background: #f44336; }
+        @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏗️ 天屿花城西区合院工程计划看板（完整版）</h1>
+        <p>项目周期：2026年3月4日 - 10月31日 | 共25栋建筑 | 5个批次施工 | 点击月份可展开/折叠</p>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card"><div class="number">66</div><div class="label">总任务数</div></div>
+        <div class="stat-card warning"><div class="number">3</div><div class="label">高风险项</div></div>
+        <div class="stat-card"><div class="number">242</div><div class="label">计划工期(天)</div></div>
+        <div class="stat-card success"><div class="number">3</div><div class="label">已完成任务</div></div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📊 工程进度甘特图</div>
+        <div class="gantt-container">
+            <table class="gantt-table">
+                <thead><tr><th>批次/楼栋</th><th>3月</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>8月</th><th>9月</th><th>10月</th><th>关键任务</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>第一批 1#10#</strong></td>
+                        <td><div class="gantt-bar batch-1" style="width:100%">滤水层→回填→雨污水</div></td>
+                        <td><div class="gantt-bar batch-1" style="width:80%">围墙铺装</div></td>
+                        <td><div class="gantt-bar batch-1" style="width:40%">绿化</div></td><td></td><td></td><td></td><td></td><td></td><td>✅ 已完成拆架</td></tr>
+                    <tr><td><strong>第二批 29#-34#</strong></td>
+                        <td><div class="gantt-bar batch-2" style="width:100%">拆架+砌筑抹灰</div></td>
+                        <td><div class="gantt-bar batch-2" style="width:60%">外保温</div></td>
+                        <td><div class="gantt-bar batch-2" style="width:100%">防水→回填→雨污水</div></td>
+                        <td><div class="gantt-bar batch-2" style="width:100%">围墙铺装</div></td><td></td><td></td><td></td>
+                        <td><div class="gantt-bar batch-2" style="width:50%">绿化</div></td><td>🟡 33#34#已拆架</td></tr>
+                    <tr><td><strong>第三批 2#5#6#7#</strong></td>
+                        <td><div class="gantt-bar batch-3" style="width:100%">砌筑+5#6#封顶</div></td>
+                        <td><div class="gantt-bar batch-3" style="width:100%">外保温+拆架</div></td>
+                        <td><div class="gantt-bar batch-3" style="width:100%">防水→回填</div></td>
+                        <td><div class="gantt-bar batch-3" style="width:80%">雨污水</div></td>
+                        <td><div class="gantt-bar batch-3" style="width:100%">围墙铺装</div></td><td></td><td></td>
+                        <td><div class="gantt-bar batch-3" style="width:50%">绿化</div></td><td>⏳ 待开始</td></tr>
+                    <tr><td><strong style="color:#f44336">第四批 9#28# ⚠️</strong></td>
+                        <td><div class="gantt-bar batch-4" style="width:100%">🔴基础+封顶</div></td>
+                        <td><div class="gantt-bar batch-4" style="width:100%">砌筑+外保温</div></td>
+                        <td><div class="gantt-bar batch-4" style="width:100%">拆架+防水+回填</div></td>
+                        <td><div class="gantt-bar batch-4" style="width:100%">雨污水</div></td>
+                        <td><div class="gantt-bar batch-4" style="width:70%">围墙铺装</div></td><td></td><td></td>
+                        <td><div class="gantt-bar batch-4" style="width:50%">绿化</div></td><td>🔴 基础未开挖!</td></tr>
+                    <tr><td><strong>第五批 11#16#</strong></td><td></td>
+                        <td><div class="gantt-bar batch-5" style="width:70%">主体封顶</div></td>
+                        <td><div class="gantt-bar batch-5" style="width:100%">砌筑+外保温</div></td>
+                        <td><div class="gantt-bar batch-5" style="width:100%">拆架+防水</div></td>
+                        <td><div class="gantt-bar batch-5" style="width:100%">回填+雨污水</div></td>
+                        <td><div class="gantt-bar batch-5" style="width:100%">围墙铺装</div></td><td></td>
+                        <td><div class="gantt-bar batch-5" style="width:50%">绿化</div></td><td>🎯 关键路径</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📅 每月每周任务安排（点击月份展开/折叠）</div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)"><span>📅 3月计划（第1-4周）- 33项任务</span><span class="accordion-icon">▼</span></div>
+            <div class="accordion-content">
+                <div style="padding:15px">
+                    <div class="week-header week-alert">第1周（3.1-3.7）- 10项任务 | 3项已完成</div>
+                    <div style="font-size:12px;padding:10px;background:#ffebee;border-radius:6px;margin:10px 0;color:#c62828">
+                        第一批1#10#：拆架✅、顶板防水✅、防水保护层✅、滤水层🟡 | 第二批29#-34#：拆架🟡 | 第二批30#-32#：砌筑抹灰🟡 | 第三批2#：砌筑抹灰⏳ | 第三批5#6#：主体封顶⏳ | <strong>第四批9#28#：基础开挖🔴紧急</strong>
+                    </div>
+                    <div class="week-header week-current">第2周（3.8-3.14）- 7项任务 ⭐当前周</div>
+                    <div style="font-size:12px;padding:10px;background:#fff3e0;border-radius:6px;margin:10px 0;color:#e65100">
+                        第一批1#10#：滤水层收尾🟡 | 第二批29#-34#：拆架🟡 | 第二批30#-32#：砌筑抹灰🟡 | 第三批2#：砌筑抹灰⏳ | 第三批5#6#：主体封顶⏳ | <strong>第四批9#28#：基础开挖🔴紧急、主体封顶⏳</strong>
+                    </div>
+                    <div class="week-header">第3周（3.15-3.21）- 7项任务 | 回填土开始</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第一批1#10#：回填土⏳、雨污水及燃气⏳ | 第二批30#-32#：砌筑抹灰收尾🟡、外保温及涂料⏳ | 第三批2#：砌筑抹灰收尾⏳、外保温及涂料⏳ | 第四批9#28#：主体封顶⏳
+                    </div>
+                    <div class="week-header">第4周（3.22-3.28）- 9项任务 | 🎯5#6#楼封顶</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第一批1#10#：雨污水及燃气⏳、围墙/铺装/门头⏳ | 第二批30#-32#：外保温及涂料⏳、外架拆除⏳ | 第三批2#：外保温及涂料⏳、外架拆除⏳ | <strong>第三批5#6#：主体封顶完成🎯</strong> | 第四批9#28#：主体封顶⏳ | 配套：室外道路硬化及铺装⏳
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)"><span>📅 4月计划（第1-5周）- 43项任务 | 11#16#封顶启动</span><span class="accordion-icon">▼</span></div>
+            <div class="accordion-content">
+                <div style="padding:15px">
+                    <div class="week-header">第1周（4.1-4.7）- 9项任务 | 4/10绿化供应商</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第一批1#10#：围墙/铺装/门头、室外绿化种植 | 第二批29#-34#：拆架🟡、外保温涂料收尾🟡 | 第三批5#6#7#：砌筑抹灰 | 第四批9#28#：主体封顶 | 配套：道路硬化、景观绿化
+                    </div>
+                    <div class="week-header">第2周（4.8-4.14）- 8项任务 | 🎯9#28#封顶</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第一批1#10#：室外绿化种植 | 第二批29#-34#：顶板清理及防水、防水保护层、滤水层 | 第三批5#6#7#：砌筑抹灰、外保温及涂料 | <strong>第四批9#28#：主体封顶完成🎯</strong>、砌筑抹灰
+                    </div>
+                    <div class="week-header">第3周（4.15-4.21）- 9项任务 | 11#16#启动</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第二批29#-34#：滤水层、回填土、拆架完成 | 第三批5#6#7#：砌筑抹灰收尾、外保温及涂料 | 第四批9#28#：砌筑抹灰、外保温及涂料 | <strong>第五批11#16#：主体封顶启动🎯</strong>
+                    </div>
+                    <div class="week-header">第4周（4.22-4.28）- 10项任务</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第二批29#-34#：雨污水及燃气、室外围墙及铺装 | 第三批5#6#7#：外保温及涂料、外架拆除 | 第四批9#28#：外保温及涂料、外架拆除 | 第五批11#16#：主体封顶
+                    </div>
+                    <div class="week-header week-alert">第5周（4.29-4.30）- 7项任务 | 🔴4/30强电/自来水</div>
+                    <div style="font-size:12px;padding:10px;background:#ffebee;border-radius:6px;margin:10px 0;color:#c62828">
+                        <strong>⚠️ 关键节点截止4/30：</strong>确定强电方案及单位 | 确定自来水方案及签订合同
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)"><span>📅 5月计划（第1-5周）- 40项任务 | 地下室启动</span><span class="accordion-icon">▼</span></div>
+            <div class="accordion-content">
+                <div style="padding:15px">
+                    <div class="week-header">第1-2周（5.1-5.14）- 18项任务</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第二批：滤水层、回填土、雨污水及燃气 | 第三批：顶板清理及防水、防水保护层、滤水层、回填土 | 第四批：顶板清理及防水、防水保护层、滤水层、回填土 | <strong>地下室：墙体砌筑及抹灰启动</strong>
+                    </div>
+                    <div class="week-header">第3-5周（5.15-5.31）- 22项任务</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第二批：雨污水及燃气、室外围墙及铺装 | 第三批：顶板雨污水及燃气、围墙及铺装、外架拆除收尾 | 第四批：滤水层收尾、回填土、顶板雨污水及燃气、围墙及铺装 | 第五批：主体封顶 | 地下室：砌筑抹灰
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)"><span>📅 6月计划（第1-5周）- 37项任务 | 🎯9#28#+11#16#封顶</span><span class="accordion-icon">▼</span></div>
+            <div class="accordion-content">
+                <div style="padding:15px">
+                    <div style="background:#e8f5e9;padding:12px;border-radius:8px;margin-bottom:15px;border-left:4px solid #4caf50">
+                        <strong>🎯 6月关键里程碑：</strong>9#28#楼主体封顶完成 | 11#16#楼主体封顶完成 | 第二批29#-34#室外围墙及铺装收尾 | 配套强电/自来水安装启动
+                    </div>
+                    <div class="week-header">第1-2周（6.1-6.14）- 15项任务</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第二批：室外围墙及铺装收尾 | 第三批：围墙及铺装 | 第四批：外架拆除、顶板清理及防水、围墙及铺装、<strong>主体封顶完成🎯</strong> | 第五批：<strong>主体封顶完成🎯</strong>、砌筑抹灰 | 地下室：砌筑抹灰 | 配套：强电/自来水安装启动
+                    </div>
+                    <div class="week-header">第3-5周（6.15-6.30）- 22项任务</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第三批：围墙及铺装 | 第四批：防水保护层、滤水层、回填土、围墙及铺装 | 第五批：砌筑抹灰、外保温及涂料 | 地下室：砌筑抹灰、<strong>水电消防安装启动</strong> | 配套：强电/自来水安装
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)"><span>📅 7月计划（第1-5周）- 49项任务 | 强电/自来水安装高峰</span><span class="accordion-icon">▼</span></div>
+            <div class="accordion-content">
+                <div style="padding:15px">
+                    <div class="week-header">第1-3周（7.1-7.21）- 29项任务</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第三批：围墙及铺装收尾 | 第四批：顶板雨污水及燃气、围墙及铺装收尾 | 第五批：外保温及涂料、外架拆除、顶板清理及防水、防水保护层、滤水层 | 地下室：水电消防安装 | 配套：<strong>强电/自来水安装高峰</strong>
+                    </div>
+                    <div class="week-header">第4-5周（7.22-7.31）- 20项任务</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第五批：滤水层收尾、回填土、顶板雨污水及燃气 | 地下室：水电消防安装收尾 | 配套：强电/自来水安装收尾
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)"><span>📅 8月计划（第1-5周）- 39项任务 | 11#16#拆架+配套收尾</span><span class="accordion-icon">▼</span></div>
+            <div class="accordion-content">
+                <div style="padding:15px">
+                    <div class="week-header">第1-2周（8.1-8.14）- 17项任务</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第五批：顶板雨污水及燃气、围墙及铺装、<strong>外架拆除</strong> | 地下室：透水砼浇捣、车位划线 | 配套：强电/自来水安装收尾完成、室外道路硬化收尾
+                    </div>
+                    <div class="week-header">第3-5周（8.15-8.31）- 22项任务</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第五批：围墙及铺装（收尾阶段） | 地下室：车位划线收尾
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)"><span>📅 9月计划（第1-5周）- 16项任务 | 准备验收</span><span class="accordion-icon">▼</span></div>
+            <div class="accordion-content">
+                <div style="padding:15px">
+                    <div class="week-header">第1周（9.1-9.7）- 4项任务</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第五批11#16#：围墙及铺装收尾、室外绿化种植
+                    </div>
+                    <div class="week-header">第2-5周（9.8-9.30）- 12项任务</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        第五批11#16#：围墙及铺装完成✅、室外绿化种植（收尾阶段）| <strong>准备验收资料</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)"><span>📅 10月计划（第1-5周）- 22项任务 | 🔥 验收月</span><span class="accordion-icon">▼</span></div>
+            <div class="accordion-content">
+                <div style="padding:15px">
+                    <div class="week-header week-alert">第1周（10.1-10.7）- 7项任务 🔴 绿化集中⚠️</div>
+                    <div style="font-size:12px;padding:10px;background:#ffebee;border-radius:6px;margin:10px 0;color:#c62828;border-left:4px solid #f44336">
+                        <strong>⚠️ 重大风险：</strong>所有批次（第一批至第五批）室外绿化种植全部集中在国庆假期！如遇雨天将严重影响10/31竣工验收。建议：①提前准备苗木 ②关注天气预报 ③准备雨天施工方案
+                    </div>
+                    <div class="week-header">第2周（10.8-10.14）- 6项任务 | 🎯消防验收</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        <strong>🎯 消防验收（13天）</strong> | 各批次室外绿化种植收尾
+                    </div>
+                    <div class="week-header">第3周（10.15-10.21）- 7项任务 | 🎯竣工验收</div>
+                    <div style="font-size:12px;padding:10px;background:#f5f7fa;border-radius:6px;margin:10px 0;color:#666">
+                        消防验收收尾 | <strong>🎯 项目竣工验收（11天）</strong> | 室外绿化种植全部完成✅
+                    </div>
+                    <div class="week-header">第4-5周（10.22-10.31）- 2项任务 | ✅项目竣工</div>
+                    <div style="font-size:12px;padding:10px;background:#e8f5e9;border-radius:6px;margin:10px 0;color:#2e7d32;border-left:4px solid #4caf50">
+                        项目竣工验收收尾 | <strong>✅ 10月31日 项目竣工验收完成！</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">⚠️ 风险预警</div>
+        <div class="risk-item risk-high">
+            <div class="risk-title">🔴 9#28#楼基础未开挖</div>
+            <div class="risk-desc">计划3/4主体封顶，但基础未开挖，需立即开工否则影响整体工期</div>
+        </div>
+        <div class="risk-item risk-high">
+            <div class="risk-title">🔴 绿化种植时间窗口短</div>
+            <div class="risk-desc">所有绿化集中在10/1-10/15，遇雨将直接影响竣工验收</div>
+        </div>
+        <div class="risk-item risk-high">
+            <div class="risk-title">🔴 3/10前需确定供应商</div>
+            <div class="risk-desc">燃气、围墙/门头供应商需在5天内确定，时间紧迫</div>
+        </div>
+        <div class="risk-item risk-medium">
+            <div class="risk-title">🟡 4/30配套单位确定</div>
+            <div class="risk-desc">强电、自来水方案及合同需在4月底前确定</div>
+        </div>
+        <div class="risk-item risk-medium">
+            <div class="risk-title">🟡 11#16#楼关键路径</div>
+            <div class="risk-desc">该批次为关键路径，延迟将影响整体验收</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🎯 关键里程碑</div>
+        <div class="milestone-item"><div class="milestone-date urgent">03/10</div><div style="margin-left:15px">确定燃气方案及合同（1#10#）+ 围墙/门头供应商</div></div>
+        <div class="milestone-item"><div class="milestone-date">04/10</div><div style="margin-left:15px">确定绿化供应商（1#10#）</div></div>
+        <div class="milestone-item"><div class="milestone-date">04/30</div><div style="margin-left:15px">确定强电方案及单位、自来水方案及合同</div></div>
+        <div class="milestone-item"><div class="milestone-date">10/08</div><div style="margin-left:15px">消防验收开始</div></div>
+        <div class="milestone-item"><div class="milestone-date">10/31</div><div style="margin-left:15px">项目竣工验收完成</div></div>
+    </div>
+
+    <script>
+        function toggleAccordion(header) {
+            header.classList.toggle('active');
+            const content = header.nextElementSibling;
+            content.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
