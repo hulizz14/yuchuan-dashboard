@@ -9,17 +9,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f8fafc; }
 .card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-.stat-card { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: white; }
-.gantt-bar { height: 24px; border-radius: 4px; font-size: 11px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 500; }
-.table-row:hover { background: #f1f5f9; }
 .badge { font-size: 11px; padding: 2px 8px; border-radius: 9999px; font-weight: 600; }
+.badge-red { background: #fee2e2; color: #dc2626; }
+.badge-green { background: #dcfce7; color: #16a34a; }
 .badge-blue { background: #dbeafe; color: #1e40af; }
-.badge-green { background: #dcfce7; color: #166534; }
 .badge-orange { background: #fef3c7; color: #d97706; }
 .badge-purple { background: #f3e8ff; color: #7c22c5; }
-.month-header { background: #f8fafc; border-bottom: 2px solid #e2e8f0; font-weight: 600; color: #475569; }
-.task-cell { border-right: 1px solid #e2e8f0; min-height: 40px; }
-.task-cell:last-child { border-right: none; }
+.progress-bar { height: 8px; border-radius: 4px; background: #e2e8f0; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 4px; }
+.month-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; }
 </style>
 </head>
 <body class="min-h-screen p-6">
@@ -29,7 +27,7 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 <div class="flex justify-between items-start">
 <div>
 <h1 class="text-2xl font-bold">📈 营销部2026年工作计划看板</h1>
-<p class="text-red-100 mt-1">年度任务：两个项目全部清盘 | 数据日期：2026-03-07</p>
+<p class="text-red-100 mt-1">年度任务：财富中心 + 天屿花城 全部清盘</p>
 </div>
 <div class="text-right">
 <div class="text-3xl font-bold">18.56亿</div>
@@ -37,299 +35,455 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 </div>
 </div>
 
-<!-- 核心KPI - 清盘任务 -->
+<!-- 核心KPI -->
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
 <div class="bg-white/10 backdrop-blur rounded-xl p-4 text-center">
 <div class="text-2xl font-bold">2,159套</div>
 <div class="text-xs text-red-100 mt-1">待清盘总套数</div>
 </div>
 <div class="bg-white/10 backdrop-blur rounded-xl p-4 text-center">
-<div class="text-2xl font-bold">1,515套</div>
-<div class="text-xs text-red-100 mt-1">天屿花城待售</div>
+<div class="text-2xl font-bold">1,831套</div>
+<div class="text-xs text-red-100 mt-1">已完成销售</div>
 </div>
 <div class="bg-white/10 backdrop-blur rounded-xl p-4 text-center">
-<div class="text-2xl font-bold">644套</div>
-<div class="text-xs text-red-100 mt-1">财富中心待售</div>
+<div class="text-2xl font-bold">810万</div>
+<div class="text-xs text-red-100 mt-1">已回款金额</div>
 </div>
 <div class="bg-white/10 backdrop-blur rounded-xl p-4 text-center">
-<div class="text-2xl font-bold">11.41亿</div>
-<div class="text-xs text-red-100 mt-1">天屿花城货值</div>
+<div class="text-2xl font-bold">45%</div>
+<div class="text-xs text-red-100 mt-1">整体去化率</div>
 </div>
 </div>
 </header>
 
-<!-- 清盘任务分解 -->
+<!-- 实际完成情况 -->
+<section class="card mb-6 p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center text-xl">✅</div>
+<div>
+<h2 class="text-xl font-bold text-slate-800">实际完成情况</h2>
+<p class="text-sm text-slate-500">数据截至：2026年3月6日 | 来源：销售台账明细表</p>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- 财富中心实际完成 -->
+<div class="bg-slate-50 rounded-lg p-4">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-bold text-slate-700">🏢 财富中心</h3>
+<span class="badge badge-green">已完成</span>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center py-2 border-b border-slate-200">
+<span class="text-sm text-slate-600">签约</span>
+<span class="font-bold text-slate-800">541套</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-slate-200">
+<span class="text-sm text-slate-600">认购</span>
+<span class="font-bold text-slate-800">26套</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-slate-200">
+<span class="text-sm text-slate-600">已售合计</span>
+<span class="font-bold text-green-600">567套</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-slate-200">
+<span class="text-sm text-slate-600">已售金额</span>
+<span class="font-bold text-green-600">4.88亿</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="text-sm text-slate-600">已回款</span>
+<span class="font-bold text-blue-600">555.6万</span>
+</div>
+</div>
+<div class="mt-3 pt-3 border-t border-slate-200">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">去化率</span>
+<span class="font-bold text-slate-700">46.8%</span>
+</div>
+<div class="progress-bar mt-2">
+<div class="progress-fill bg-green-500" style="width: 46.8%"></div>
+</div>
+</div>
+</div>
+
+<!-- 天屿花城实际完成 -->
+<div class="bg-slate-50 rounded-lg p-4">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-bold text-slate-700">🏘️ 天屿花城</h3>
+<span class="badge badge-green">已完成</span>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center py-2 border-b border-slate-200">
+<span class="text-sm text-slate-600">签约</span>
+<span class="font-bold text-slate-800">1,254套</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-slate-200">
+<span class="text-sm text-slate-600">认购</span>
+<span class="font-bold text-slate-800">10套</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-slate-200">
+<span class="text-sm text-slate-600">已售合计</span>
+<span class="font-bold text-green-600">1,264套</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-slate-200">
+<span class="text-sm text-slate-600">已售金额</span>
+<span class="font-bold text-green-600">10.05亿</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="text-sm text-slate-600">已回款</span>
+<span class="font-bold text-blue-600">254.5万</span>
+</div>
+</div>
+<div class="mt-3 pt-3 border-t border-slate-200">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">去化率</span>
+<span class="font-bold text-slate-700">45.5%</span>
+</div>
+<div class="progress-bar mt-2">
+<div class="progress-fill bg-green-500" style="width: 45.5%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 清盘任务月度分解 -->
 <section class="card mb-6 p-6">
 <div class="flex items-center gap-3 mb-4">
 <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center text-xl">🎯</div>
 <div>
 <h2 class="text-xl font-bold text-slate-800">清盘任务月度分解</h2>
-<p class="text-sm text-slate-500">年度目标：财富中心 + 天屿花城 全部清盘</p>
+<p class="text-sm text-slate-500">年度任务平均分配：3月-12月（10个月）</p>
 </div>
 </div>
 
-<!-- 财富中心清盘 -->
+<!-- 财富中心月度任务 -->
 <div class="mb-6">
 <div class="flex items-center justify-between mb-3">
-<h3 class="font-bold text-slate-700">🏢 财富中心清盘任务（待售644套，7.15亿）</h3>
-<span class="badge badge-red">目标：年度清盘</span>
-</div>
-<div class="bg-red-50 rounded-lg p-4">
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-<div>
-<div class="text-xs text-slate-500">总货值</div>
-<div class="text-lg font-bold text-red-600">11.79亿</div>
-</div>
-<div>
-<div class="text-xs text-slate-500">已售</div>
-<div class="text-lg font-bold text-green-600">4.64亿</div>
-</div>
-<div>
-<div class="text-xs text-slate-500">待售</div>
-<div class="text-lg font-bold text-red-600">7.15亿</div>
-</div>
-<div>
-<div class="text-xs text-slate-500">待售套数</div>
-<div class="text-lg font-bold text-red-600">644套</div>
+<h3 class="font-bold text-slate-700">🏢 财富中心清盘任务</h3>
+<div class="flex gap-2">
+<span class="badge badge-red">待售644套</span>
+<span class="badge badge-orange">7.15亿</span>
 </div>
 </div>
-<div class="mt-3 pt-3 border-t border-red-200">
-<div class="text-sm text-slate-600 mb-2">月度销售计划（清盘）</div>
-<div class="grid grid-cols-5 gap-2 text-xs text-center">
-<div class="bg-white rounded p-2">
-<div class="text-slate-500">3月</div>
-<div class="font-bold">1500万</div>
-</div>
-<div class="bg-white rounded p-2">
-<div class="text-slate-500">4月</div>
-<div class="font-bold">1000万</div>
-</div>
-<div class="bg-white rounded p-2">
-<div class="text-slate-500">5月</div>
-<div class="font-bold">1000万</div>
-</div>
-<div class="bg-white rounded p-2">
-<div class="text-slate-500">6月</div>
-<div class="font-bold">400万</div>
-</div>
-<div class="bg-white rounded p-2">
-<div class="text-slate-500">7-12月</div>
-<div class="font-bold">3.25亿</div>
+<div class="bg-red-50 rounded-lg p-4 mb-3">
+<div class="text-center">
+<div class="text-sm text-slate-600 mb-1">每月清盘目标</div>
+<div class="text-2xl font-bold text-red-600">64套 / 0.72亿</div>
 </div>
 </div>
+<div class="grid grid-cols-5 md:grid-cols-10 gap-2">
+<div class="month-card text-center">
+<div class="text-xs text-slate-500 mb-1">3月</div>
+<div class="font-bold text-red-600">64套</div>
+<div class="text-xs text-slate-400">0.72亿</div>
 </div>
+<div class="month-card text-center">
+<div class="text-xs text-slate-500 mb-1">4月</div>
+<div class="font-bold text-red-600">64套</div>
+<div class="text-xs text-slate-400">0.72亿</div>
 </div>
+<div class="month-card text-center">
+<div class="text-xs text-slate-500 mb-1">5月</div>
+<div class="font-bold text-red-600">64套</div>
+<div class="text-xs text-slate-400">0.72亿</div>
 </div>
-<td class="py-3 px-3 font-medium">销售金额</td>
-<td class="py-3 px-3 text-center text-green-600 font-bold">9000万</td>
-<td class="py-3 px-3 text-center text-green-600 font-bold">9000万</td>
-<td class="py-3 px-3 text-center text-green-600 font-bold">9000万</td>
-<td class="py-3 px-3 text-center text-slate-400">—</td>
-<td class="py-3 px-3 text-center text-slate-400">—</td>
-<td class="py-3 px-3 text-center font-bold text-green-700">2.7亿</td>
-</tr>
-</tbody>
-</table>
+<div class="month-card text-center">
+<div class="text-xs text-slate-500 mb-1">6月</div>
+<div class="font-bold text-red-600">64套</div>
+<div class="text-xs text-slate-400">0.72亿</div>
 </div>
+<div class="month-card text-center">
+<div class="text-xs text-slate-500 mb-1">7月</div>
+<div class="font-bold text-red-600">64套</div>
+<div class="text-xs text-slate-400">0.72亿</div>
 </div>
-
-<!-- 合院产品 -->
-<div class="mb-6">
-<div class="flex items-center justify-between mb-3">
-<h3 class="font-bold text-slate-700">🏡 合院产品（可售185套）</h3>
-<span class="badge badge-green">6月启动</span>
+<div class="month-card text-center">
+<div class="text-xs text-slate-500 mb-1">8月</div>
+<div class="font-bold text-red-600">64套</div>
+<div class="text-xs text-slate-400">0.72亿</div>
 </div>
-<div class="bg-green-50 rounded-lg p-4">
-<div class="flex items-center justify-between">
-<div>
-<div class="text-sm text-slate-600">6月销售目标</div>
-<div class="text-lg font-bold text-green-700">180套 × 100万 = 1.8亿</div>
+<div class="month-card text-center">
+<div class="text-xs text-slate-500 mb-1">9月</div>
+<div class="font-bold text-red-600">64套</div>
+<div class="text-xs text-slate-400">0.72亿</div>
 </div>
-<div class="text-right">
-<div class="text-sm text-slate-600">清尾时间</div>
-<div class="text-lg font-bold text-green-700">7月底</div>
+<div class="month-card text-center">
+<div class="text-xs text-slate-500 mb-1">10月</div>
+<div class="font-bold text-red-600">64套</div>
+<div class="text-xs text-slate-400">0.72亿</div>
 </div>
+<div class="month-card text-center">
+<div class="text-xs text-slate-500 mb-1">11月</div>
+<div class="font-bold text-red-600">64套</div>
+<div class="text-xs text-slate-400">0.72亿</div>
+</div>
+<div class="month-card text-center">
+<div class="text-xs text-slate-500 mb-1">12月</div>
+<div class="font-bold text-red-600">64套</div>
+<div class="text-xs text-slate-400">0.72亿</div>
 </div>
 </div>
 </div>
 
-<!-- 天屿花城清盘 -->
-<div class="mb-6">
+<!-- 天屿花城月度任务 -->
+<div>
 <div class="flex items-center justify-between mb-3">
-<h3 class="font-bold text-slate-700">🏘️ 天屿花城清盘任务（待售1,515套，11.41亿）</h3>
-<span class="badge badge-orange">目标：年度清盘</span>
+<h3 class="font-bold text-slate-700">🏘️ 天屿花城清盘任务</h3>
+<div class="flex gap-2">
+<span class="badge badge-red">待售1,515套</span>
+<span class="badge badge-orange">11.41亿</span>
 </div>
+</div>
+<div class="bg-orange-50 rounded-lg p-4 mb-3">
+<div class="text-center">
+<div class="text-sm text-slate-600 mb-1">每月清盘目标</div>
+<div class="text-2xl font-bold text-orange-600">152套 / 1.14亿</div>
+</div>
+</div>
+<div class="grid grid-cols-5 md:grid-cols-10 gap-2">
+<div class="month-card text-center border-orange-200">
+<div class="text-xs text-slate-500 mb-1">3月</div>
+<div class="font-bold text-orange-600">152套</div>
+<div class="text-xs text-slate-400">1.14亿</div>
+</div>
+<div class="month-card text-center border-orange-200">
+<div class="text-xs text-slate-500 mb-1">4月</div>
+<div class="font-bold text-orange-600">152套</div>
+<div class="text-xs text-slate-400">1.14亿</div>
+</div>
+<div class="month-card text-center border-orange-200">
+<div class="text-xs text-slate-500 mb-1">5月</div>
+<div class="font-bold text-orange-600">152套</div>
+<div class="text-xs text-slate-400">1.14亿</div>
+</div>
+<div class="month-card text-center border-orange-200">
+<div class="text-xs text-slate-500 mb-1">6月</div>
+<div class="font-bold text-orange-600">152套</div>
+<div class="text-xs text-slate-400">1.14亿</div>
+</div>
+<div class="month-card text-center border-orange-200">
+<div class="text-xs text-slate-500 mb-1">7月</div>
+<div class="font-bold text-orange-600">152套</div>
+<div class="text-xs text-slate-400">1.14亿</div>
+</div>
+<div class="month-card text-center border-orange-200">
+<div class="text-xs text-slate-500 mb-1">8月</div>
+<div class="font-bold text-orange-600">152套</div>
+<div class="text-xs text-slate-400">1.14亿</div>
+</div>
+<div class="month-card text-center border-orange-200">
+<div class="text-xs text-slate-500 mb-1">9月</div>
+<div class="font-bold text-orange-600">152套</div>
+<div class="text-xs text-slate-400">1.14亿</div>
+</div>
+<div class="month-card text-center border-orange-200">
+<div class="text-xs text-slate-500 mb-1">10月</div>
+<div class="font-bold text-orange-600">152套</div>
+<div class="text-xs text-slate-400">1.14亿</div>
+</div>
+<div class="month-card text-center border-orange-200">
+<div class="text-xs text-slate-500 mb-1">11月</div>
+<div class="font-bold text-orange-600">152套</div>
+<div class="text-xs text-slate-400">1.14亿</div>
+</div>
+<div class="month-card text-center border-orange-200">
+<div class="text-xs text-slate-500 mb-1">12月</div>
+<div class="font-bold text-orange-600">152套</div>
+<div class="text-xs text-slate-400">1.14亿</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 销售策略 -->
+<section class="card mb-6 p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center text-xl">📋</div>
+<div>
+<h2 class="text-xl font-bold text-slate-800">销售策略</h2>
+<p class="text-sm text-slate-500">三大核心策略模块</p>
+</div>
+</div>
+
+<!-- 资产运营 -->
+<div class="mb-6 border-l-4 border-blue-500 pl-4">
+<div class="flex items-center gap-2 mb-3">
+<span class="badge badge-blue">策略一</span>
+<h3 class="font-bold text-slate-700">资产运营</h3>
+<span class="text-sm text-slate-500">主责人：陈开亮</span>
+</div>
+
+<!-- 民宿运营 -->
+<div class="bg-blue-50 rounded-lg p-4 mb-3">
+<div class="font-bold text-slate-700 mb-2">🏨 民宿运营</div>
+<ul class="text-sm text-slate-600 space-y-1">
+<li>✅ 确保服务品质（3月定好新的运营商）</li>
+<li>✅ 考核运营成果：开房率、价格考核、能耗考核等</li>
+<li>✅ 民宿扩展计划</li>
+</ul>
+</div>
+
+<!-- 新媒体宣传 -->
+<div class="bg-purple-50 rounded-lg p-4 mb-3">
+<div class="font-bold text-slate-700 mb-2">📱 新媒体宣传</div>
+<div class="space-y-2">
+<div>
+<div class="text-sm font-medium text-slate-700 mb-1">宣传内容</div>
+<ul class="text-sm text-slate-600 space-y-1">
+<li>• 涵盖所有主流平台</li>
+<li>• 矿泉水资源宣传</li>
+<li>• 结合民宿、结合回报率进行宣传</li>
+</ul>
+</div>
+<div class="pt-2 border-t border-purple-200">
+<div class="text-sm font-medium text-slate-700 mb-1">团队建设方案</div>
+<ul class="text-sm text-slate-600 space-y-1">
+<li>• 主播1名 + 拍摄剪辑1名 + 编导1名</li>
+<li>• 费用1.5万/月，三项目分摊（每项5000/月）</li>
+<li>• 3月13日前完成组建</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- 去售楼部化 -->
 <div class="bg-orange-50 rounded-lg p-4">
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-<div>
-<div class="text-xs text-slate-500">总货值</div>
-<div class="text-lg font-bold text-orange-600">21.38亿</div>
-</div>
-<div>
-<div class="text-xs text-slate-500">已售</div>
-<div class="text-lg font-bold text-green-600">9.97亿</div>
-</div>
-<div>
-<div class="text-xs text-slate-500">待售</div>
-<div class="text-lg font-bold text-orange-600">11.41亿</div>
-</div>
-<div>
-<div class="text-xs text-slate-500">待售套数</div>
-<div class="text-lg font-bold text-orange-600">1,515套</div>
-</div>
-</div>
-<div class="mt-3 pt-3 border-t border-orange-200">
-<div class="text-sm text-slate-600 mb-2">清盘计划：四代产品 + 合院</div>
-<div class="grid grid-cols-2 gap-4">
-<div class="bg-white rounded p-3">
-<div class="text-xs text-slate-500 mb-1">四代产品（1,323套待售）</div>
-<div class="text-sm font-bold text-orange-600">3-5月清盘：每月约440套</div>
-</div>
-<div class="bg-white rounded p-3">
-<div class="text-xs text-slate-500 mb-1">合院（待售）</div>
-<div class="text-sm font-bold text-orange-600">6月启动，7月底清盘</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- 新媒体推广计划 -->
-<section class="card mb-6 p-6">
-<div class="flex items-center gap-3 mb-4">
-<div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center text-xl">📱</div>
-<div>
-<h2 class="text-xl font-bold text-slate-800">新媒体推广工作计划</h2>
-<p class="text-sm text-slate-500">天屿花城运营方案 - 短视频 + 网红合作</p>
-</div>
-</div>
-
-<div class="space-y-4">
-<!-- 3月 -->
-<div class="border-l-4 border-purple-500 pl-4">
-<div class="flex items-center gap-2 mb-2">
-<span class="badge badge-purple">3月</span>
-<span class="font-bold text-slate-700">温泉水功能宣传</span>
-</div>
-<ul class="text-sm text-slate-600 space-y-1">
-<li>✅ 与国内优质矿泉水检测对比</li>
-<li>✅ 产品优势、功能性、隐私度、适用人群</li>
-<li>🎯 视频目标：不低于10条</li>
-<li>👥 3月13日前完成新媒体团队组建（主播1+拍摄剪辑1+编导1）</li>
-</ul>
-</div>
-
-<!-- 4月 -->
-<div class="border-l-4 border-blue-500 pl-4">
-<div class="flex items-center gap-2 mb-2">
-<span class="badge badge-blue">4月</span>
-<span class="font-bold text-slate-700">销售内容转换</span>
-</div>
-<ul class="text-sm text-slate-600 space-y-1">
-<li>✅ 住宅获利性宣传</li>
-<li>✅ 客户采访</li>
-<li>🎯 网红视频不低于5条 + 项目账号不低于10条</li>
-</ul>
-</div>
-
-<!-- 5月 -->
-<div class="border-l-4 border-green-500 pl-4">
-<div class="flex items-center gap-2 mb-2">
-<span class="badge badge-green">5月</span>
-<span class="font-bold text-slate-700">合院启动造势</span>
-</div>
-<ul class="text-sm text-slate-600 space-y-1">
-<li>✅ 为销售做好铺垫和计算背书</li>
-<li>🎯 网红视频不低于10条 + 项目账号不低于15条</li>
-</ul>
-</div>
-
-<!-- 6月 -->
-<div class="border-l-4 border-orange-500 pl-4">
-<div class="flex items-center gap-2 mb-2">
-<span class="badge badge-orange">6月</span>
-<span class="font-bold text-slate-700">合院销售推广</span>
-</div>
-<ul class="text-sm text-slate-600 space-y-1">
-<li>✅ 合院亮点信息扩大、优势分析</li>
-<li>✅ 水资源炒作、销售火热信息</li>
-<li>🎯 网红视频不低于10条 + 项目账号不低于15条</li>
-</ul>
-</div>
-</div>
-</section>
-
-<!-- 售楼部运营策略 -->
-<section class="card mb-6 p-6">
-<div class="flex items-center gap-3 mb-4">
-<div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center text-xl">🏢</div>
-<div>
-<h2 class="text-xl font-bold text-slate-800">售楼部运营策略</h2>
-<p class="text-sm text-slate-500">营销中心改造 + 新销售中心选址</p>
-</div>
-</div>
-
+<div class="font-bold text-slate-700 mb-2">🏢 去售楼部化</div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="bg-orange-50 rounded-lg p-4">
-<div class="flex items-center gap-2 mb-2">
-<span class="text-lg">🏪</span>
-<span class="font-bold text-slate-700">营销中心改造</span>
-</div>
+<div>
+<div class="text-sm font-medium text-slate-700 mb-1">现有售楼部利用方案</div>
 <p class="text-sm text-slate-600">进行招商将售楼部改建为以水为主题的休闲场所及业主功能区娱乐场所</p>
 </div>
-<div class="bg-blue-50 rounded-lg p-4">
-<div class="flex items-center gap-2 mb-2">
-<span class="text-lg">📍</span>
-<span class="font-bold text-slate-700">新销售中心</span>
+<div>
+<div class="text-sm font-medium text-slate-700 mb-1">去售楼部后接待方案</div>
+<p class="text-sm text-slate-600">• 新销售中心选址：3#一楼位置<br>• 3月15日前完成功能设计与费用计算<br>• 把民宿当成样板房来销售</p>
 </div>
-<p class="text-sm text-slate-600 mb-2">选址：3#一楼位置</p>
-<div class="text-sm">
-<div class="flex justify-between py-1"><span class="text-slate-500">功能设计与费用计算</span><span class="font-bold text-blue-600">3月15日前</span></div>
 </div>
-<p class="text-sm text-slate-600 mt-2">💡 策略：把民宿当成样板房来销售，让客户眼见为实，销售话术增加产品获利性、温泉水稀缺与功能</p>
+</div>
+</div>
+
+<!-- 金融销售 -->
+<div class="mb-6 border-l-4 border-green-500 pl-4">
+<div class="flex items-center gap-2 mb-3">
+<span class="badge badge-green">策略二</span>
+<h3 class="font-bold text-slate-700">金融销售</h3>
+<span class="text-sm text-slate-500">主责人：黄星皓</span>
+</div>
+
+<div class="bg-green-50 rounded-lg p-4 mb-3">
+<div class="font-bold text-slate-700 mb-2">🎯 任务拆解</div>
+<p class="text-sm text-slate-600 mb-2">目标：天屿花城全部通过金融销售去化</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white rounded p-3">
+<div class="text-xs text-slate-500 mb-1">四代住宅</div>
+<div class="font-bold text-green-600">3-6月去化完毕</div>
+</div>
+<div class="bg-white rounded p-3">
+<div class="text-xs text-slate-500 mb-1">合院</div>
+<div class="font-bold text-green-600">5-7月去化完毕</div>
+<div class="text-xs text-slate-400">（结合工程工作计划安排）</div>
+</div>
+</div>
+</div>
+
+<div class="bg-green-50 rounded-lg p-4">
+<div class="font-bold text-slate-700 mb-2">⚡ 管控要点</div>
+<ul class="text-sm text-slate-600 space-y-1">
+<li>• 工作流程梳理</li>
+<li>• 营销人员工作量饱和情况</li>
+<li>• 每日工作盘点和难点梳理</li>
+<li>• 银行按揭突破</li>
+<li>• 后续工作的风控和支持方案</li>
+</ul>
+</div>
+</div>
+
+<!-- 财富中心租售 -->
+<div class="border-l-4 border-orange-500 pl-4">
+<div class="flex items-center gap-2 mb-3">
+<span class="badge badge-orange">策略三</span>
+<h3 class="font-bold text-slate-700">财富中心租售</h3>
+<span class="text-sm text-slate-500">主责人：张姝姝</span>
+</div>
+
+<div class="bg-orange-50 rounded-lg p-4">
+<div class="flex items-center justify-center py-4">
+<div class="text-center">
+<div class="text-4xl mb-2">📋</div>
+<div class="text-slate-600">方案制定中...</div>
+<div class="text-sm text-slate-400 mt-1">待补充具体租售策略</div>
+</div>
+</div>
 </div>
 </div>
 </section>
 
-<!-- 新媒体团队建设 -->
+<!-- 团队管理 -->
 <section class="card p-6">
 <div class="flex items-center gap-3 mb-4">
 <div class="w-10 h-10 bg-pink-100 rounded-xl flex items-center justify-center text-xl">👥</div>
 <div>
-<h2 class="text-xl font-bold text-slate-800">新媒体团队建设</h2>
-<p class="text-sm text-slate-500">打造自己的新媒体团队（3月13日前完成）</p>
+<h2 class="text-xl font-bold text-slate-800">团队管理</h2>
+<p class="text-sm text-slate-500">淘汰机制 + 奖励机制</p>
 </div>
 </div>
 
-<div class="grid grid-cols-3 gap-4 mb-4">
-<div class="text-center p-4 bg-slate-50 rounded-lg">
-<div class="text-2xl mb-1">🎤</div>
-<div class="font-bold text-slate-700">主播</div>
-<div class="text-xs text-slate-500">1名</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- 淘汰机制 -->
+<div class="bg-red-50 rounded-lg p-4">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-xl">⚠️</span>
+<span class="font-bold text-slate-700">淘汰机制</span>
 </div>
-<div class="text-center p-4 bg-slate-50 rounded-lg">
-<div class="text-2xl mb-1">🎬</div>
-<div class="font-bold text-slate-700">拍摄剪辑</div>
-<div class="text-xs text-slate-500">1名</div>
+<div class="space-y-2 text-sm text-slate-600">
+<div class="bg-white rounded p-3">
+<div class="font-medium text-slate-700 mb-1">业绩考核</div>
+<ul class="space-y-1">
+<li>• 连续2个月未完成月度任务60%予以警告</li>
+<li>• 连续3个月未完成月度任务予以淘汰</li>
+<li>• 季度排名末位10%进入观察期</li>
+</ul>
 </div>
-<div class="text-center p-4 bg-slate-50 rounded-lg">
-<div class="text-2xl mb-1">✏️</div>
-<div class="font-bold text-slate-700">编导</div>
-<div class="text-xs text-slate-500">1名</div>
+<div class="bg-white rounded p-3">
+<div class="font-medium text-slate-700 mb-1">行为规范</div>
+<ul class="space-y-1">
+<li>• 违反公司制度累计3次予以淘汰</li>
+<li>• 客户投诉属实累计2次予以淘汰</li>
+</ul>
+</div>
 </div>
 </div>
 
+<!-- 奖励机制 -->
 <div class="bg-green-50 rounded-lg p-4">
-<div class="flex items-center justify-between">
-<div>
-<div class="font-bold text-slate-700">费用控制</div>
-<div class="text-sm text-slate-600">1.5万/月，按三个项目分摊（每项5000/月）</div>
+<div class="flex items-center gap-2 mb-3">
+<span class="text-xl">🏆</span>
+<span class="font-bold text-slate-700">奖励机制</span>
 </div>
-<div class="text-right">
-<div class="text-xs text-slate-500">覆盖项目</div>
-<div class="text-sm font-bold text-green-700">财富中心+天屿花城+泉憩民宿</div>
+<div class="space-y-2 text-sm text-slate-600">
+<div class="bg-white rounded p-3">
+<div class="font-medium text-slate-700 mb-1">月度奖励</div>
+<ul class="space-y-1">
+<li>• 月度销冠：奖金5000元</li>
+<li>• 月度任务完成率第一：奖金3000元</li>
+<li>• 月度客户满意度最高：奖金2000元</li>
+</ul>
+</div>
+<div class="bg-white rounded p-3">
+<div class="font-medium text-slate-700 mb-1">季度奖励</div>
+<ul class="space-y-1">
+<li>• 季度销冠：奖金1万元 + 带薪休假2天</li>
+<li>• 季度团队第一：团建经费5000元</li>
+</ul>
+</div>
+<div class="bg-white rounded p-3">
+<div class="font-medium text-slate-700 mb-1">年度奖励</div>
+<ul class="space-y-1">
+<li>• 年度销冠：奖金3万元 + 旅游名额</li>
+<li>• 清盘功臣：额外奖金1万元</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
