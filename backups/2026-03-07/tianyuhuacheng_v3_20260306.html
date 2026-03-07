@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>天屿花城资产看板 v3.4 - 签约+认购+备案</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
@@ -76,6 +76,44 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 </div>
 </div>
 </header>
+
+<!-- 数据对比模块 -->
+<section class="card mb-6 p-6 fade-in">
+<!-- 数据对比 - 紧凑版 -->
+<div class="mt-2 p-3 bg-slate-50 rounded-lg border border-slate-200">
+    <div class="flex items-center justify-between mb-2">
+        <span class="text-sm font-bold text-slate-700">📊 数据变动</span>
+        <span class="text-xs text-slate-400">02-28→03-02</span>
+    </div>
+    
+    <div class="grid grid-cols-3 gap-2">
+        <div class="bg-white p-2 rounded border text-center">
+            <div class="text-xs text-slate-500">总货值</div>
+            <div class="text-sm font-bold">—</div>
+        </div>
+        <div class="bg-white p-2 rounded border text-center">
+            <div class="text-xs text-slate-500">已售套数</div>
+            <div class="text-sm font-bold text-green-600">+0</div>
+        </div>
+        <div class="bg-white p-2 rounded border text-center">
+            <div class="text-xs text-slate-500">已售金额</div>
+            <div class="text-sm font-bold text-green-600">+0亿</div>
+        </div>
+        <div class="bg-white p-2 rounded border text-center">
+            <div class="text-xs text-slate-500">去化率</div>
+            <div class="text-sm font-bold text-blue-600">+0%</div>
+        </div>
+        <div class="bg-white p-2 rounded border text-center">
+            <div class="text-xs text-slate-500">待售金额</div>
+            <div class="text-sm font-bold text-orange-600">+0亿</div>
+        </div>
+        <div class="bg-white p-2 rounded border text-center">
+            <div class="text-xs text-slate-500">状态</div>
+            <div class="text-sm font-bold text-slate-600">持平</div>
+        </div>
+    </div>
+</div>
+</section>
 
 <!-- 车位单独展示 -->
 <section class="card mb-6 p-6 fade-in">
