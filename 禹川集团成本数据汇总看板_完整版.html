@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>禹川集团成本数据汇总看板 - 完整版</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f1f5f9; }
+.card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s; }
+.card:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+.stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 9999px; font-weight: 600; }
+.badge-red { background: #fee2e2; color: #dc2626; }
+.badge-green { background: #dcfce7; color: #16a34a; }
+.badge-orange { background: #fef3c7; color: #d97706; }
+.badge-blue { background: #dbeafe; color: #2563eb; }
+.badge-purple { background: #f3e8ff; color: #9333ea; }
+.fade-in { animation: fadeIn 0.5s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.module-title { border-left: 4px solid #3b82f6; padding-left: 12px; }
+.data-grid { display: grid; gap: 16px; }
+@media (min-width: 768px) { .data-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .data-grid { grid-template-columns: repeat(3, 1fr); } }
+</style>
+</head>
+<body class="min-h-screen p-4 md:p-6">
+
+<!-- Header -->
+<header class="card mb-6 p-6 fade-in">
+<div class="text-center mb-4">
+<h1 class="text-2xl md:text-3xl font-bold text-slate-800">💰 禹川集团成本数据汇总看板</h1>
+<p class="text-slate-500 mt-2">合同金额 · 付款方式 · 发票管理 · 完整财务视图</p>
+</div>
+<div class="flex justify-center items-center gap-4">
+<div class="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full">
+<span class="text-sm text-slate-600">数据日期：</span>
+<span class="text-sm font-bold text-blue-600">2026-03-02</span>
+</div>
+</div>
+</header>
+
+<!-- 模块1: 合同总金额与待付金额 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-6 module-title">📊 模块一：合同金额与待付情况</h2>
+
+<!-- 牡丹岛合并 -->
+<div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-5 mb-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-bold text-xl text-green-800">🏝️ 天屿花城·牡丹岛（合并）</h3>
+<p class="text-sm text-slate-500">二期 + 8#35#36# + 载铜总包</p>
+</div>
+<span class="px-4 py-2 bg-green-600 text-white text-lg rounded-full font-bold">8.51亿</span>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4">
+<div class="bg-white rounded-lg p-3 text-center shadow-sm">
+<div class="text-xs text-slate-500 mb-1">二期·合同</div>
+<div class="text-base font-bold text-green-700">5.59亿</div>
+</div>
+<div class="bg-white rounded-lg p-3 text-center shadow-sm">
+<div class="text-xs text-slate-500 mb-1">8#35#36#·合同</div>
+<div class="text-base font-bold text-yellow-600">1.52亿</div>
+</div>
+<div class="bg-white rounded-lg p-3 text-center shadow-sm">
+<div class="text-xs text-slate-500 mb-1">载铜总包·工抵</div>
+<div class="text-base font-bold text-purple-600">1.40亿</div>
+</div>
+<div class="bg-white rounded-lg p-3 text-center shadow-sm">
+<div class="text-xs text-slate-500 mb-1">待付金额</div>
+<div class="text-base font-bold text-orange-600">1.38亿</div>
+</div>
+<div class="bg-green-100 rounded-lg p-3 text-center shadow-sm border-2 border-green-300">
+<div class="text-xs text-green-600 mb-1">牡丹岛合计</div>
+<div class="text-lg font-bold text-green-700">8.51亿</div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg p-4">
+<h4 class="font-semibold text-slate-700 mb-3">📋 牡丹岛付款明细</h4>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+<div>
+<div class="text-slate-500">工抵付款</div>
+<div class="font-bold text-blue-600">4.54亿</div>
+</div>
+<div>
+<div class="text-slate-500">现金付款</div>
+<div class="font-bold text-green-600">0.64亿</div>
+</div>
+<div>
+<div class="text-slate-500">已签待付</div>
+<div class="font-bold text-orange-600">726万</div>
+</div>
+<div>
+<div class="text-slate-500">待签工抵</div>
+<div class="font-bold text-purple-600">2,746万</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 单列项目 -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- 财富中心 -->
+<div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-bold text-lg text-blue-800">🏢 财富中心</h3>
+<p class="text-sm text-slate-500">单列项目</p>
+</div>
+<span class="px-3 py-1 bg-blue-600 text-white rounded-full font-bold">4.89亿</span>
+</div>
+
+<div class="grid grid-cols-2 gap-3 mb-3">
+<div class="bg-white rounded-lg p-3">
+<div class="text-xs text-slate-500">合同金额</div>
+<div class="text-lg font-bold text-blue-700">4.89亿</div>
+</div>
+<div class="bg-white rounded-lg p-3">
+<div class="text-xs text-slate-500">待付金额</div>
+<div class="text-lg font-bold text-orange-600">2,423万</div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg p-3 text-sm">
+<div class="flex justify-between mb-1">
+<span class="text-slate-500">工抵付款</span>
+<span class="font-medium">0.70亿</span>
+</div>
+<div class="flex justify-between mb-1">
+<span class="text-slate-500">现金付款</span>
+<span class="font-medium">3.45亿</span>
+</div>
+<div class="flex justify-between mb-1">
+<span class="text-slate-500">已签待付</span>
+<span class="font-medium text-orange-600">1,759万</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-500">待签工抵</span>
+<span class="font-medium text-purple-600">664万</span>
+</div>
+</div>
+</div>
+
+<!-- 天屿花城一期 -->
+<div class="bg-red-50 border border-red-200 rounded-xl p-5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-bold text-lg text-red-800">🏘️ 天屿花城一期</h3>
+<p class="text-sm text-slate-500">单列项目</p>
+</div>
+<span class="px-3 py-1 bg-red-600 text-white rounded-full font-bold">7.46亿</span>
+</div>
+
+<div class="grid grid-cols-2 gap-3 mb-3">
+<div class="bg-white rounded-lg p-3">
+<div class="text-xs text-slate-500">应付总额</div>
+<div class="text-lg font-bold text-red-700">7.46亿</div>
+</div>
+<div class="bg-white rounded-lg p-3">
+<div class="text-xs text-slate-500">待付金额</div>
+<div class="text-lg font-bold text-orange-600">4,416万</div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg p-3 text-sm">
+<div class="flex justify-between mb-1">
+<span class="text-slate-500">已付款</span>
+<span class="font-medium">7.02亿</span>
+</div>
+<div class="flex justify-between mb-1">
+<span class="text-slate-500">待工抵房</span>
+<span class="font-medium text-blue-600">500万</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-500">待付现金</span>
+<span class="font-medium text-green-600">3,916万</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 模块2: 付款方式分类汇总 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-6 module-title">💳 模块二：付款方式分类汇总</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+<div class="bg-blue-50 rounded-xl p-5 text-center">
+<div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl mx-auto mb-3">🏦</div>
+<div class="text-sm text-slate-500 mb-1">工抵付款</div>
+<div class="text-2xl font-bold text-blue-700">5.24亿</div>
+<div class="text-xs text-blue-600 mt-1">占比35%</div>
+</div>
+<div class="bg-green-50 rounded-xl p-5 text-center">
+<div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl mx-auto mb-3">💵</div>
+<div class="text-sm text-slate-500 mb-1">现金付款</div>
+<div class="text-2xl font-bold text-green-700">4.09亿</div>
+<div class="text-xs text-green-600 mt-1">占比27%</div>
+</div>
+<div class="bg-purple-50 rounded-xl p-5 text-center">
+<div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white text-xl mx-auto mb-3">📝</div>
+<div class="text-sm text-slate-500 mb-1">待签工抵</div>
+<div class="text-2xl font-bold text-purple-700">3,410万</div>
+<div class="text-xs text-purple-600 mt-1">待谈金额</div>
+</div>
+</div>
+
+<div class="bg-slate-50 rounded-xl p-4">
+<h4 class="font-semibold text-slate-700 mb-4">📊 分项目付款方式明细</h4>
+<div class="overflow-x-auto">
+<table class="w-full text-sm">
+<thead>
+<tr class="bg-slate-100">
+<th class="py-2 px-3 text-left">项目</th>
+<th class="py-2 px-3 text-right text-blue-700">工抵付款</th>
+<th class="py-2 px-3 text-right text-green-700">现金付款</th>
+<th class="py-2 px-3 text-right text-purple-700">待签工抵</th>
+<th class="py-2 px-3 text-right">合计</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b">
+<td class="py-2 px-3 font-medium">财富中心</td>
+<td class="py-2 px-3 text-right">0.70亿</td>
+<td class="py-2 px-3 text-right">3.45亿</td>
+<td class="py-2 px-3 text-right text-purple-600">664万</td>
+<td class="py-2 px-3 text-right font-bold">4.22亿</td>
+</tr>
+<tr class="border-b">
+<td class="py-2 px-3 font-medium">牡丹岛·二期</td>
+<td class="py-2 px-3 text-right">4.26亿</td>
+<td class="py-2 px-3 text-right">0.28亿</td>
+<td class="py-2 px-3 text-right text-purple-600">501万</td>
+<td class="py-2 px-3 text-right font-bold">4.59亿</td>
+</tr>
+<tr class="border-b">
+<td class="py-2 px-3 font-medium">牡丹岛·8#35#36#</td>
+<td class="py-2 px-3 text-right">0.28亿</td>
+<td class="py-2 px-3 text-right">0.36亿</td>
+<td class="py-2 px-3 text-right text-purple-600">2,245万</td>
+<td class="py-2 px-3 text-right font-bold">0.88亿</td>
+</tr>
+<tr class="bg-slate-100 font-bold">
+<td class="py-2 px-3">合计</td>
+<td class="py-2 px-3 text-right text-blue-700">5.24亿</td>
+<td class="py-2 px-3 text-right text-green-700">4.09亿</td>
+<td class="py-2 px-3 text-right text-purple-700">3,410万</td>
+<td class="py-2 px-3 text-right">9.69亿</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- 模块3: 发票收取情况 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-6 module-title">🧾 模块三：发票收取情况</h2>
+
+<!-- 财富中心发票详情 -->
+<div class="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-4">
+<h3 class="font-bold text-lg text-blue-800 mb-4">🏢 财富中心发票明细</h3>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+<div class="bg-white rounded-lg p-4 text-center">
+<div class="text-xs text-slate-500 mb-1">税率</div>
+<div class="text-xl font-bold text-slate-700">6.77%</div>
+</div>
+<div class="bg-white rounded-lg p-4 text-center">
+<div class="text-xs text-slate-500 mb-1">已取得发票</div>
+<div class="text-xl font-bold text-green-700">4.27亿</div>
+</div>
+<div class="bg-white rounded-lg p-4 text-center">
+<div class="text-xs text-slate-500 mb-1">已取得进项税</div>
+<div class="text-xl font-bold text-blue-700">2,709万</div>
+</div>
+<div class="bg-orange-50 rounded-lg p-4 text-center border border-orange-200">
+<div class="text-xs text-orange-600 mb-1">待取得发票</div>
+<div class="text-xl font-bold text-orange-700">2,885万</div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg p-4">
+<h4 class="font-semibold text-slate-700 mb-3">📈 发票收取进度</h4>
+<div class="flex items-center gap-4">
+<div class="flex-1">
+<div class="flex justify-between text-sm mb-1">
+<span>已收发票占比</span>
+<span class="font-bold text-green-600">87%</span>
+</div>
+<div class="w-full bg-slate-200 rounded-full h-3">
+<div class="bg-green-500 h-3 rounded-full" style="width: 87%"></div>
+</div>
+</div>
+</div>
+<div class="mt-3 grid grid-cols-3 gap-4 text-sm text-center">
+<div>
+<div class="text-slate-500">应收发票</div>
+<div class="font-bold">4.56亿</div>
+</div>
+<div>
+<div class="text-slate-500">已收发票</div>
+<div class="font-bold text-green-600">4.27亿</div>
+</div>
+<div>
+<div class="text-slate-500">待收发票</div>
+<div class="font-bold text-orange-600">2,885万</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 牡丹岛发票详情 -->
+<div class="bg-green-50 border border-green-200 rounded-xl p-5 mb-4">
+<h3 class="font-bold text-lg text-green-800 mb-4">🏝️ 牡丹岛发票明细（二期+8#35#36#）</h3>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+<div class="bg-white rounded-lg p-4 text-center">
+<div class="text-xs text-slate-500 mb-1">已取得发票</div>
+<div class="text-xl font-bold text-green-700">0.59亿</div>
+</div>
+<div class="bg-white rounded-lg p-4 text-center">
+<div class="text-xs text-slate-500 mb-1">已取得进项税</div>
+<div class="text-xl font-bold text-blue-700">272万</div>
+</div>
+<div class="bg-white rounded-lg p-4 text-center">
+<div class="text-xs text-slate-500 mb-1">待取得发票</div>
+<div class="text-xl font-bold text-orange-700">0亿</div>
+</div>
+<div class="bg-white rounded-lg p-4 text-center">
+<div class="text-xs text-slate-500 mb-1">发票收取率</div>
+<div class="text-xl font-bold text-slate-700">--</div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg p-4 text-sm">
+<p class="text-slate-500">注：二期和8#35#36#项目的发票数据待进一步完善税率信息</p>
+</div>
+</div>
+
+<!-- 发票汇总表 -->
+<div class="bg-slate-50 rounded-xl p-4">
+<h4 class="font-semibold text-slate-700 mb-4">📋 发票收取汇总表</h4>
+<div class="overflow-x-auto">
+<table class="w-full text-sm">
+<thead>
+<tr class="bg-slate-200">
+<th class="py-3 px-3 text-left">项目</th>
+<th class="py-3 px-3 text-center">税率</th>
+<th class="py-3 px-3 text-right text-green-700">已取得发票</th>
+<th class="py-3 px-3 text-right text-blue-700">已取得进项税</th>
+<th class="py-3 px-3 text-right text-orange-700">待取得发票</th>
+<th class="py-3 px-3 text-right text-purple-700">待取得进项税</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b">
+<td class="py-3 px-3 font-medium">财富中心</td>
+<td class="py-3 px-3 text-center">6.77%</td>
+<td class="py-3 px-3 text-right">4.27亿</td>
+<td class="py-3 px-3 text-right">2,709万</td>
+<td class="py-3 px-3 text-right text-orange-600">2,885万</td>
+<td class="py-3 px-3 text-right text-purple-600">162万</td>
+</tr>
+<tr class="border-b">
+<td class="py-3 px-3 font-medium">牡丹岛·二期</td>
+<td class="py-3 px-3 text-center">--</td>
+<td class="py-3 px-3 text-right">0.27亿</td>
+<td class="py-3 px-3 text-right">208万</td>
+<td class="py-3 px-3 text-right">0万</td>
+<td class="py-3 px-3 text-right">0万</td>
+</tr>
+<tr class="border-b">
+<td class="py-3 px-3 font-medium">牡丹岛·8#35#36#</td>
+<td class="py-3 px-3 text-center">--</td>
+<td class="py-3 px-3 text-right">0.32亿</td>
+<td class="py-3 px-3 text-right">64万</td>
+<td class="py-3 px-3 text-right">0万</td>
+<td class="py-3 px-3 text-right">0万</td>
+</tr>
+<tr class="bg-slate-200 font-bold">
+<td class="py-3 px-3">合计</td>
+<td class="py-3 px-3 text-center">--</td>
+<td class="py-3 px-3 text-right text-green-700">4.86亿</td>
+<td class="py-3 px-3 text-right text-blue-700">2,981万</td>
+<td class="py-3 px-3 text-right text-orange-700">2,885万</td>
+<td class="py-3 px-3 text-right text-purple-700">162万</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- 模块4: 关键指标汇总 -->
+<section class="card p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-6 module-title">📈 模块四：关键指标汇总</h2>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-5 text-white">
+<div class="text-sm opacity-90 mb-1">集团合同总额</div>
+<div class="text-2xl font-bold">20.86亿</div>
+<div class="text-xs opacity-80 mt-1">财富+牡丹岛+一期</div>
+</div>
+<div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-5 text-white">
+<div class="text-sm opacity-90 mb-1">已收发票总额</div>
+<div class="text-2xl font-bold">4.86亿</div>
+<div class="text-xs opacity-80 mt-1">进项税2,981万</div>
+</div>
+<div class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl p-5 text-white">
+<div class="text-sm opacity-90 mb-1">待付金额</div>
+<div class="text-2xl font-bold">8.22亿</div>
+<div class="text-xs opacity-80 mt-1">含待签工抵3,410万</div>
+</div>
+<div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl p-5 text-white">
+<div class="text-sm opacity-90 mb-1">工抵占比</div>
+<div class="text-2xl font-bold">35%</div>
+<div class="text-xs opacity-80 mt-1">5.24亿/14.95亿</div>
+</div>
+</div>
+</section>
+
+<footer class="text-center text-slate-400 text-sm mt-8 pb-6">
+禹川集团成本数据看板 v2.0 | 完整财务视图 | 茉莉AI助手生成
+</footer>
+
+</body>
+</html>
