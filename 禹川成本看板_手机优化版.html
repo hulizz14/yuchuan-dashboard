@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>禹川成本看板</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 14px; }
+@media (max-width: 360px) { html { font-size: 12px; } }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: #f5f7fa; line-height: 1.6; color: #333; }
+.container { max-width: 100%; padding: 0.75rem; }
+.card { background: #fff; border-radius: 0.75rem; padding: 1rem; margin-bottom: 0.75rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.header { text-align: center; padding: 1rem 0; }
+.header h1 { font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-bottom: 0.25rem; }
+.header p { font-size: 0.75rem; color: #64748b; }
+.module-title { font-size: 1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.75rem; padding-left: 0.5rem; border-left: 3px solid #3b82f6; }
+
+/* 关键数字 */
+.stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 0.75rem; }
+.stat-item { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 0.75rem; border-radius: 0.5rem; text-align: center; }
+.stat-label { font-size: 0.7rem; opacity: 0.9; margin-bottom: 0.25rem; }
+.stat-value { font-size: 1.25rem; font-weight: 700; }
+.stat-unit { font-size: 0.75rem; margin-left: 0.125rem; }
+.stat-sub { font-size: 0.65rem; opacity: 0.8; margin-top: 0.25rem; }
+
+/* 项目卡片 */
+.project-card { border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.5rem; }
+.project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.project-name { font-size: 0.9rem; font-weight: 700; }
+.project-badge { font-size: 0.7rem; padding: 0.125rem 0.5rem; border-radius: 9999px; font-weight: 600; }
+.bg-blue { background: #dbeafe; color: #1e40af; }
+.bg-green { background: #dcfce7; color: #166534; }
+.bg-red { background: #fee2e2; color: #991b1b; }
+.bg-purple { background: #f3e8ff; color: #6b21a8; }
+
+.project-body { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+.project-item { background: #f8fafc; padding: 0.5rem; border-radius: 0.375rem; text-align: center; }
+.project-item-label { font-size: 0.65rem; color: #64748b; margin-bottom: 0.125rem; }
+.project-item-value { font-size: 0.875rem; font-weight: 700; color: #1e293b; }
+
+/* 付款方式 */
+.pay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 0.75rem; }
+.pay-item { text-align: center; padding: 0.75rem 0.5rem; border-radius: 0.5rem; }
+.pay-icon { font-size: 1.25rem; margin-bottom: 0.25rem; }
+.pay-label { font-size: 0.7rem; color: #64748b; margin-bottom: 0.25rem; }
+.pay-value { font-size: 1rem; font-weight: 700; }
+.pay-blue { background: #eff6ff; }
+.pay-blue .pay-value { color: #1d4ed8; }
+.pay-green { background: #f0fdf4; }
+.pay-green .pay-value { color: #15803d; }
+.pay-purple { background: #faf5ff; }
+.pay-purple .pay-value { color: #7c3aed; }
+
+/* 表格 */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 0.75rem; min-width: 320px; }
+th, td { padding: 0.5rem 0.375rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
+th { background: #f1f5f9; font-weight: 600; color: #475569; }
+tr:last-child td { border-bottom: none; }
+.text-right { text-align: right; }
+.font-bold { font-weight: 700; }
+.text-blue { color: #1d4ed8; }
+.text-green { color: #15803d; }
+.text-orange { color: #ea580c; }
+.text-purple { color: #7c3aed; }
+
+/* 发票模块 */
+.invoice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 0.75rem; }
+.invoice-item { background: #f8fafc; padding: 0.625rem; border-radius: 0.375rem; text-align: center; }
+.invoice-label { font-size: 0.65rem; color: #64748b; margin-bottom: 0.25rem; }
+.invoice-value { font-size: 0.9rem; font-weight: 700; }
+
+/* 进度条 */
+.progress-bar { height: 0.5rem; background: #e2e8f0; border-radius: 9999px; overflow: hidden; margin-top: 0.5rem; }
+.progress-fill { height: 100%; border-radius: 9999px; }
+.bg-blue-bar { background: #3b82f6; }
+.bg-green-bar { background: #22c55e; }
+
+/* 合并卡片 */
+.merge-card { background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%); border: 2px solid #86efac; border-radius: 0.75rem; padding: 1rem; margin-bottom: 0.75rem; }
+.merge-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+.merge-title { font-size: 1rem; font-weight: 700; color: #166534; }
+.merge-total { font-size: 1.25rem; font-weight: 700; color: #15803d; background: #fff; padding: 0.25rem 0.75rem; border-radius: 9999px; }
+.merge-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 0.75rem; }
+.merge-item { background: #fff; padding: 0.5rem; border-radius: 0.375rem; text-align: center; }
+.merge-item-label { font-size: 0.65rem; color: #64748b; }
+.merge-item-value { font-size: 0.875rem; font-weight: 700; margin-top: 0.125rem; }
+
+footer { text-align: center; font-size: 0.65rem; color: #94a3b8; padding: 1rem 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+<h1>💰 禹川集团成本看板</h1>
+<p>合同金额 · 付款方式 · 发票管理</p>
+</div>
+
+<!-- 关键指标 -->
+<div class="card">
+<div class="stat-grid">
+<div class="stat-item">
+<div class="stat-label">集团合同总额</div>
+<div class="stat-value">20.86<span class="stat-unit">亿</span></div>
+<div class="stat-sub">财富+牡丹岛+一期</div>
+</div>
+<div class="stat-item" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+<div class="stat-label">已收发票</div>
+<div class="stat-value">4.86<span class="stat-unit">亿</span></div>
+<div class="stat-sub">进项税2,981万</div>
+</div>
+<div class="stat-item" style="background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);">
+<div class="stat-label">待付金额</div>
+<div class="stat-value">8.22<span class="stat-unit">亿</span></div>
+<div class="stat-sub">含待签工抵</div>
+</div>
+<div class="stat-item" style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);">
+<div class="stat-label">工抵占比</div>
+<div class="stat-value">35<span class="stat-unit">%</span></div>
+<div class="stat-sub">5.24亿/14.95亿</div>
+</div>
+</div>
+</div>
+
+<!-- 牡丹岛合并 -->
+<div class="merge-card">
+<div class="merge-header">
+<div class="merge-title">🏝️ 牡丹岛（合并）</div>
+<div class="merge-total">8.51亿</div>
+</div>
+<div class="merge-items">
+<div class="merge-item">
+<div class="merge-item-label">二期·合同</div>
+<div class="merge-item-value text-green">5.59亿</div>
+</div>
+<div class="merge-item">
+<div class="merge-item-label">8#35#36#</div>
+<div class="merge-item-value text-orange">1.52亿</div>
+</div>
+<div class="merge-item">
+<div class="merge-item-label">载铜总包</div>
+<div class="merge-item-value text-purple">1.40亿</div>
+</div>
+</div>
+<div style="background: #fff; padding: 0.75rem; border-radius: 0.5rem;">
+<div style="font-size: 0.75rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">📋 付款明细</div>
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; font-size: 0.75rem;">
+<div><span style="color: #64748b;">工抵付款：</span><span class="font-bold text-blue">4.54亿</span></div>
+<div><span style="color: #64748b;">现金付款：</span><span class="font-bold text-green">0.64亿</span></div>
+<div><span style="color: #64748b;">已签待付：</span><span class="font-bold text-orange">726万</span></div>
+<div><span style="color: #64748b;">待签工抵：</span><span class="font-bold text-purple">2,746万</span></div>
+</div>
+</div>
+</div>
+
+<!-- 单列项目 -->
+<div class="card">
+<div class="module-title">单列项目</div>
+
+<div class="project-card" style="border-color: #93c5fd;">
+<div class="project-header">
+<div class="project-name" style="color: #1e40af;">🏢 财富中心</div>
+<span class="project-badge bg-blue">4.89亿</span>
+</div>
+<div class="project-body">
+<div class="project-item">
+<div class="project-item-label">合同金额</div>
+<div class="project-item-value">4.89亿</div>
+</div>
+<div class="project-item">
+<div class="project-item-label">待付金额</div>
+<div class="project-item-value text-orange">2,423万</div>
+</div>
+<div class="project-item">
+<div class="project-item-label">工抵付款</div>
+<div class="project-item-value text-blue">0.70亿</div>
+</div>
+<div class="project-item">
+<div class="project-item-label">现金付款</div>
+<div class="project-item-value text-green">3.45亿</div>
+</div>
+</div>
+</div>
+
+<div class="project-card" style="border-color: #fca5a5;">
+<div class="project-header">
+<div class="project-name" style="color: #991b1b;">🏘️ 天屿花城一期</div>
+<span class="project-badge bg-red">7.46亿</span>
+</div>
+<div class="project-body">
+<div class="project-item">
+<div class="project-item-label">应付总额</div>
+<div class="project-item-value">7.46亿</div>
+</div>
+<div class="project-item">
+<div class="project-item-label">待付金额</div>
+<div class="project-item-value text-orange">4,416万</div>
+</div>
+<div class="project-item">
+<div class="project-item-label">已付款</div>
+<div class="project-item-value text-green">7.02亿</div>
+</div>
+<div class="project-item">
+<div class="project-item-label">待付现金</div>
+<div class="project-item-value text-blue">3,916万</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 付款方式 -->
+<div class="card">
+<div class="module-title">付款方式汇总</div>
+<div class="pay-grid">
+<div class="pay-item pay-blue">
+<div class="pay-icon">🏦</div>
+<div class="pay-label">工抵付款</div>
+<div class="pay-value">5.24亿</div>
+</div>
+<div class="pay-item pay-green">
+<div class="pay-icon">💵</div>
+<div class="pay-label">现金付款</div>
+<div class="pay-value">4.09亿</div>
+</div>
+<div class="pay-item pay-purple">
+<div class="pay-icon">📝</div>
+<div class="pay-label">待签工抵</div>
+<div class="pay-value">3,410万</div>
+</div>
+</div>
+</div>
+
+<!-- 发票管理 -->
+<div class="card">
+<div class="module-title">发票收取情况</div>
+
+<div style="background: #eff6ff; border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.75rem;">
+<div style="font-weight: 700; color: #1e40af; margin-bottom: 0.5rem;">🏢 财富中心发票</div>
+<div class="invoice-grid">
+<div class="invoice-item">
+<div class="invoice-label">税率</div>
+<div class="invoice-value">6.77%</div>
+</div>
+<div class="invoice-item">
+<div class="invoice-label">已取得发票</div>
+<div class="invoice-value text-green">4.27亿</div>
+</div>
+<div class="invoice-item">
+<div class="invoice-label">已收进项税</div>
+<div class="invoice-value text-blue">2,709万</div>
+</div>
+<div class="invoice-item" style="background: #fff7ed;">
+<div class="invoice-label">待收发票</div>
+<div class="invoice-value text-orange">2,885万</div>
+</div>
+</div>
+<div style="margin-top: 0.5rem;">
+<div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 0.25rem;">
+<span>已收发票占比</span>
+<span style="font-weight: 700; color: #15803d;">87%</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill bg-green-bar" style="width: 87%;"></div>
+</div>
+</div>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th class="text-right">已收发票</th>
+<th class="text-right">进项税</th>
+<th class="text-right">待收发票</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>财富中心</td>
+<td class="text-right text-green">4.27亿</td>
+<td class="text-right text-blue">2,709万</td>
+<td class="text-right text-orange">2,885万</td>
+</tr>
+<tr>
+<td>牡丹岛·二期</td>
+<td class="text-right">0.27亿</td>
+<td class="text-right">208万</td>
+<td class="text-right">--</td>
+</tr>
+<tr>
+<td>牡丹岛·8#35#36#</td>
+<td class="text-right">0.32亿</td>
+<td class="text-right">64万</td>
+<td class="text-right">--</td>
+</tr>
+<tr style="background: #f1f5f9; font-weight: 700;">
+<td>合计</td>
+<td class="text-right text-green">4.86亿</td>
+<td class="text-right text-blue">2,981万</td>
+<td class="text-right text-orange">2,885万</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<footer>
+禹川集团成本看板 · 茉莉AI助手生成
+</footer>
+
+</div>
+</body>
+</html>
