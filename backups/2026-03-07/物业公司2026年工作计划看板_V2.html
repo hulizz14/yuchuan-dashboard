@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物业公司2026年工作计划看板 V2</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f1f5f9; }
+.card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s; }
+.card:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+.stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+.stat-green { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+.stat-orange { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.stat-blue { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.table-row:hover { background: #f8fafc; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 9999px; font-weight: 600; }
+.badge-red { background: #fee2e2; color: #dc2626; }
+.badge-green { background: #dcfce7; color: #16a34a; }
+.badge-orange { background: #fef3c7; color: #d97706; }
+.badge-blue { background: #dbeafe; color: #2563eb; }
+.fade-in { animation: fadeIn 0.5s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.company-yuchuan { border-left: 4px solid #3b82f6; }
+.company-yuchen { border-left: 4px solid #10b981; }
+.company-yuyue { border-left: 4px solid #f59e0b; }
+.month-header { background: #f1f5f9; font-weight: 700; color: #1e293b; font-size: 14px; }
+.gantt-row { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid #e2e8f0; }
+.gantt-cell { flex: 1; text-align: center; font-size: 12px; padding: 4px; }
+.gantt-cell.active { background: #3b82f6; color: white; border-radius: 4px; font-weight: 600; }
+.gantt-cell.active-caifu { background: #10b981; color: white; border-radius: 4px; font-weight: 600; }
+</style>
+</head>
+<body class="min-h-screen p-6">
+
+<!-- Header -->
+<header class="card mb-6 p-6 fade-in">
+<div class="flex justify-between items-center">
+<div>
+<h1 class="text-2xl font-bold text-slate-800">🏢 物业公司2026年工作计划看板</h1>
+<p class="text-slate-500 mt-1">数据来源：2026年目标任务 | 禹川(天屿)+禹晨(财富)+禹悦(案场)</p>
+</div>
+<div class="text-right">
+<div class="text-sm text-slate-500">更新时间</div>
+<div class="text-lg font-semibold text-slate-700">2026-03-05</div>
+</div>
+</div>
+
+<!-- 核心KPI -->
+<div class="grid grid-cols-4 gap-4 mt-6">
+<div class="card stat-card p-5 text-white">
+<div class="text-sm opacity-90">年度收入目标</div>
+<div class="text-3xl font-bold mt-1">1,535<span class="text-lg ml-1">万</span></div>
+<div class="text-xs mt-2 opacity-80">禹川1037+禹晨439+禹悦59</div>
+</div>
+<div class="card stat-orange p-5 text-white">
+<div class="text-sm opacity-90">年度支出预算</div>
+<div class="text-3xl font-bold mt-1">958<span class="text-lg ml-1">万</span></div>
+<div class="text-xs mt-2 opacity-80">人力677万+管理280万</div>
+</div>
+<div class="card stat-green p-5 text-white">
+<div class="text-sm opacity-90">利润目标</div>
+<div class="text-3xl font-bold mt-1">577<span class="text-lg ml-1">万</span></div>
+<div class="text-xs mt-2 opacity-80">利润率37.6%</div>
+</div>
+<div class="card stat-blue p-5 text-white">
+<div class="text-sm opacity-90">年度工作项</div>
+<div class="text-3xl font-bold mt-1">114<span class="text-lg ml-1">项</span></div>
+<div class="text-xs mt-2 opacity-80">天屿51项+财富63项</div>
+</div>
+</div>
+</header>
+
+<!-- 模块1: 三公司经营指标对比 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">📊 三公司经营指标对比</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-sm">
+<thead>
+<tr class="border-b border-slate-200 bg-slate-50">
+<th class="py-3 px-2 text-left font-semibold text-slate-600">公司/项目</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">收入目标</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">支出预算</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">利润目标</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">利润率</th>
+<th class="py-3 px-2 text-center font-semibold text-slate-600">状态</th>
+</tr>
+</thead>
+<tbody>
+<tr class="table-row border-b border-slate-100 company-yuchuan">
+<td class="py-3 px-2"><div class="font-bold text-blue-600">禹川物业</div><div class="text-xs text-slate-500">天屿花城项目</div></td>
+<td class="py-3 px-2 text-center font-semibold">1,036.80万</td>
+<td class="py-3 px-2 text-center text-orange-600">617.72万</td>
+<td class="py-3 px-2 text-center text-green-600 font-bold">419.08万</td>
+<td class="py-3 px-2 text-center">40.4%</td>
+<td class="py-3 px-2 text-center"><span class="badge badge-green">正常</span></td>
+</tr>
+<tr class="table-row border-b border-slate-100 company-yuchen">
+<td class="py-3 px-2"><div class="font-bold text-green-600">禹晨物业</div><div class="text-xs text-slate-500">财富中心项目</div></td>
+<td class="py-3 px-2 text-center font-semibold">439.00万</td>
+<td class="py-3 px-2 text-center text-orange-600">280.98万</td>
+<td class="py-3 px-2 text-center text-green-600 font-bold">158.02万</td>
+<td class="py-3 px-2 text-center">36.0%</td>
+<td class="py-3 px-2 text-center"><span class="badge badge-green">正常</span></td>
+</tr>
+<tr class="table-row border-b border-slate-100 company-yuyue">
+<td class="py-3 px-2"><div class="font-bold text-orange-600">禹悦物业</div><div class="text-xs text-slate-500">案场+安置房</div></td>
+<td class="py-3 px-2 text-center font-semibold">58.94万</td>
+<td class="py-3 px-2 text-center text-orange-600">58.94万</td>
+<td class="py-3 px-2 text-center text-green-600 font-bold">0万</td>
+<td class="py-3 px-2 text-center">0%</td>
+<td class="py-3 px-2 text-center"><span class="badge badge-orange">持平</span></td>
+</tr>
+<tr class="bg-blue-50 font-bold">
+<td class="py-3 px-2">合计</td>
+<td class="py-3 px-2 text-center">1,534.74万</td>
+<td class="py-3 px-2 text-center">957.64万</td>
+<td class="py-3 px-2 text-center text-green-600">577.10万</td>
+<td class="py-3 px-2 text-center">37.6%</td>
+<td class="py-3 px-2 text-center">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- 模块2: 月度经营指标追踪与预警 -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">⚠️ 月度经营指标追踪与预警</h2>
+<div class="grid grid-cols-2 gap-6">
+<div>
+<h3 class="text-sm font-semibold text-slate-600 mb-3">收入完成率追踪（每月实收/目标）</h3>
+<div class="space-y-3">
+<div class="p-4 bg-slate-50 rounded-lg">
+<div class="flex justify-between items-center mb-2">
+<span class="font-medium">1月 禹川物业</span>
+<span class="text-lg font-bold text-green-600">100%</span>
+</div>
+<div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div></div>
+<div class="text-xs text-slate-500 mt-1">实收86.4万 / 目标86.4万</div>
+</div>
+<div class="p-4 bg-slate-50 rounded-lg">
+<div class="flex justify-between items-center mb-2">
+<span class="font-medium">1月 禹晨物业</span>
+<span class="text-lg font-bold text-green-600">100%</span>
+</div>
+<div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div></div>
+<div class="text-xs text-slate-500 mt-1">实收36.6万 / 目标36.6万</div>
+</div>
+<div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+<div class="flex justify-between items-center mb-2">
+<span class="font-medium">2月 禹川物业</span>
+<span class="text-lg font-bold text-orange-600">85%</span>
+</div>
+<div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-orange-500 h-2 rounded-full" style="width: 85%"></div></div>
+<div class="text-xs text-orange-600 mt-1">⚠️ 实收62.1万 / 目标73.0万（缺口10.9万）</div>
+</div>
+<div class="p-4 bg-slate-50 rounded-lg">
+<div class="flex justify-between items-center mb-2">
+<span class="font-medium">2月 禹晨物业</span>
+<span class="text-lg font-bold text-green-600">95%</span>
+</div>
+<div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-green-500 h-2 rounded-full" style="width: 95%"></div></div>
+<div class="text-xs text-slate-500 mt-1">实收34.5万 / 目标36.3万</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-slate-600 mb-3">利润实现率追踪（累计利润/目标）</h3>
+<div class="space-y-3">
+<div class="p-4 bg-slate-50 rounded-lg">
+<div class="flex justify-between items-center mb-2">
+<span class="font-medium">禹川物业 累计利润</span>
+<span class="text-lg font-bold text-blue-600">16.7%</span>
+</div>
+<div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-blue-500 h-2 rounded-full" style="width: 16.7%"></div></div>
+<div class="text-xs text-slate-500 mt-1">累计实现70万 / 年度目标419万</div>
+</div>
+<div class="p-4 bg-slate-50 rounded-lg">
+<div class="flex justify-between items-center mb-2">
+<span class="font-medium">禹晨物业 累计利润</span>
+<span class="text-lg font-bold text-green-600">26.3%</span>
+</div>
+<div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-green-500 h-2 rounded-full" style="width: 26.3%"></div></div>
+<div class="text-xs text-slate-500 mt-1">累计实现41.6万 / 年度目标158万</div>
+</div>
+<div class="p-4 bg-red-50 rounded-lg border border-red-200">
+<div class="flex justify-between items-center mb-2">
+<span class="font-medium">合计利润完成率</span>
+<span class="text-lg font-bold text-red-600">19.3%</span>
+</div>
+<div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-red-500 h-2 rounded-full" style="width: 19.3%"></div></div>
+<div class="text-xs text-red-600 mt-1">🔴 累计实现111.6万 / 年度目标577万（进度偏慢）</div>
+</div>
+<div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200 mt-4">
+<strong>💡 预警提示：</strong><br/>
+1. 2月禹川物业收入完成率85%，低于90%警戒线<br/>
+2. 整体利润完成率19.3%，低于时间进度（2/12=16.7%）略有进展但仍需关注<br/>
+3. 建议加强3月物业费催缴力度
+</div>
+</div>
+</div>
+</section>
+
+<!-- 模块3: 2026年工作甘特图（详细） -->
+<section class="card mb-6 p-6 fade-in">
+<h2 class="text-xl font-bold text-slate-800 mb-4">📅 2026年工作甘特图（详细）</h2>
+
+<!-- 天屿花城甘特图 -->
+<div class="mb-6">
+<h3 class="font-bold text-blue-600 mb-3 company-yuchuan pl-3">禹川物业 - 天屿花城项目（51项工作）</h3>
+<div class="overflow-x-auto">
+<table class="w-full text-sm border-collapse">
+<thead>
+<tr class="month-header">
+<th class="py-2 px-2 text-left w-48">重点工作</th>
+<th class="py-2 px-1 text-center w-16">1月</th>
+<th class="py-2 px-1 text-center w-16">2月</th>
+<th class="py-2 px-1 text-center w-16">3月</th>
+<th class="py-2 px-1 text-center w-16">4月</th>
+<th class="py-2 px-1 text-center w-16">5月</th>
+<th class="py-2 px-1 text-center w-16">6月</th>
+<th class="py-2 px-1 text-center w-16">7月</th>
+<th class="py-2 px-1 text-center w-16">8月</th>
+<th class="py-2 px-1 text-center w-16">9月</th>
+<th class="py-2 px-1 text-center w-16">10月</th>
+<th class="py-2 px-1 text-center w-16">11月</th>
+<th class="py-2 px-1 text-center w-16">12月</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-slate-100"><td class="py-2 px-2 text-xs truncate" title="物业费催缴、收房">物业费催缴、收房</td><td class="py-2 px-1 text-center"><span class="badge badge-blue">✓</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">✓</span></td><td class="py-2 px-1 text-center bg-blue-100"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-2 text-xs truncate" title="空置房清理/巡查">空置房清理/巡查</td><td class="py-2 px-1 text-center bg-blue-100"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-2 text-xs truncate" title="年前安全保障管控">年前安全保障管控</td><td class="py-2 px-1 text-center bg-blue-100"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-2 text-xs truncate" title="园区布置（元旦/春节）">园区布置（元旦/春节）</td><td class="py-2 px-1 text-center bg-blue-100"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center bg-blue-100"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center bg-blue-100"><span class="badge badge-blue">●</span></td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-2 text-xs truncate" title="绿化枯枝修剪/补种/养护">绿化枯枝修剪/补种/养护</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center bg-blue-100"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center bg-blue-100"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center">-</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-2 text-xs truncate" title="消防设备维保跟进">消防设备维保跟进</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center bg-blue-100"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-2 text-xs truncate" title="社区文化活动">社区文化活动</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center bg-blue-100"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-2 text-xs truncate" title="设施设备完好率检查">设施设备完好率检查</td><td class="py-2 px-1 text-center">-</td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td><td class="py-2 px-1 text-center"><span class="badge badge-blue">●</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="text-xs text-slate-500 mt-2">● 表示当月有该项工作 | ✓ 表示已完成 | 蓝色高亮表示当前月份（3月）</div>
+</div>
+
+</div>
+
+</body>
+</html>

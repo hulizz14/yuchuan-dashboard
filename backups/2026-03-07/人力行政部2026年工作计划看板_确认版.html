@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人力行政部2026年工作计划看板（确认版）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f7fa; padding: 20px; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%); color: white; padding: 25px; border-radius: 12px; margin-bottom: 20px; }
+        .header h1 { font-size: 24px; margin-bottom: 8px; }
+        .header p { opacity: 0.9; font-size: 13px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px; }
+        .stat-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; }
+        .stat-card .number { font-size: 28px; font-weight: bold; color: #1a237e; }
+        .stat-card.warning .number { color: #f44336; }
+        .stat-card.success .number { color: #4caf50; }
+        .stat-card.info .number { color: #2196f3; }
+        .stat-card .label { font-size: 12px; color: #666; margin-top: 5px; }
+        .section { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 20px; }
+        .section-title { font-size: 16px; font-weight: bold; color: #333; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0; }
+        .category-title { font-size: 15px; font-weight: bold; color: #1a237e; margin: 20px 0 10px 0; padding-left: 12px; border-left: 4px solid #3949ab; }
+        .work-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+        .work-table th { background: #3949ab; color: white; padding: 10px 8px; text-align: left; }
+        .work-table td { padding: 10px 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+        .work-table tr:nth-child(even) { background: #f5f7fa; }
+        .work-table tr:hover { background: #e8eaf6; }
+        .num { color: #666; font-size: 10px; margin-right: 5px; }
+        .badge { display: inline-block; padding: 2px 6px; border-radius: 10px; font-size: 10px; margin-left: 5px; }
+        .badge-red { background: #ffebee; color: #c62828; }
+        .badge-orange { background: #fff3e0; color: #e65100; }
+        .badge-green { background: #e8f5e9; color: #2e7d32; }
+        .badge-blue { background: #e3f2fd; color: #1565c0; }
+        .project-card { padding: 15px; margin: 10px 0; background: #f5f7fa; border-radius: 8px; border-left: 4px solid #3949ab; }
+        .project-title { font-weight: bold; color: #1a237e; }
+        .project-desc { font-size: 12px; color: #666; margin-top: 5px; }
+        .milestone-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+        .milestone-date { background: #1a237e; color: white; padding: 5px 12px; border-radius: 15px; font-size: 12px; min-width: 90px; text-align: center; }
+        .milestone-date.urgent { background: #f44336; }
+        .milestone-date.warning { background: #ff9800; }
+        .risk-item { padding: 15px; margin-bottom: 12px; border-radius: 8px; border-left: 4px solid; }
+        .risk-high { background: #ffebee; border-left-color: #f44336; }
+        .risk-medium { background: #fff3e0; border-left-color: #ff9800; }
+        .risk-low { background: #e3f2fd; border-left-color: #2196f3; }
+        .risk-title { font-weight: bold; font-size: 14px; margin-bottom: 5px; }
+        .progress-bar { background: #e0e0e0; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 5px; }
+        .progress-fill { background: #4caf50; height: 100%; border-radius: 4px; }
+        @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } .work-table { font-size: 10px; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>👥 人力行政部2026年工作计划看板</h1>
+        <p>人员招聘 | 人员优化 | 费用控制 | 行政工作 | 物业检查</p>
+    </div>
+
+    <!-- 统计卡片 -->
+    <div class="stats-grid">
+        <div class="stat-card"><div class="number">5</div><div class="label">总任务数</div></div>
+        <div class="stat-card warning"><div class="number">6</div><div class="label">招聘目标</div></div>
+        <div class="stat-card success"><div class="number">2</div><div class="label">已入职</div></div>
+        <div class="stat-card info"><div class="number">25万</div><div class="label">2026年预算</div></div>
+    </div>
+
+    <!-- 一、人员招聘（3月重点） -->
+    <div class="section">
+        <div class="section-title">一、人员招聘（3月重点）</div>
+        
+        <div style="background:#fff3e0;padding:15px;border-radius:8px;margin-bottom:15px;border-left:4px solid #ff9800">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                    <div style="font-weight:bold;color:#e65100">🎯 招聘目标</div>
+                    <div style="font-size:12px;color:#666;margin-top:5px">双项目置业顾问3人 + 新媒体3人 = 共6人</div>
+                </div>
+                <div style="text-align:right">
+                    <div style="font-size:24px;font-weight:bold;color:#4caf50">2/6</div>
+                    <div style="font-size:11px;color:#666">已入职/目标</div>
+                    <div class="progress-bar" style="width:100px;"><div class="progress-fill" style="width:33%;"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <table class="work-table">
+            <thead><tr><th>岗位</th><th>招聘人数</th><th>已入职</th><th>缺口</th><th>完成时间</th></tr></thead>
+            <tbody>
+                <tr><td><strong>双项目置业顾问</strong></td><td>3人</td><td>1人</td><td><span style="color:#f44336;font-weight:bold">2人</span></td><td><span class="badge badge-orange">3月份</span></td></tr>
+                <tr><td><strong>新媒体运营</strong></td><td>3人</td><td>1人</td><td><span style="color:#f44336;font-weight:bold">2人</span></td><td><span class="badge badge-orange">3月份</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 二、人员优化 -->
+    <div class="section">
+        <div class="section-title">二、人员优化</div>
+        
+        <div class="project-card">
+            <div class="project-title">📋 优化原则</div>
+            <div class="project-desc">根据公司要求逐步优化相关岗位人员，根据各部门安排阶段性调整，根据金融政策变化动态调整人员结构</div>
+        </div>
+        
+        <div style="background:#e3f2fd;padding:12px;border-radius:8px;border-left:4px solid #2196f3">
+            <strong style="color:#1565c0">⚠️ 注意事项：</strong><span style="font-size:12px">人员优化需与各部门充分沟通，确保业务连续性，避免关键岗位人员流失</span>
+        </div>
+    </div>
+
+    <!-- 三、费用控制 -->
+    <div class="section">
+        <div class="section-title">三、费用控制</div>
+        
+        <table class="work-table">
+            <thead><tr><th>年度</th><th>预算金额</th><th>实际使用</th><th>执行率</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td>2025年</td><td>38万</td><td>21万</td><td><span style="color:#4caf50;font-weight:bold">55.3%</span></td><td>节约17万</td></tr>
+                <tr style="background:#e8f5e9"><td><strong>2026年</strong></td><td><strong>25万</strong></td><td>-</td><td>-</td><td>预算较2025年减少34%</td></tr>
+            </tbody>
+        </table>
+        
+        <div style="background:#f5f7fa;padding:12px;border-radius:8px;margin-top:15px">
+            <div style="font-size:12px;color:#666">
+                <strong>费用控制重点：</strong>人力成本、行政开支、培训费用、招聘费用等，需<strong style="color:#f44336">每周</strong>监控预算执行情况
+            </div>
+        </div>
+    </div>
+
+    <!-- 四、行政工作 -->
+    <div class="section">
+        <div class="section-title">四、行政工作</div>
+        
+        <div class="category-title">部门协调与督促</div>
+        <div class="milestone-item"><div class="milestone-date">每周</div><div style="margin-left:15px"><strong>收集各部门工作完成情况</strong>，汇总上报</div></div>
+        <div class="milestone-item"><div class="milestone-date">每月</div><div style="margin-left:15px"><strong>对各部门工作督促检查</strong>，确保计划落实</div></div>
+        
+        <div class="category-title">物业服务质量检查</div>
+        <div style="background:#fff3e0;padding:12px;border-radius:8px;border-left:4px solid #ff9800">
+            <strong style="color:#e65100">🎯 3月份任务：</strong><span style="font-size:12px">制定对物业服务质量与人员工作饱和度检查制度，建立定期检查机制</span>
+        </div>
+    </div>
+
+    <!-- 五、全年工作甘特图 -->
+    <div class="section">
+        <div class="section-title">五、全年工作甘特图</div>
+        
+        <style>
+            .gantt-container { overflow-x: auto; margin-top: 15px; }
+            .gantt-chart { min-width: 900px; position: relative; }
+            .gantt-header { display: flex; border-bottom: 2px solid #3949ab; padding-bottom: 10px; margin-bottom: 10px; }
+            .gantt-task-col { width: 200px; font-weight: bold; font-size: 11px; padding-right: 10px; }
+            .gantt-months { display: flex; flex: 1; }
+            .gantt-month { flex: 1; text-align: center; font-size: 10px; font-weight: bold; color: #666; border-right: 1px solid #eee; padding: 5px; }
+            .gantt-row { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+            .gantt-row:hover { background: #f5f7fa; }
+            .gantt-task-name { width: 200px; font-size: 10px; padding-right: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .gantt-timeline { flex: 1; position: relative; height: 20px; }
+            .gantt-bar { position: absolute; height: 16px; border-radius: 8px; font-size: 8px; color: white; display: flex; align-items: center; justify-content: center; overflow: hidden; white-space: nowrap; }
+            .gantt-bar-urgent { background: linear-gradient(90deg, #f44336, #ff7043); }
+            .gantt-bar-high { background: linear-gradient(90deg, #ff9800, #ffb74d); }
+            .gantt-bar-normal { background: linear-gradient(90deg, #2196f3, #64b5f6); }
+            .gantt-bar-ongoing { background: linear-gradient(90deg, #9c27b0, #ce93d8); }
+            .gantt-legend { display: flex; gap: 15px; margin-top: 15px; font-size: 10px; flex-wrap: wrap; }
+            .legend-item { display: flex; align-items: center; gap: 5px; }
+            .legend-color { width: 20px; height: 10px; border-radius: 5px; }
+        </style>
+        
+        <div class="gantt-container">
+            <div class="gantt-chart">
+                <!-- Header -->
+                <div class="gantt-header">
+                    <div class="gantt-task-col">工作任务</div>
+                    <div class="gantt-months">
+                        <div class="gantt-month">1月</div>
+                        <div class="gantt-month">2月</div>
+                        <div class="gantt-month">3月</div>
+                        <div class="gantt-month">4月</div>
+                        <div class="gantt-month">5月</div>
+                        <div class="gantt-month">6月</div>
+                        <div class="gantt-month">7月</div>
+                        <div class="gantt-month">8月</div>
+                        <div class="gantt-month">9月</div>
+                        <div class="gantt-month">10月</div>
+                        <div class="gantt-month">11月</div>
+                        <div class="gantt-month">12月</div>
+                    </div>
+                </div>
+                
+                <!-- 日常工作 -->
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🔵 每周收集各部门工作完成情况</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-ongoing" style="left: 0%; width: 100%;">全年持续</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🔵 每月对各部门工作督促检查</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-ongoing" style="left: 0%; width: 100%;">全年持续</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🔵 费用控制（预算执行监控）</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-ongoing" style="left: 0%; width: 100%;">全年持续</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🟡 人员优化（阶段性调整）</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-high" style="left: 0%; width: 100%;">根据金融政策动态调整</div>
+                    </div>
+                </div>
+                
+                <!-- 重点项目 -->
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🔴 人员招聘（3月重点）</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-urgent" style="left: 16.67%; width: 8.33%;">3月</div>
+                    </div>
+                </div>
+                
+                <div class="gantt-row">
+                    <div class="gantt-task-name">🟡 物业服务质量检查制度制定</div>
+                    <div class="gantt-timeline">
+                        <div class="gantt-bar gantt-bar-high" style="left: 16.67%; width: 8.33%;">3月</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gantt-legend">
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #f44336, #ff7043);"></div><span>紧急（关键节点）</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #ff9800, #ffb74d);"></div><span>高优先级</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #2196f3, #64b5f6);"></div><span>常规</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: linear-gradient(90deg, #9c27b0, #ce93d8);"></div><span>持续进行（日常）</span></div>
+        </div>
+    </div>
+
+    <!-- 六、风险预警 -->
+    <div class="section">
+        <div class="section-title">六、风险预警</div>
+        
+        <div class="risk-item risk-high">
+            <div class="risk-title">🔴 人员招聘进度滞后</div>
+            <div style="font-size:12px;color:#666">目标6人（置业顾问3+新媒体3），目前仅入职2人，缺口4人，3月需加快招聘进度</div>
+        </div>
+        
+        <div class="risk-item risk-medium">
+            <div class="risk-title">🟡 预算控制压力大</div>
+            <div style="font-size:12px;color:#666">2026年预算25万较2025年减少34%，需严格控制人力成本和行政开支</div>
+        </div>
+        
+        <div class="risk-item risk-low">
+            <div class="risk-title">🟡 人员优化沟通风险</div>
+            <div style="font-size:12px;color:#666">人员优化需与各部门充分沟通，避免关键岗位人员流失影响业务</div>
+        </div>
+    </div>
+
+</body>
+</html>

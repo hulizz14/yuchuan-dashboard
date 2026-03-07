@@ -2,19 +2,17 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>禹川集团成本数据汇总看板 - 完整版</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-html { font-size: 14px; }
-@media (max-width: 640px) { html { font-size: 13px; } }
-body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f1f5f9; line-height: 1.5; }
+body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f1f5f9; }
 .card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s; }
 .card:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
 .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
-.badge { font-size: 0.75rem; padding: 0.125rem 0.5rem; border-radius: 9999px; font-weight: 600; white-space: nowrap; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 9999px; font-weight: 600; }
 .badge-red { background: #fee2e2; color: #dc2626; }
 .badge-green { background: #dcfce7; color: #16a34a; }
 .badge-orange { background: #fef3c7; color: #d97706; }
@@ -22,27 +20,10 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 .badge-purple { background: #f3e8ff; color: #9333ea; }
 .fade-in { animation: fadeIn 0.5s ease-in; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-.module-title { border-left: 4px solid #3b82f6; padding-left: 0.75rem; }
-.data-grid { display: grid; gap: 1rem; }
+.module-title { border-left: 4px solid #3b82f6; padding-left: 12px; }
+.data-grid { display: grid; gap: 16px; }
 @media (min-width: 768px) { .data-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .data-grid { grid-template-columns: repeat(3, 1fr); } }
-/* 字体适配 */
-.text-responsive { font-size: clamp(0.875rem, 2.5vw, 1rem); }
-.text-responsive-lg { font-size: clamp(1rem, 3vw, 1.25rem); }
-.text-responsive-xl { font-size: clamp(1.25rem, 4vw, 1.5rem); }
-.text-responsive-2xl { font-size: clamp(1.5rem, 5vw, 2rem); }
-/* 防止溢出 */
-.truncate-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.wrap-text { word-wrap: break-word; word-break: break-all; }
-/* 移动端优化 */
-@media (max-width: 640px) {
-  .mobile-stack { flex-direction: column; }
-  .mobile-full { width: 100%; }
-  .mobile-text-sm { font-size: 0.75rem; }
-  .mobile-p-2 { padding: 0.5rem; }
-  table { font-size: 0.75rem; }
-  th, td { padding: 0.25rem 0.5rem; }
-}
 </style>
 </head>
 <body class="min-h-screen p-4 md:p-6">
@@ -50,8 +31,8 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 <!-- Header -->
 <header class="card mb-6 p-6 fade-in">
 <div class="text-center mb-4">
-<h1 class="text-responsive-2xl font-bold text-slate-800">💰 禹川集团成本数据汇总看板</h1>
-<p class="text-responsive text-slate-500 mt-2 wrap-text">合同金额 · 付款方式 · 发票管理 · 完整财务视图</p>
+<h1 class="text-2xl md:text-3xl font-bold text-slate-800">💰 禹川集团成本数据汇总看板</h1>
+<p class="text-slate-500 mt-2">合同金额 · 付款方式 · 发票管理 · 完整财务视图</p>
 </div>
 <div class="flex justify-center items-center gap-4">
 <div class="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full">
