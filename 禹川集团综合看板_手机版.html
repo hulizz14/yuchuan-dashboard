@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>禹川集团综合看板</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 14px; }
+@media (max-width: 360px) { html { font-size: 12px; } }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f0f4f8; }
+
+/* 侧边栏 */
+.sidebar { position: fixed; left: -280px; top: 0; width: 280px; height: 100vh; background: #1e293b; color: #fff; overflow-y: auto; transition: left 0.3s; z-index: 100; }
+.sidebar.open { left: 0; }
+.sidebar-header { padding: 1rem; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+.sidebar-title { font-size: 1.1rem; font-weight: 700; }
+.sidebar-subtitle { font-size: 0.75rem; opacity: 0.8; margin-top: 0.25rem; }
+.nav-item { display: block; padding: 0.875rem 1rem; border-bottom: 1px solid #334155; cursor: pointer; transition: background 0.2s; }
+.nav-item:hover { background: #334155; }
+.nav-item.active { background: #3b82f6; border-left: 4px solid #60a5fa; }
+.nav-icon { font-size: 1.25rem; margin-right: 0.5rem; }
+.nav-text { font-size: 0.9rem; font-weight: 500; }
+.nav-sub { font-size: 0.7rem; opacity: 0.7; margin-left: 1.75rem; margin-top: 0.125rem; }
+
+/* 主内容区 */
+.main { min-height: 100vh; }
+.header { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: #fff; padding: 0.875rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
+.menu-btn { background: rgba(255,255,255,0.2); border: none; color: #fff; padding: 0.5rem; border-radius: 0.375rem; font-size: 1.25rem; cursor: pointer; }
+.header-title { font-size: 1rem; font-weight: 700; }
+.header-date { font-size: 0.7rem; opacity: 0.9; }
+
+.content { padding: 0.75rem; }
+.card { background: #fff; border-radius: 0.75rem; padding: 1rem; margin-bottom: 0.75rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.card-title { font-size: 1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.75rem; padding-left: 0.5rem; border-left: 3px solid #3b82f6; }
+
+/* 统计卡片 */
+.stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+.stat-item { padding: 0.75rem; border-radius: 0.5rem; text-align: center; color: #fff; }
+.stat-blue { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); }
+.stat-green { background: linear-gradient(135deg, #22c55e 0%, #15803d 100%); }
+.stat-orange { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+.stat-purple { background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%); }
+.stat-label { font-size: 0.7rem; opacity: 0.9; margin-bottom: 0.25rem; }
+.stat-value { font-size: 1.1rem; font-weight: 700; }
+.stat-unit { font-size: 0.75rem; margin-left: 0.125rem; }
+
+/* 项目卡片 */
+.project-card { border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.5rem; }
+.project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.project-name { font-size: 0.95rem; font-weight: 700; }
+.project-badge { font-size: 0.7rem; padding: 0.125rem 0.5rem; border-radius: 9999px; background: #dbeafe; color: #1e40af; font-weight: 600; }
+.project-body { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+.project-item { background: #f8fafc; padding: 0.5rem; border-radius: 0.375rem; text-align: center; }
+.project-item-label { font-size: 0.65rem; color: #64748b; }
+.project-item-value { font-size: 0.875rem; font-weight: 700; color: #1e293b; margin-top: 0.125rem; }
+
+/* 表格 */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 0.5rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.75rem; min-width: 300px; }
+th, td { padding: 0.5rem 0.375rem; text-align: center; border-bottom: 1px solid #e2e8f0; }
+th { background: #f1f5f9; font-weight: 600; color: #475569; }
+.text-green { color: #15803d; }
+.text-orange { color: #ea580c; }
+.text-red { color: #dc2626; }
+.badge { display: inline-block; padding: 0.125rem 0.375rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 600; }
+.badge-green { background: #dcfce7; color: #166534; }
+.badge-orange { background: #fef3c7; color: #d97706; }
+.badge-red { background: #fee2e2; color: #dc2626; }
+
+/* 遮罩 */
+.overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 99; display: none; }
+.overlay.show { display: block; }
+
+/* 页面切换 */
+.page { display: none; }
+.page.active { display: block; }
+
+footer { text-align: center; font-size: 0.65rem; color: #94a3b8; padding: 1rem 0; }
+</style>
+</head>
+<body>
+
+<!-- 侧边栏 -->
+<div class="sidebar" id="sidebar">
+<div class="sidebar-header">
+<div class="sidebar-title">🏢 禹川集团</div>
+<div class="sidebar-subtitle">综合看板 · 资产+部门工作</div>
+</div>
+
+<div style="padding: 0.5rem 1rem; font-size: 0.7rem; color: #94a3b8; border-bottom: 1px solid #334155;">📈 资产看板</div>
+<div class="nav-item active" onclick="showPage('home')">
+<span class="nav-icon">📊</span>
+<span class="nav-text">总览</span>
+</div>
+<div class="nav-item" onclick="showPage('caifu')">
+<span class="nav-icon">🏢</span>
+<span class="nav-text">财富中心</span>
+<div class="nav-sub">资产看板 v5.0 · 12.74亿</div>
+</div>
+<div class="nav-item" onclick="showPage('tianyu')">
+<span class="nav-icon">🏘️</span>
+<span class="nav-text">天屿花城</span>
+<div class="nav-sub">资产看板 v3.0 · 40.26亿</div>
+</div>
+<div class="nav-item" onclick="showPage('chengben')">
+<span class="nav-icon">💰</span>
+<span class="nav-text">成本数据</span>
+<div class="nav-sub">成本看板 · 20.86亿</div>
+</div>
+
+<div style="padding: 0.5rem 1rem; font-size: 0.7rem; color: #94a3b8; border-bottom: 1px solid #334155; margin-top: 0.5rem;">📋 部门工作</div>
+<div class="nav-item" onclick="showPage('gongcheng')">
+<span class="nav-icon">🔧</span>
+<span class="nav-text">工程部</span>
+</div>
+<div class="nav-item" onclick="showPage('wuye')">
+<span class="nav-icon">🛠️</span>
+<span class="nav-text">物业公司</span>
+</div>
+<div class="nav-item" onclick="showPage('fawu')">
+<span class="nav-icon">⚖️</span>
+<span class="nav-text">法务部</span>
+</div>
+<div class="nav-item" onclick="showPage('chengbenbumen')">
+<span class="nav-icon">📊</span>
+<span class="nav-text">成本部</span>
+</div>
+<div class="nav-item" onclick="showPage('caiwu')">
+<span class="nav-icon">💰</span>
+<span class="nav-text">财务部</span>
+</div>
+</div>
+
+<!-- 遮罩 -->
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<!-- 主内容 -->
+<div class="main">
+<div class="header">
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
+<div>
+<div class="header-title">禹川集团综合看板</div>
+<div class="header-date">数据日期：2026-03-07</div>
+</div>
+<div style="width: 40px;"></div>
+</div>
+
+<div class="content">
+
+<!-- 首页 -->
+<div class="page active" id="page-home">
+<div class="card">
+<div class="card-title">📊 集团资产总览</div>
+<div class="stat-grid">
+<div class="stat-item stat-blue">
+<div class="stat-label">总货值</div>
+<div class="stat-value">53.0<span class="stat-unit">亿</span></div>
+</div>
+<div class="stat-item stat-green">
+<div class="stat-label">已售金额</div>
+<div class="stat-value">19.8<span class="stat-unit">亿</span></div>
+</div>
+<div class="stat-item stat-orange">
+<div class="stat-label">未售金额</div>
+<div class="stat-value">33.2<span class="stat-unit">亿</span></div>
+</div>
+<div class="stat-item stat-purple">
+<div class="stat-label">去化率</div>
+<div class="stat-value">37.4<span class="stat-unit">%</span></div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">🏢 财富中心 · 12.74亿</div>
+<div class="project-body">
+<div class="project-item">
+<div class="project-item-label">已售套数</div>
+<div class="project-item-value text-green">567套</div>
+</div>
+<div class="project-item">
+<div class="project-item-label">已售金额</div>
+<div class="project-item-value">5.0亿</div>
+</div>
+<div class="project-item">
+<div class="project-item-label">去化率</div>
+<div class="project-item-value text-green">39.2%</div>
+</div>
+<div class="project-item">
+<div class="project-item-label">未售套数</div>
+<div class="project-item-value text-orange">530套</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">🏘️ 天屿花城 · 40.26亿</div>
+<div class="project-body">
+<div class="project-item">
+<div class="project-item-label">已售套数</div>
+<div class="project-item-value text-green">1256套</div>
+</div>
+<div class="project-item">
+<div class="project-item-label">已售金额</div>
+<div class="project-item-value">14.83亿</div>
+</div>
+<div class="project-item">
+<div class="project-item-label">去化率</div>
+<div class="project-item-value text-green">37%</div>
+</div>
+<div class="project-item">
+<div class="project-item-label">未售套数</div>
+<div class="project-item-value text-orange">1434套</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">⚠️ 风险预警</div>
+<div style="background: #fee2e2; border-left: 4px solid #dc2626; padding: 0.75rem; border-radius: 0.375rem; margin-bottom: 0.5rem;">
+<div style="font-weight: 600; color: #991b1b; font-size: 0.875rem;">🔴 牡丹岛合院(住宅)</div>
+<div style="font-size: 0.75rem; color: #b91c1c; margin-top: 0.25rem;">去化率0.5%，199套积压</div>
+</div>
+<div style="background: #fee2e2; border-left: 4px solid #dc2626; padding: 0.75rem; border-radius: 0.375rem; margin-bottom: 0.5rem;">
+<div style="font-weight: 600; color: #991b1b; font-size: 0.875rem;">🔴 牡丹岛合院(商业)</div>
+<div style="font-size: 0.75rem; color: #b91c1c; margin-top: 0.25rem;">去化率0%，完全滞销</div>
+</div>
+<div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 0.75rem; border-radius: 0.375rem;">
+<div style="font-weight: 600; color: #92400e; font-size: 0.875rem;">🟡 财富中心3#公寓</div>
+<div style="font-size: 0.75rem; color: #b45309; margin-top: 0.25rem;">去化率10.6%，需关注</div>
+</div>
+</div>
+</div>
+
+<!-- 财富中心详情 -->
+<div class="page" id="page-caifu">
+<div class="card">
+<div class="card-title">🏢 财富中心资产看板</div>
+<div style="font-size: 0.75rem; color: #64748b; margin-bottom: 0.75rem;">数据来源：2026.3.6销售台账 | 分楼栋</div>
+
+<div class="stat-grid">
+<div class="stat-item" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+<div class="stat-label">总货值</div>
+<div class="stat-value">12.74<span class="stat-unit">亿</span></div>
+</div>
+<div class="stat-item" style="background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);">
+<div class="stat-label">已售</div>
+<div class="stat-value">567<span class="stat-unit">套</span></div>
+</div>
+<div class="stat-item" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+<div class="stat-label">未售</div>
+<div class="stat-value">530<span class="stat-unit">套</span></div>
+</div>
+<div class="stat-item" style="background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">
+<div class="stat-label">去化率</div>
+<div class="stat-value">39.2<span class="stat-unit">%</span></div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">📊 分楼栋数据</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>业态</th>
+<th>总套</th>
+<th>已售</th>
+<th>去化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1#写字楼</td>
+<td>227</td>
+<td class="text-green">123</td>
+<td><span class="badge badge-orange">50.9%</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">2#公寓</td>
+<td>565</td>
+<td class="text-green">398</td>
+<td><span class="badge badge-green">63.7%</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">3#公寓</td>
+<td>360</td>
+<td class="text-green">43</td>
+<td><span class="badge badge-red">10.6%</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">底商</td>
+<td>41</td>
+<td class="text-green">22</td>
+<td><span class="badge badge-orange">30.8%</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- 天屿花城详情 -->
+<div class="page" id="page-tianyu">
+<div class="card">
+<div class="card-title">🏘️ 天屿花城资产看板</div>
+<div style="font-size: 0.75rem; color: #64748b; margin-bottom: 0.75rem;">数据来源：2026.3.6销售台账 | 分岛屿</div>
+
+<div class="stat-grid">
+<div class="stat-item" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+<div class="stat-label">总货值</div>
+<div class="stat-value">40.26<span class="stat-unit">亿</span></div>
+</div>
+<div class="stat-item" style="background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);">
+<div class="stat-label">已售</div>
+<div class="stat-value">1256<span class="stat-unit">套</span></div>
+</div>
+<div class="stat-item" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+<div class="stat-label">未售</div>
+<div class="stat-value">1434<span class="stat-unit">套</span></div>
+</div>
+<div class="stat-item" style="background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">
+<div class="stat-label">去化率</div>
+<div class="stat-value">37<span class="stat-unit">%</span></div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">📊 分岛屿数据</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>区域/业态</th>
+<th>总套</th>
+<th>已售</th>
+<th>去化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">牡丹岛高层</td>
+<td>866</td>
+<td class="text-green">442</td>
+<td><span class="badge badge-green">48%</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">牡丹岛合院</td>
+<td>202</td>
+<td class="text-green">3</td>
+<td><span class="badge badge-red">0.5%</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">桃花岛双拼</td>
+<td>144</td>
+<td class="text-green">139</td>
+<td><span class="badge badge-green">94.7%</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">紫薇岛底商</td>
+<td>63</td>
+<td class="text-green">63</td>
+<td><span class="badge badge-green">100%</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- 成本数据 -->
+<div class="page" id="page-chengben">
+<div style="padding: 2rem 1rem; text-align: center;">
+<div style="font-size: 3rem; margin-bottom: 1rem;">💰</div>
+<div style="font-size: 1rem; font-weight: 600; color: #1e293b; margin-bottom: 0.5rem;">成本数据看板</div>
+<div style="font-size: 0.875rem; color: #64748b; margin-bottom: 1.5rem;">请在浏览器中打开查看完整版</div>
+<a href="./禹川成本看板_手机优化版.html" style="display: inline-block; background: #3b82f6; color: #fff; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: 500;">打开成本看板 →</a>
+</div>
+</div>
+
+<!-- 部门工作（占位） -->
+<div class="page" id="page-gongcheng"><div class="card"><div class="card-title">🔧 工程部工作计划</div><p style="color: #64748b; font-size: 0.875rem;">部门看板内容请从侧边栏选择...</p></div></div>
+<div class="page" id="page-wuye"><div class="card"><div class="card-title">🛠️ 物业公司工作计划</div><p style="color: #64748b; font-size: 0.875rem;">部门看板内容请从侧边栏选择...</p></div></div>
+<div class="page" id="page-fawu"><div class="card"><div class="card-title">⚖️ 法务部工作计划</div><p style="color: #64748b; font-size: 0.875rem;">部门看板内容请从侧边栏选择...</p></div></div>
+<div class="page" id="page-chengbenbumen"><div class="card"><div class="card-title">📊 成本部工作计划</div><p style="color: #64748b; font-size: 0.875rem;">部门看板内容请从侧边栏选择...</p></div></div>
+<div class="page" id="page-caiwu"><div class="card"><div class="card-title">💰 财务部工作安排</div><p style="color: #64748b; font-size: 0.875rem;">部门看板内容请从侧边栏选择...</p></div></div>
+
+<footer>禹川集团综合看板 · 茉莉AI助手</footer>
+
+</div>
+</div>
+
+<script>
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('show');
+}
+
+function showPage(pageId) {
+    // 隐藏所有页面
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+    
+    // 显示目标页面
+    document.getElementById('page-' + pageId).classList.add('active');
+    
+    // 更新导航激活状态
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    event.currentTarget.classList.add('active');
+    
+    // 关闭侧边栏
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('overlay').classList.remove('show');
+}
+</script>
+
+</body>
+</html>
