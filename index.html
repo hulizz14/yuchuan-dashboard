@@ -7,139 +7,224 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-html { font-size: 14px; }
-@media (max-width: 360px) { html { font-size: 12px; } }
-body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; }
-.nav-item { transition: all 0.3s; }
+
+/* 基础字体设置 - 使用相对单位 */
+html { 
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* 响应式字体缩放 */
+@media (max-width: 414px) { 
+  html { font-size: 14px; } 
+}
+@media (max-width: 375px) { 
+  html { font-size: 13px; } 
+}
+@media (max-width: 320px) { 
+  html { font-size: 12px; } 
+}
+@media (min-width: 768px) { 
+  html { font-size: 15px; } 
+}
+@media (min-width: 1024px) { 
+  html { font-size: 16px; } 
+}
+
+body { 
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 导航项样式 */
+.nav-item { 
+  transition: all 0.3s; 
+  min-height: 44px; /* 确保触摸目标至少44px */
+}
 .nav-item:hover { background: rgba(255,255,255,0.1); }
 .nav-item.active { background: rgba(255,255,255,0.2); border-left: 4px solid #60a5fa; }
+
+/* 页面内容切换 */
 .page-content { display: none; }
 .page-content.active { display: block; animation: fadeIn 0.4s ease; }
-@keyframes fadeIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
-.iframe-container { width: 100%; height: calc(100vh - 80px); border: none; }
+@keyframes fadeIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+
+/* iframe 响应式高度 */
+.iframe-container { 
+  width: 100%; 
+  border: none; 
+  min-height: 70vh;
+}
+@media (min-height: 700px) {
+  .iframe-container { height: calc(100vh - 70px); }
+}
+@media (max-height: 699px) {
+  .iframe-container { height: calc(100vh - 60px); min-height: 500px; }
+}
+
+/* 汉堡菜单按钮 */
 .menu-toggle { display: none; }
 @media (max-width: 768px) {
-  .sidebar { position: fixed; left: -280px; top: 0; height: 100vh; z-index: 50; transition: left 0.3s; }
-  .sidebar.open { left: 0; }
-  .menu-toggle { display: block; }
+  .menu-toggle { display: flex; }
 }
-/* 字体适配 */
-.text-responsive { font-size: clamp(0.875rem, 2.5vw, 1rem); }
-.text-responsive-lg { font-size: clamp(1rem, 3vw, 1.25rem); }
-.text-responsive-xl { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+
+/* 侧边栏响应式 */
+.sidebar { 
+  position: fixed; 
+  left: -280px; 
+  top: 0; 
+  height: 100vh; 
+  z-index: 50; 
+  transition: left 0.3s ease; 
+  -webkit-overflow-scrolling: touch;
+}
+.sidebar.open { left: 0; }
+@media (min-width: 769px) {
+  .sidebar { 
+    position: relative; 
+    left: 0; 
+  }
+}
+
+/* 侧边栏遮罩 */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 40;
+}
+.sidebar-overlay.show { display: block; }
+
+/* 确保内容不被遮挡 */
+main {
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+/* 触摸友好的间距 */
+.touch-padding {
+  padding: 0.75rem;
+}
+@media (max-width: 640px) {
+  .touch-padding {
+    padding: 0.5rem;
+  }
+}
 </style>
 </head>
 <body class="bg-slate-100">
 
 <!-- 顶部标题栏 -->
-<header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-4 shadow-lg flex items-center justify-between">
-<div class="flex items-center gap-4">
-<button class="menu-toggle p-2 rounded-lg hover:bg-white/10" onclick="toggleSidebar()">
+<header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-3 md:p-4 shadow-lg flex items-center justify-between sticky top-0 z-30">
+<div class="flex items-center gap-2 md:gap-4">
+<button class="menu-toggle p-2 md:p-3 rounded-lg hover:bg-white/10 items-center justify-center min-w-[44px] min-h-[44px]" onclick="toggleSidebar()" aria-label="打开菜单">
 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
 </button>
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-2xl">🏢</div>
-<div>
-<h1 class="text-xl font-bold">禹川集团综合看板</h1>
-<p class="text-sm text-blue-200">资产监控 + 部门工作计划</p>
+<div class="flex items-center gap-2 md:gap-3">
+<div class="w-8 h-8 md:w-10 md:h-10 bg-white/20 rounded-lg flex items-center justify-center text-xl md:text-2xl">🏢</div>
+<div class="min-w-0">
+<h1 class="text-base md:text-xl font-bold truncate">禹川集团综合看板</h1>
+<p class="text-xs md:text-sm text-blue-200 hidden sm:block truncate">资产监控 + 部门工作计划</p>
 </div>
 </div>
 </div>
-<div class="flex items-center gap-4">
-<span class="text-sm text-blue-200">数据日期：2026-03-12</span>
-<div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">📊</div>
+<div class="flex items-center gap-2 md:gap-4">
+<span class="text-xs md:text-sm text-blue-200 hidden xs:inline">2026-03-14</span>
+<div class="w-7 h-7 md:w-8 md:h-8 bg-white/20 rounded-full flex items-center justify-center text-sm md:text-base">📊</div>
 </div>
 </header>
 
 <div class="flex">
+<!-- 侧边栏遮罩 -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
 <!-- 侧边栏导航 -->
-<nav class="sidebar w-72 bg-slate-800 text-white min-h-screen overflow-y-auto" id="sidebar">
-<div class="p-4">
-<div class="text-xs text-slate-400 uppercase tracking-wider mb-2">📈 资产看板</div>
+<nav class="sidebar w-72 bg-slate-800 text-white h-screen overflow-y-auto" id="sidebar">
+<div class="p-4 pt-16 md:pt-4">
+<div class="text-xs text-slate-400 uppercase tracking-wider mb-2 px-2">📈 资产看板</div>
 <div class="space-y-1 mb-6">
-<button class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3 active" onclick="showPage('caifu')">
+<button class="nav-item w-full text-left px-3 py-3 rounded-lg flex items-center gap-3 active text-sm md:text-base" onclick="showPage('caifu')">
 <span class="text-xl">🏢</span>
-<div>
-<div class="font-medium">财富中心</div>
-<div class="text-xs text-slate-400">资产看板 v5.1</div>
+<div class="min-w-0 flex-1">
+<div class="font-medium truncate">财富中心</div>
+<div class="text-xs text-slate-400 truncate">12.79亿 | 去化51.6%</div>
 </div>
 </button>
-<button class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('tianyu')">
+<button class="nav-item w-full text-left px-3 py-3 rounded-lg flex items-center gap-3 text-sm md:text-base" onclick="showPage('tianyu')">
 <span class="text-xl">🏘️</span>
-<div>
-<div class="font-medium">天屿花城</div>
-<div class="text-xs text-slate-400">资产看板 v3.7</div>
+<div class="min-w-0 flex-1">
+<div class="font-medium truncate">天屿花城</div>
+<div class="text-xs text-slate-400 truncate">40.66亿 | 去化77.2%</div>
 </div>
 </button>
 </div>
 
-<div class="text-xs text-slate-400 uppercase tracking-wider mb-2">💰 负债看板</div>
+<div class="text-xs text-slate-400 uppercase tracking-wider mb-2 px-2">💰 负债看板</div>
 <div class="space-y-1 mb-6">
-<button class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('fuzhai')">
+<button class="nav-item w-full text-left px-3 py-3 rounded-lg flex items-center gap-3 text-sm md:text-base" onclick="showPage('fuzhai')">
 <span class="text-xl">💳</span>
-<div>
-<div class="font-medium">成本负债数据</div>
-<div class="text-xs text-slate-400">应付·已付·待付·发票</div>
+<div class="min-w-0 flex-1">
+<div class="font-medium truncate">成本负债数据</div>
+<div class="text-xs text-slate-400 truncate">应付10.88亿 | 待付1.02亿</div>
 </div>
 </button>
 </div>
 
-<div class="text-xs text-slate-400 uppercase tracking-wider mb-2">📋 部门工作计划</div>
+<div class="text-xs text-slate-400 uppercase tracking-wider mb-2 px-2">📋 部门工作</div>
 <div class="space-y-1">
-<button class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('gongcheng')">
-<span class="text-xl">🔧</span>
-<div>
-<div class="font-medium">工程部</div>
-<div class="text-xs text-slate-400">2026年工作计划</div>
-</div>
-</button>
-<button class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('wuye')">
+<button class="nav-item w-full text-left px-3 py-3 rounded-lg flex items-center gap-3 text-sm md:text-base" onclick="showPage('wuye')">
 <span class="text-xl">🛠️</span>
-<div>
-<div class="font-medium">物业公司</div>
-<div class="text-xs text-slate-400">三公司对比</div>
+<div class="min-w-0 flex-1">
+<div class="font-medium truncate">物业公司</div>
+<div class="text-xs text-slate-400 truncate">1-2月实际 | 亏损7.23万</div>
 </div>
 </button>
-<button class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('fawu')">
-<span class="text-xl">⚖️</span>
-<div>
-<div class="font-medium">法务部</div>
-<div class="text-xs text-slate-400">法律事务</div>
+<button class="nav-item w-full text-left px-3 py-3 rounded-lg flex items-center gap-3 text-sm md:text-base" onclick="showPage('gongcheng')">
+<span class="text-xl">🔧</span>
+<div class="min-w-0 flex-1">
+<div class="font-medium truncate">工程部</div>
+<div class="text-xs text-slate-400 truncate">2026年工作计划</div>
 </div>
 </button>
-<button class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('yingxiao')">
-<span class="text-xl">📈</span>
-<div>
-<div class="font-medium">营销部</div>
-<div class="text-xs text-slate-400">2026年工作计划</div>
-</div>
-</button>
-<button class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('chengben')">
+<button class="nav-item w-full text-left px-3 py-3 rounded-lg flex items-center gap-3 text-sm md:text-base" onclick="showPage('chengben')">
 <span class="text-xl">📊</span>
-<div>
-<div class="font-medium">成本部</div>
-<div class="text-xs text-slate-400">结算计划</div>
+<div class="min-w-0 flex-1">
+<div class="font-medium truncate">成本部</div>
+<div class="text-xs text-slate-400 truncate">结算计划</div>
 </div>
 </button>
-<button class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('kaifa')">
+<button class="nav-item w-full text-left px-3 py-3 rounded-lg flex items-center gap-3 text-sm md:text-base" onclick="showPage('fawu')">
+<span class="text-xl">⚖️</span>
+<div class="min-w-0 flex-1">
+<div class="font-medium truncate">法务部</div>
+<div class="text-xs text-slate-400 truncate">法律事务</div>
+</div>
+</button>
+<button class="nav-item w-full text-left px-3 py-3 rounded-lg flex items-center gap-3 text-sm md:text-base" onclick="showPage('kaifa')">
 <span class="text-xl">🏗️</span>
-<div>
-<div class="font-medium">开发部</div>
-<div class="text-xs text-slate-400">项目开发</div>
+<div class="min-w-0 flex-1">
+<div class="font-medium truncate">开发部</div>
+<div class="text-xs text-slate-400 truncate">项目开发</div>
 </div>
 </button>
-<button class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('caiwu')">
+<button class="nav-item w-full text-left px-3 py-3 rounded-lg flex items-center gap-3 text-sm md:text-base" onclick="showPage('caiwu')">
 <span class="text-xl">💰</span>
-<div>
-<div class="font-medium">财务部</div>
-<div class="text-xs text-slate-400">工作安排</div>
+<div class="min-w-0 flex-1">
+<div class="font-medium truncate">财务部</div>
+<div class="text-xs text-slate-400 truncate">工作安排</div>
 </div>
 </button>
-<button class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('renli')">
+<button class="nav-item w-full text-left px-3 py-3 rounded-lg flex items-center gap-3 text-sm md:text-base" onclick="showPage('renli')">
 <span class="text-xl">👥</span>
-<div>
-<div class="font-medium">人力行政部</div>
-<div class="text-xs text-slate-400">人事行政</div>
+<div class="min-w-0 flex-1">
+<div class="font-medium truncate">人力行政</div>
+<div class="text-xs text-slate-400 truncate">人事行政</div>
 </div>
 </button>
 </div>
@@ -147,35 +232,35 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; }
 </nav>
 
 <!-- 主内容区 -->
-<main class="flex-1 p-6">
+<main class="flex-1 touch-padding">
 
 <!-- 欢迎页 -->
 <div class="page-content active" id="welcome">
-<div class="max-w-4xl mx-auto text-center py-20">
-<div class="text-6xl mb-6">🏢</div>
-<h2 class="text-3xl font-bold text-slate-800 mb-4">欢迎使用禹川集团综合看板</h2>
-<p class="text-slate-500 mb-8">请点击左侧菜单查看资产看板或部门工作计划</p>
+<div class="max-w-4xl mx-auto text-center py-10 md:py-20 px-4">
+<div class="text-5xl md:text-6xl mb-4 md:mb-6">🏢</div>
+<h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-3 md:mb-4">欢迎使用禹川集团综合看板</h2>
+<p class="text-slate-500 mb-6 md:mb-8 text-sm md:text-base px-2">请点击左侧菜单查看资产看板、负债数据或部门工作计划</p>
 
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<div class="bg-white p-6 rounded-xl shadow-sm">
-<div class="text-3xl mb-2">🏢</div>
-<div class="text-sm text-slate-500">资产看板</div>
-<div class="text-xl font-bold text-blue-600">2个</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+<div class="bg-white p-4 md:p-6 rounded-xl shadow-sm">
+<div class="text-2xl md:text-3xl mb-1 md:mb-2">🏢</div>
+<div class="text-xs md:text-sm text-slate-500">资产看板</div>
+<div class="text-lg md:text-xl font-bold text-blue-600">2个</div>
 </div>
-<div class="bg-white p-6 rounded-xl shadow-sm">
-<div class="text-3xl mb-2">📋</div>
-<div class="text-sm text-slate-500">部门看板</div>
-<div class="text-xl font-bold text-green-600">7个</div>
+<div class="bg-white p-4 md:p-6 rounded-xl shadow-sm">
+<div class="text-2xl md:text-3xl mb-1 md:mb-2">💰</div>
+<div class="text-xs md:text-sm text-slate-500">负债看板</div>
+<div class="text-lg md:text-xl font-bold text-red-600">1个</div>
 </div>
-<div class="bg-white p-6 rounded-xl shadow-sm">
-<div class="text-3xl mb-2">📅</div>
-<div class="text-sm text-slate-500">数据日期</div>
-<div class="text-xl font-bold text-orange-600">3月12日</div>
+<div class="bg-white p-4 md:p-6 rounded-xl shadow-sm">
+<div class="text-2xl md:text-3xl mb-1 md:mb-2">📋</div>
+<div class="text-xs md:text-sm text-slate-500">部门看板</div>
+<div class="text-lg md:text-xl font-bold text-green-600">7个</div>
 </div>
-<div class="bg-white p-6 rounded-xl shadow-sm">
-<div class="text-3xl mb-2">✅</div>
-<div class="text-sm text-slate-500">状态</div>
-<div class="text-xl font-bold text-purple-600">已确认</div>
+<div class="bg-white p-4 md:p-6 rounded-xl shadow-sm">
+<div class="text-2xl md:text-3xl mb-1 md:mb-2">📅</div>
+<div class="text-xs md:text-sm text-slate-500">数据日期</div>
+<div class="text-lg md:text-xl font-bold text-orange-600">3月14日</div>
 </div>
 </div>
 </div>
@@ -183,167 +268,167 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; }
 
 <!-- 财富中心 -->
 <div class="page-content" id="page-caifu">
-<div class="bg-white rounded-xl shadow-sm p-4 mb-4 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<span class="text-2xl">🏢</span>
-<div>
-<h2 class="text-xl font-bold text-slate-800">财富中心资产看板</h2>
-<p class="text-sm text-slate-500">v5.1 分楼栋版 | 数据日期：2026-03-12</p>
+<div class="bg-white rounded-xl shadow-sm p-3 md:p-4 mb-3 md:mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2 md:gap-3">
+<span class="text-xl md:text-2xl">🏢</span>
+<div class="min-w-0">
+<h2 class="text-base md:text-xl font-bold text-slate-800 truncate">财富中心资产看板</h2>
+<p class="text-xs md:text-sm text-slate-500 truncate">v5.1 分楼栋版 | 2026-03-12</p>
 </div>
 </div>
-<a href="财富中心看板_v5_分楼栋版_20260312.html" target="_blank" class="text-blue-600 hover:underline text-sm">在新窗口打开 →</a>
+<a href="财富中心看板_v5_分楼栋版_20260312.html" target="_blank" class="text-blue-600 hover:underline text-xs md:text-sm whitespace-nowrap">新窗口打开 →</a>
 </div>
-<iframe class="iframe-container rounded-xl" src="财富中心看板_v5_分楼栋版_20260312.html"></iframe>
+<iframe class="iframe-container rounded-xl" src="财富中心看板_v5_分楼栋版_20260312.html" title="财富中心资产看板"></iframe>
 </div>
 
 <!-- 天屿花城 -->
 <div class="page-content" id="page-tianyu">
-<div class="bg-white rounded-xl shadow-sm p-4 mb-4 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<span class="text-2xl">🏘️</span>
-<div>
-<h2 class="text-xl font-bold text-slate-800">天屿花城资产看板</h2>
-<p class="text-sm text-slate-500">v3.7 全部数据（一期+二期）| 数据日期：2026-03-10</p>
+<div class="bg-white rounded-xl shadow-sm p-3 md:p-4 mb-3 md:mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2 md:gap-3">
+<span class="text-xl md:text-2xl">🏘️</span>
+<div class="min-w-0">
+<h2 class="text-base md:text-xl font-bold text-slate-800 truncate">天屿花城资产看板</h2>
+<p class="text-xs md:text-sm text-slate-500 truncate">v3.7 全部数据（一期+二期）| 2026-03-10</p>
 </div>
 </div>
-<a href="tianyuhuacheng_v3_20260310.html" target="_blank" class="text-blue-600 hover:underline text-sm">在新窗口打开 →</a>
+<a href="tianyuhuacheng_v3_20260310.html" target="_blank" class="text-blue-600 hover:underline text-xs md:text-sm whitespace-nowrap">新窗口打开 →</a>
 </div>
-<iframe class="iframe-container rounded-xl" src="tianyuhuacheng_v3_20260310.html"></iframe>
+<iframe class="iframe-container rounded-xl" src="tianyuhuacheng_v3_20260310.html" title="天屿花城资产看板"></iframe>
 </div>
 
 <!-- 工程部 -->
 <div class="page-content" id="page-gongcheng">
-<div class="bg-white rounded-xl shadow-sm p-4 mb-4 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<span class="text-2xl">🔧</span>
-<div>
-<h2 class="text-xl font-bold text-slate-800">工程部工作计划</h2>
-<p class="text-sm text-slate-500">2026年 | 确认版</p>
+<div class="bg-white rounded-xl shadow-sm p-3 md:p-4 mb-3 md:mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2 md:gap-3">
+<span class="text-xl md:text-2xl">🔧</span>
+<div class="min-w-0">
+<h2 class="text-base md:text-xl font-bold text-slate-800 truncate">工程部工作计划</h2>
+<p class="text-xs md:text-sm text-slate-500 truncate">2026年 | 确认版</p>
 </div>
 </div>
-<a href="工程部2026年工作计划看板_确认版.html" target="_blank" class="text-blue-600 hover:underline text-sm">在新窗口打开 →</a>
+<a href="工程部2026年工作计划看板_确认版.html" target="_blank" class="text-blue-600 hover:underline text-xs md:text-sm whitespace-nowrap">新窗口打开 →</a>
 </div>
-<iframe class="iframe-container rounded-xl" src="工程部2026年工作计划看板_确认版.html"></iframe>
+<iframe class="iframe-container rounded-xl" src="工程部2026年工作计划看板_确认版.html" title="工程部工作计划"></iframe>
 </div>
 
 <!-- 物业公司 -->
 <div class="page-content" id="page-wuye">
-<div class="bg-white rounded-xl shadow-sm p-4 mb-4 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<span class="text-2xl">🛠️</span>
-<div>
-<h2 class="text-xl font-bold text-slate-800">物业公司工作计划</h2>
-<p class="text-sm text-slate-500">2026年 | 1-2月实际数据已更新 | 数据日期：2026-03-13</p>
+<div class="bg-white rounded-xl shadow-sm p-3 md:p-4 mb-3 md:mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2 md:gap-3">
+<span class="text-xl md:text-2xl">🛠️</span>
+<div class="min-w-0">
+<h2 class="text-base md:text-xl font-bold text-slate-800 truncate">物业公司工作计划</h2>
+<p class="text-xs md:text-sm text-slate-500 truncate">1-2月实际 | 2026-03-13</p>
 </div>
 </div>
-<a href="物业公司看板_1-2月实际_20260313.html" target="_blank" class="text-blue-600 hover:underline text-sm">在新窗口打开 →</a>
+<a href="物业公司看板_1-2月实际_20260313.html" target="_blank" class="text-blue-600 hover:underline text-xs md:text-sm whitespace-nowrap">新窗口打开 →</a>
 </div>
-<iframe class="iframe-container rounded-xl" src="物业公司看板_1-2月实际_20260313.html"></iframe>
+<iframe class="iframe-container rounded-xl" src="物业公司看板_1-2月实际_20260313.html" title="物业公司工作计划"></iframe>
 </div>
 
 <!-- 法务部 -->
 <div class="page-content" id="page-fawu">
-<div class="bg-white rounded-xl shadow-sm p-4 mb-4 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<span class="text-2xl">⚖️</span>
-<div>
-<h2 class="text-xl font-bold text-slate-800">法务部工作计划</h2>
-<p class="text-sm text-slate-500">2026年 | 法律事务</p>
+<div class="bg-white rounded-xl shadow-sm p-3 md:p-4 mb-3 md:mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2 md:gap-3">
+<span class="text-xl md:text-2xl">⚖️</span>
+<div class="min-w-0">
+<h2 class="text-base md:text-xl font-bold text-slate-800 truncate">法务部工作计划</h2>
+<p class="text-xs md:text-sm text-slate-500 truncate">2026年 | 法律事务</p>
 </div>
 </div>
-<a href="法务部2026年工作计划看板_确认版.html" target="_blank" class="text-blue-600 hover:underline text-sm">在新窗口打开 →</a>
+<a href="法务部2026年工作计划看板_确认版.html" target="_blank" class="text-blue-600 hover:underline text-xs md:text-sm whitespace-nowrap">新窗口打开 →</a>
 </div>
-<iframe class="iframe-container rounded-xl" src="法务部2026年工作计划看板_确认版.html"></iframe>
+<iframe class="iframe-container rounded-xl" src="法务部2026年工作计划看板_确认版.html" title="法务部工作计划"></iframe>
 </div>
 
 <!-- 成本部 -->
 <div class="page-content" id="page-chengben">
-<div class="bg-white rounded-xl shadow-sm p-4 mb-4 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<span class="text-2xl">📊</span>
-<div>
-<h2 class="text-xl font-bold text-slate-800">成本部工作计划</h2>
-<p class="text-sm text-slate-500">2026年 | 结算计划</p>
+<div class="bg-white rounded-xl shadow-sm p-3 md:p-4 mb-3 md:mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2 md:gap-3">
+<span class="text-xl md:text-2xl">📊</span>
+<div class="min-w-0">
+<h2 class="text-base md:text-xl font-bold text-slate-800 truncate">成本部工作计划</h2>
+<p class="text-xs md:text-sm text-slate-500 truncate">2026年 | 结算计划</p>
 </div>
 </div>
-<a href="成本部2026年工作计划看板_确认版.html" target="_blank" class="text-blue-600 hover:underline text-sm">在新窗口打开 →</a>
+<a href="成本部2026年工作计划看板_确认版.html" target="_blank" class="text-blue-600 hover:underline text-xs md:text-sm whitespace-nowrap">新窗口打开 →</a>
 </div>
-<iframe class="iframe-container rounded-xl" src="成本部2026年工作计划看板_确认版.html"></iframe>
+<iframe class="iframe-container rounded-xl" src="成本部2026年工作计划看板_确认版.html" title="成本部工作计划"></iframe>
 </div>
 
 <!-- 开发部 -->
 <div class="page-content" id="page-kaifa">
-<div class="bg-white rounded-xl shadow-sm p-4 mb-4 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<span class="text-2xl">🏗️</span>
-<div>
-<h2 class="text-xl font-bold text-slate-800">开发部工作计划</h2>
-<p class="text-sm text-slate-500">2026年 | 项目开发</p>
+<div class="bg-white rounded-xl shadow-sm p-3 md:p-4 mb-3 md:mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2 md:gap-3">
+<span class="text-xl md:text-2xl">🏗️</span>
+<div class="min-w-0">
+<h2 class="text-base md:text-xl font-bold text-slate-800 truncate">开发部工作计划</h2>
+<p class="text-xs md:text-sm text-slate-500 truncate">2026年 | 项目开发</p>
 </div>
 </div>
-<a href="开发部2026年工作计划看板_确认版.html" target="_blank" class="text-blue-600 hover:underline text-sm">在新窗口打开 →</a>
+<a href="开发部2026年工作计划看板_确认版.html" target="_blank" class="text-blue-600 hover:underline text-xs md:text-sm whitespace-nowrap">新窗口打开 →</a>
 </div>
-<iframe class="iframe-container rounded-xl" src="开发部2026年工作计划看板_确认版.html"></iframe>
+<iframe class="iframe-container rounded-xl" src="开发部2026年工作计划看板_确认版.html" title="开发部工作计划"></iframe>
 </div>
 
 <!-- 财务部 -->
 <div class="page-content" id="page-caiwu">
-<div class="bg-white rounded-xl shadow-sm p-4 mb-4 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<span class="text-2xl">💰</span>
-<div>
-<h2 class="text-xl font-bold text-slate-800">财务部工作安排</h2>
-<p class="text-sm text-slate-500">2026年 | 财务工作</p>
+<div class="bg-white rounded-xl shadow-sm p-3 md:p-4 mb-3 md:mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2 md:gap-3">
+<span class="text-xl md:text-2xl">💰</span>
+<div class="min-w-0">
+<h2 class="text-base md:text-xl font-bold text-slate-800 truncate">财务部工作安排</h2>
+<p class="text-xs md:text-sm text-slate-500 truncate">2026年 | 财务工作</p>
 </div>
 </div>
-<a href="财务部2026年工作安排看板_确认版.html" target="_blank" class="text-blue-600 hover:underline text-sm">在新窗口打开 →</a>
+<a href="财务部2026年工作安排看板_确认版.html" target="_blank" class="text-blue-600 hover:underline text-xs md:text-sm whitespace-nowrap">新窗口打开 →</a>
 </div>
-<iframe class="iframe-container rounded-xl" src="财务部2026年工作安排看板_确认版.html"></iframe>
+<iframe class="iframe-container rounded-xl" src="财务部2026年工作安排看板_确认版.html" title="财务部工作安排"></iframe>
 </div>
 
 <!-- 营销部 -->
 <div class="page-content" id="page-yingxiao">
-<div class="bg-white rounded-xl shadow-sm p-4 mb-4 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<span class="text-2xl">📈</span>
-<div>
-<h2 class="text-xl font-bold text-slate-800">营销部工作计划</h2>
-<p class="text-sm text-slate-500">2026年 | 营销条线工作思考与实施</p>
+<div class="bg-white rounded-xl shadow-sm p-3 md:p-4 mb-3 md:mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2 md:gap-3">
+<span class="text-xl md:text-2xl">📈</span>
+<div class="min-w-0">
+<h2 class="text-base md:text-xl font-bold text-slate-800 truncate">营销部工作计划</h2>
+<p class="text-xs md:text-sm text-slate-500 truncate">2026年 | 营销条线</p>
 </div>
 </div>
-<a href="营销部2026年工作计划看板.html" target="_blank" class="text-blue-600 hover:underline text-sm">在新窗口打开 →</a>
+<a href="营销部2026年工作计划看板.html" target="_blank" class="text-blue-600 hover:underline text-xs md:text-sm whitespace-nowrap">新窗口打开 →</a>
 </div>
-<iframe class="iframe-container rounded-xl" src="营销部2026年工作计划看板.html"></iframe>
+<iframe class="iframe-container rounded-xl" src="营销部2026年工作计划看板.html" title="营销部工作计划"></iframe>
 </div>
 
 <!-- 人力行政部 -->
 <div class="page-content" id="page-renli">
-<div class="bg-white rounded-xl shadow-sm p-4 mb-4 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<span class="text-2xl">👥</span>
-<div>
-<h2 class="text-xl font-bold text-slate-800">人力行政部工作计划</h2>
-<p class="text-sm text-slate-500">2026年 | 人事行政</p>
+<div class="bg-white rounded-xl shadow-sm p-3 md:p-4 mb-3 md:mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2 md:gap-3">
+<span class="text-xl md:text-2xl">👥</span>
+<div class="min-w-0">
+<h2 class="text-base md:text-xl font-bold text-slate-800 truncate">人力行政部工作计划</h2>
+<p class="text-xs md:text-sm text-slate-500 truncate">2026年 | 人事行政</p>
 </div>
 </div>
-<a href="人力行政部2026年工作计划看板_确认版.html" target="_blank" class="text-blue-600 hover:underline text-sm">在新窗口打开 →</a>
+<a href="人力行政部2026年工作计划看板_确认版.html" target="_blank" class="text-blue-600 hover:underline text-xs md:text-sm whitespace-nowrap">新窗口打开 →</a>
 </div>
-<iframe class="iframe-container rounded-xl" src="人力行政部2026年工作计划看板_确认版.html"></iframe>
+<iframe class="iframe-container rounded-xl" src="人力行政部2026年工作计划看板_确认版.html" title="人力行政部工作计划"></iframe>
 </div>
 
 <!-- 负债看板 - 成本数据 -->
 <div class="page-content" id="page-fuzhai">
-<div class="bg-white rounded-xl shadow-sm p-4 mb-4 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<span class="text-2xl">💳</span>
-<div>
-<h2 class="text-xl font-bold text-slate-800">成本负债数据看板</h2>
-<p class="text-sm text-slate-500">应付·已付·待付·发票 | 数据日期：2026-03-07</p>
+<div class="bg-white rounded-xl shadow-sm p-3 md:p-4 mb-3 md:mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2 md:gap-3">
+<span class="text-xl md:text-2xl">💳</span>
+<div class="min-w-0">
+<h2 class="text-base md:text-xl font-bold text-slate-800 truncate">成本负债数据看板</h2>
+<p class="text-xs md:text-sm text-slate-500 truncate">应付·已付·待付 | 2026-03-07</p>
 </div>
 </div>
-<a href="禹川集团成本数据汇总看板.html" target="_blank" class="text-blue-600 hover:underline text-sm">在新窗口打开 →</a>
+<a href="禹川集团成本数据汇总看板.html" target="_blank" class="text-blue-600 hover:underline text-xs md:text-sm whitespace-nowrap">新窗口打开 →</a>
 </div>
-<iframe class="iframe-container rounded-xl" src="禹川集团成本数据汇总看板.html"></iframe>
+<iframe class="iframe-container rounded-xl" src="禹川集团成本数据汇总看板.html" title="成本负债数据看板"></iframe>
 </div>
 
 </main>
@@ -370,18 +455,41 @@ function showPage(pageId) {
   }
   
   // 移动端关闭侧边栏
-  if (window.innerWidth <= 768) {
-    document.getElementById('sidebar').classList.remove('open');
-  }
+  closeSidebar();
 }
 
 function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('show');
+  
+  // 防止背景滚动
+  if (sidebar.classList.contains('open')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+}
+
+function closeSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  sidebar.classList.remove('open');
+  overlay.classList.remove('show');
+  document.body.style.overflow = '';
 }
 
 // 默认显示欢迎页，但标记财富中心为当前选中
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('.nav-item').classList.add('active');
+  
+  // 检测屏幕大小变化
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      closeSidebar();
+    }
+  });
 });
 </script>
 
