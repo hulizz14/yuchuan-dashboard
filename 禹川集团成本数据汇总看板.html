@@ -50,31 +50,31 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 </div>
 
 <!-- 集团汇总KPI -->
-<div class="grid grid-cols-5 gap-4 mt-6">
-<div class="card stat-card p-4 text-white">
-<div class="text-xs opacity-90">集团应付合计</div>
-<div class="text-2xl font-bold mt-1">10.88<span class="text-sm ml-1">亿</span></div>
-<div class="text-xs mt-1 opacity-80">4个项目</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 mt-6">
+<div class="card stat-card p-3 md:p-4 text-white flex flex-col justify-between min-h-[80px] md:min-h-[100px]">
+<div class="text-[10px] md:text-xs opacity-90">集团应付合计</div>
+<div class="text-lg md:text-2xl font-bold mt-1 truncate">10.88<span class="text-xs md:text-sm ml-1">亿</span></div>
+<div class="text-[10px] md:text-xs mt-1 opacity-80">4个项目</div>
 </div>
-<div class="card stat-green p-4 text-white">
-<div class="text-xs opacity-90">已付款合计</div>
-<div class="text-2xl font-bold mt-1">9.86<span class="text-sm ml-1">亿</span></div>
-<div class="text-xs mt-1 opacity-80">90.6%已付</div>
+<div class="card stat-green p-3 md:p-4 text-white flex flex-col justify-between min-h-[80px] md:min-h-[100px]">
+<div class="text-[10px] md:text-xs opacity-90">已付款合计</div>
+<div class="text-lg md:text-2xl font-bold mt-1 truncate">9.86<span class="text-xs md:text-sm ml-1">亿</span></div>
+<div class="text-[10px] md:text-xs mt-1 opacity-80">90.6%已付</div>
 </div>
-<div class="card stat-red p-4 text-white">
-<div class="text-xs opacity-90">待付合计</div>
-<div class="text-2xl font-bold mt-1">1.02<span class="text-sm ml-1">亿</span></div>
-<div class="text-xs mt-1 opacity-80">9.4%待付⚠️</div>
+<div class="card stat-red p-3 md:p-4 text-white flex flex-col justify-between min-h-[80px] md:min-h-[100px]">
+<div class="text-[10px] md:text-xs opacity-90">待付合计</div>
+<div class="text-lg md:text-2xl font-bold mt-1 truncate">1.02<span class="text-xs md:text-sm ml-1">亿</span></div>
+<div class="text-[10px] md:text-xs mt-1 opacity-80">9.4%待付⚠️</div>
 </div>
-<div class="card stat-blue p-4 text-white">
-<div class="text-xs opacity-90">已取得发票</div>
-<div class="text-2xl font-bold mt-1">10.0<span class="text-sm ml-1">亿</span></div>
-<div class="text-xs mt-1 opacity-80">92.0%</div>
+<div class="card stat-blue p-3 md:p-4 text-white flex flex-col justify-between min-h-[80px] md:min-h-[100px]">
+<div class="text-[10px] md:text-xs opacity-90">已取得发票</div>
+<div class="text-lg md:text-2xl font-bold mt-1 truncate">10.0<span class="text-xs md:text-sm ml-1">亿</span></div>
+<div class="text-[10px] md:text-xs mt-1 opacity-80">92.0%</div>
 </div>
-<div class="card stat-orange p-4 text-white">
-<div class="text-xs opacity-90">待收发票</div>
-<div class="text-2xl font-bold mt-1">8,743<span class="text-sm ml-1">万</span></div>
-<div class="text-xs mt-1 opacity-80">8.0%</div>
+<div class="card stat-orange p-3 md:p-4 text-white flex flex-col justify-between min-h-[80px] md:min-h-[100px]">
+<div class="text-[10px] md:text-xs opacity-90">待收发票</div>
+<div class="text-lg md:text-2xl font-bold mt-1 truncate">8,743<span class="text-xs md:text-sm ml-1">万</span></div>
+<div class="text-[10px] md:text-xs mt-1 opacity-80">8.0%</div>
 </div>
 </div>
 </header>
@@ -95,21 +95,21 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 </div>
 
 <!-- 应付金额 -->
-<div class="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl p-6 mb-6 border border-indigo-100">
-<div class="flex justify-between items-center">
-<div>
+<div class="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl p-4 md:p-6 mb-6 border border-indigo-100">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center gap-3">
+<div class="min-w-0">
 <div class="text-sm text-indigo-600 font-medium mb-1">应付金额合计</div>
-<div class="text-4xl font-bold text-indigo-700">45,576.72<span class="text-xl ml-1">万</span></div>
+<div class="text-2xl md:text-4xl font-bold text-indigo-700 truncate">45,576.72<span class="text-base md:text-xl ml-1">万</span></div>
 </div>
-<div class="text-right">
+<div class="text-left md:text-right min-w-0">
 <div class="text-sm text-slate-500 mb-1">付款进度</div>
-<div class="text-2xl font-bold text-green-600">91.4%</div>
+<div class="text-xl md:text-2xl font-bold text-green-600">91.4%</div>
 </div>
 </div>
 <div class="mt-4 h-3 bg-indigo-200 rounded-full overflow-hidden">
 <div class="h-full bg-gradient-to-r from-indigo-500 to-green-500 rounded-full" style="width: 91.4%"></div>
 </div>
-<div class="flex justify-between mt-2 text-sm">
+<div class="flex flex-col sm:flex-row sm:justify-between mt-2 text-sm gap-1">
 <span class="text-indigo-600 font-medium">已付 41,662.84万</span>
 <span class="text-red-600 font-medium">待付 3,913.88万</span>
 </div>
@@ -121,65 +121,65 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 <span class="w-2 h-2 bg-green-500 rounded-full"></span>
 <span>已付款分布</span>
 </div>
-<div class="grid grid-cols-4 gap-3">
-<div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 text-center border-2 border-green-200">
-<div class="text-xs text-green-600 mb-1 font-medium">已付款合计</div>
-<div class="text-xl font-bold text-green-700">4.17<span class="text-sm ml-1">亿</span></div>
-<div class="text-xs text-green-500 mt-1">91.4%</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-3 md:p-4 text-center border-2 border-green-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-green-600 mb-1 font-medium">已付款合计</div>
+<div class="text-base md:text-xl font-bold text-green-700 truncate">4.17<span class="text-xs ml-1">亿</span></div>
+<div class="text-[10px] md:text-xs text-green-500 mt-1">91.4%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">工抵付款</div>
-<div class="text-lg font-bold text-blue-600">7,029<span class="text-xs ml-1">万</span></div>
-<div class="text-xs text-slate-400 mt-1">16.9%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">工抵付款</div>
+<div class="text-sm md:text-lg font-bold text-blue-600 truncate">7,029<span class="text-[10px] md:text-xs ml-1">万</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">16.9%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">置换付款</div>
-<div class="text-lg font-bold text-purple-600">172<span class="text-xs ml-1">万</span></div>
-<div class="text-xs text-slate-400 mt-1">0.4%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">置换付款</div>
+<div class="text-sm md:text-lg font-bold text-purple-600 truncate">172<span class="text-[10px] md:text-xs ml-1">万</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">0.4%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">现金付款</div>
-<div class="text-lg font-bold text-green-600">3.45<span class="text-xs ml-1">亿</span></div>
-<div class="text-xs text-slate-400 mt-1">82.7%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">现金付款</div>
+<div class="text-sm md:text-lg font-bold text-green-600 truncate">3.45<span class="text-[10px] md:text-xs ml-1">亿</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">82.7%</div>
 </div>
 </div>
 </div>
 
 <!-- 待付金额明细 -->
-<div class="daifu-section rounded-xl p-5">
-<div class="flex justify-between items-center mb-4">
+<div class="daifu-section rounded-xl p-4 md:p-5">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 gap-2">
 <div class="flex items-center gap-2">
-<span class="text-2xl">⚠️</span>
+<span class="text-xl md:text-2xl">⚠️</span>
 <div>
-<div class="text-lg font-bold text-red-800">待付金额明细</div>
-<div class="text-sm text-red-600">重点关注</div>
+<div class="text-base md:text-lg font-bold text-red-800">待付金额明细</div>
+<div class="text-xs md:text-sm text-red-600">重点关注</div>
 </div>
 </div>
-<div class="text-right bg-white rounded-lg px-4 py-2">
-<div class="text-sm text-red-600">待付合计</div>
-<div class="text-2xl font-bold text-red-700">3,913.88<span class="text-lg ml-1">万</span></div>
+<div class="text-left md:text-right bg-white rounded-lg px-3 py-2 md:px-4 md:py-2">
+<div class="text-xs md:text-sm text-red-600">待付合计</div>
+<div class="text-xl md:text-2xl font-bold text-red-700">3,913.88<span class="text-base md:text-lg ml-1">万</span></div>
 </div>
 </div>
-<div class="grid grid-cols-4 gap-3">
-<div class="bg-white rounded-lg p-3 text-center">
-<div class="text-xs text-slate-500">已签待付</div>
-<div class="text-lg font-bold text-slate-700">1,758.59<span class="text-xs">万</span></div>
-<div class="text-xs text-green-600 mt-1">44.9%</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="bg-white rounded-lg p-2 md:p-3 text-center flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-slate-500">已签待付</div>
+<div class="text-sm md:text-lg font-bold text-slate-700 truncate">1,758.59<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-green-600 mt-1">44.9%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center border-2 border-red-300">
-<div class="text-xs text-red-600 font-medium">● 合同约定工抵未签</div>
-<div class="text-lg font-bold text-red-700">1,241.02<span class="text-xs">万</span></div>
-<div class="text-xs text-red-500 mt-1">31.7%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center border-2 border-red-300 flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-red-600 font-medium">● 合同约定工抵未签</div>
+<div class="text-sm md:text-lg font-bold text-red-700 truncate">1,241.02<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-red-500 mt-1">31.7%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center">
-<div class="text-xs text-slate-500">待签工抵</div>
-<div class="text-lg font-bold text-slate-700">664.17<span class="text-xs">万</span></div>
-<div class="text-xs text-orange-600 mt-1">17.0%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-slate-500">待签工抵</div>
+<div class="text-sm md:text-lg font-bold text-slate-700 truncate">664.17<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-orange-600 mt-1">17.0%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center">
-<div class="text-xs text-slate-500">待付现金</div>
-<div class="text-lg font-bold text-slate-700">250.10<span class="text-xs">万</span></div>
-<div class="text-xs text-blue-600 mt-1">6.4%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-slate-500">待付现金</div>
+<div class="text-sm md:text-lg font-bold text-slate-700 truncate">250.10<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-blue-600 mt-1">6.4%</div>
 </div>
 </div>
 </div>
@@ -246,64 +246,64 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 <span class="w-2 h-2 bg-green-500 rounded-full"></span>
 <span>已付款分布（汇总）</span>
 </div>
-<div class="grid grid-cols-4 gap-3">
-<div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 text-center border-2 border-green-200">
-<div class="text-xs text-green-600 mb-1 font-medium">已付款合计</div>
-<div class="text-xl font-bold text-green-700">5.68<span class="text-sm ml-1">亿</span></div>
-<div class="text-xs text-green-500 mt-1">89.9%</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-3 md:p-4 text-center border-2 border-green-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-green-600 mb-1 font-medium">已付款合计</div>
+<div class="text-base md:text-xl font-bold text-green-700 truncate">5.68<span class="text-xs ml-1">亿</span></div>
+<div class="text-[10px] md:text-xs text-green-500 mt-1">89.9%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">工抵付款</div>
-<div class="text-lg font-bold text-blue-600">1.13<span class="text-xs ml-1">亿</span></div>
-<div class="text-xs text-slate-400 mt-1">19.9%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">工抵付款</div>
+<div class="text-sm md:text-lg font-bold text-blue-600 truncate">1.13<span class="text-[10px] md:text-xs ml-1">亿</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">19.9%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">置换付款</div>
-<div class="text-lg font-bold text-purple-600">185.60<span class="text-xs ml-1">万</span></div>
-<div class="text-xs text-slate-400 mt-1">0.3%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">置换付款</div>
+<div class="text-sm md:text-lg font-bold text-purple-600 truncate">185.60<span class="text-[10px] md:text-xs ml-1">万</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">0.3%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">现金付款</div>
-<div class="text-lg font-bold text-green-600">4.54<span class="text-xs ml-1">亿</span></div>
-<div class="text-xs text-slate-400 mt-1">79.8%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">现金付款</div>
+<div class="text-sm md:text-lg font-bold text-green-600 truncate">4.54<span class="text-[10px] md:text-xs ml-1">亿</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">79.8%</div>
 </div>
 </div>
 </div>
 
-<div class="daifu-section rounded-xl p-5">
-<div class="flex justify-between items-center mb-4">
+<div class="daifu-section rounded-xl p-4 md:p-5">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 gap-2">
 <div class="flex items-center gap-2">
-<span class="text-2xl">⚠️</span>
+<span class="text-xl md:text-2xl">⚠️</span>
 <div>
-<div class="text-lg font-bold text-red-800">待付金额明细（汇总）</div>
-<div class="text-sm text-red-600">重点关注</div>
+<div class="text-base md:text-lg font-bold text-red-800">待付金额明细（汇总）</div>
+<div class="text-xs md:text-sm text-red-600">重点关注</div>
 </div>
 </div>
-<div class="text-right bg-white rounded-lg px-4 py-2">
-<div class="text-sm text-red-600">待付合计</div>
-<div class="text-2xl font-bold text-red-700">6,349.09<span class="text-lg ml-1">万</span></div>
+<div class="text-left md:text-right bg-white rounded-lg px-3 py-2 md:px-4 md:py-2">
+<div class="text-xs md:text-sm text-red-600">待付合计</div>
+<div class="text-xl md:text-2xl font-bold text-red-700">6,349.09<span class="text-base md:text-lg ml-1">万</span></div>
 </div>
 </div>
-<div class="grid grid-cols-4 gap-3">
-<div class="bg-white rounded-lg p-3 text-center">
-<div class="text-xs text-slate-500">已签待付</div>
-<div class="text-lg font-bold text-slate-700">2,336.66<span class="text-xs">万</span></div>
-<div class="text-xs text-green-600 mt-1">36.8%</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="bg-white rounded-lg p-2 md:p-3 text-center flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-slate-500">已签待付</div>
+<div class="text-sm md:text-lg font-bold text-slate-700 truncate">2,336.66<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-green-600 mt-1">36.8%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center border-2 border-red-300">
-<div class="text-xs text-red-600 font-medium">● 合同约定工抵未签</div>
-<div class="text-lg font-bold text-red-700">509.80<span class="text-xs">万</span></div>
-<div class="text-xs text-red-500 mt-1">8.0%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center border-2 border-red-300 flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-red-600 font-medium">● 合同约定工抵未签</div>
+<div class="text-sm md:text-lg font-bold text-red-700 truncate">509.80<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-red-500 mt-1">8.0%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center">
-<div class="text-xs text-slate-500">待签工抵</div>
-<div class="text-lg font-bold text-slate-700">726.00<span class="text-xs">万</span></div>
-<div class="text-xs text-orange-600 mt-1">11.4%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-slate-500">待签工抵</div>
+<div class="text-sm md:text-lg font-bold text-slate-700 truncate">726.00<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-orange-600 mt-1">11.4%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center border-2 border-orange-300">
-<div class="text-xs text-orange-600 font-medium">● 待付现金</div>
-<div class="text-lg font-bold text-orange-700">2,745.72<span class="text-xs">万</span></div>
-<div class="text-xs text-orange-500 mt-1">43.2%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center border-2 border-orange-300 flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-orange-600 font-medium">● 待付现金</div>
+<div class="text-sm md:text-lg font-bold text-orange-700 truncate">2,745.72<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-orange-500 mt-1">43.2%</div>
 </div>
 </div>
 </div>
@@ -328,21 +328,21 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 
 <!-- 原二期视图 -->
 <div id="tianyu2-origin" class="tianyu-sub-content hidden">
-<div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-6 mb-6 border border-emerald-100">
-<div class="flex justify-between items-center">
-<div>
+<div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-4 md:p-6 mb-4 md:mb-6 border border-emerald-100">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center gap-3">
+<div class="min-w-0">
 <div class="text-sm text-emerald-600 font-medium mb-1">应付金额合计</div>
-<div class="text-4xl font-bold text-emerald-700">55,768.33<span class="text-xl ml-1">万</span></div>
+<div class="text-2xl md:text-4xl font-bold text-emerald-700 truncate">55,768.33<span class="text-base md:text-xl ml-1">万</span></div>
 </div>
-<div class="text-right">
+<div class="text-left md:text-right min-w-0">
 <div class="text-sm text-slate-500 mb-1">付款进度</div>
-<div class="text-2xl font-bold text-green-600">95.0%</div>
+<div class="text-xl md:text-2xl font-bold text-green-600">95.0%</div>
 </div>
 </div>
 <div class="mt-4 h-3 bg-emerald-200 rounded-full overflow-hidden">
 <div class="h-full bg-gradient-to-r from-emerald-500 to-green-500 rounded-full" style="width: 95%"></div>
 </div>
-<div class="flex justify-between mt-2 text-sm">
+<div class="flex flex-col sm:flex-row sm:justify-between mt-2 text-sm gap-1">
 <span class="text-emerald-600 font-medium">已付 52,983.92万</span>
 <span class="text-red-600 font-medium">待付 2,784.41万</span>
 </div>
@@ -353,74 +353,74 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 <span class="w-2 h-2 bg-green-500 rounded-full"></span>
 <span>已付款分布</span>
 </div>
-<div class="grid grid-cols-4 gap-3">
-<div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 text-center border-2 border-green-200">
-<div class="text-xs text-green-600 mb-1 font-medium">已付款合计</div>
-<div class="text-xl font-bold text-green-700">5.30<span class="text-sm ml-1">亿</span></div>
-<div class="text-xs text-green-500 mt-1">95.0%</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-3 md:p-4 text-center border-2 border-green-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-green-600 mb-1 font-medium">已付款合计</div>
+<div class="text-base md:text-xl font-bold text-green-700 truncate">5.30<span class="text-xs ml-1">亿</span></div>
+<div class="text-[10px] md:text-xs text-green-500 mt-1">95.0%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">工抵付款</div>
-<div class="text-lg font-bold text-blue-600">1.02<span class="text-xs ml-1">亿</span></div>
-<div class="text-xs text-slate-400 mt-1">19.3%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">工抵付款</div>
+<div class="text-sm md:text-lg font-bold text-blue-600 truncate">1.02<span class="text-[10px] md:text-xs ml-1">亿</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">19.3%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">置换付款</div>
-<div class="text-lg font-bold text-purple-600">156.60<span class="text-xs ml-1">万</span></div>
-<div class="text-xs text-slate-400 mt-1">0.3%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">置换付款</div>
+<div class="text-sm md:text-lg font-bold text-purple-600 truncate">156.60<span class="text-[10px] md:text-xs ml-1">万</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">0.3%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">现金付款</div>
-<div class="text-lg font-bold text-green-600">4.26<span class="text-xs ml-1">亿</span></div>
-<div class="text-xs text-slate-400 mt-1">80.4%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">现金付款</div>
+<div class="text-sm md:text-lg font-bold text-green-600 truncate">4.26<span class="text-[10px] md:text-xs ml-1">亿</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">80.4%</div>
 </div>
 </div>
 </div>
 
-<div class="daifu-section rounded-xl p-5">
-<div class="flex justify-between items-center mb-4">
+<div class="daifu-section rounded-xl p-4 md:p-5">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 gap-2">
 <div class="flex items-center gap-2">
-<span class="text-2xl">⚠️</span>
+<span class="text-xl md:text-2xl">⚠️</span>
 <div>
-<div class="text-lg font-bold text-red-800">待付金额明细</div>
-<div class="text-sm text-red-600">重点关注</div>
+<div class="text-base md:text-lg font-bold text-red-800">待付金额明细</div>
+<div class="text-xs md:text-sm text-red-600">重点关注</div>
 </div>
 </div>
-<div class="text-right bg-white rounded-lg px-4 py-2">
-<div class="text-sm text-red-600">待付合计</div>
-<div class="text-2xl font-bold text-red-700">2,784.41<span class="text-lg ml-1">万</span></div>
+<div class="text-left md:text-right bg-white rounded-lg px-3 py-2 md:px-4 md:py-2">
+<div class="text-xs md:text-sm text-red-600">待付合计</div>
+<div class="text-xl md:text-2xl font-bold text-red-700">2,784.41<span class="text-base md:text-lg ml-1">万</span></div>
 </div>
 </div>
-<div class="grid grid-cols-4 gap-3">
-<div class="bg-white rounded-lg p-3 text-center">
-<div class="text-xs text-slate-500">已签待付</div>
-<div class="text-lg font-bold text-slate-700">1,366.77<span class="text-xs">万</span></div>
-<div class="text-xs text-green-600 mt-1">49.1%</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="bg-white rounded-lg p-2 md:p-3 text-center flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-slate-500">已签待付</div>
+<div class="text-sm md:text-lg font-bold text-slate-700 truncate">1,366.77<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-green-600 mt-1">49.1%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center border-2 border-red-300">
-<div class="text-xs text-red-600 font-medium">● 合同约定工抵未签</div>
-<div class="text-lg font-bold text-red-700">197.76<span class="text-xs">万</span></div>
-<div class="text-xs text-red-500 mt-1">7.1%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center border-2 border-red-300 flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-red-600 font-medium">● 合同约定工抵未签</div>
+<div class="text-sm md:text-lg font-bold text-red-700 truncate">197.76<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-red-500 mt-1">7.1%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center">
-<div class="text-xs text-slate-500">待签工抵</div>
-<div class="text-lg font-bold text-slate-700">688.37<span class="text-xs">万</span></div>
-<div class="text-xs text-orange-600 mt-1">24.7%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-slate-500">待签工抵</div>
+<div class="text-sm md:text-lg font-bold text-slate-700 truncate">688.37<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-orange-600 mt-1">24.7%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center">
-<div class="text-xs text-slate-500">待付现金</div>
-<div class="text-lg font-bold text-slate-700">500.59<span class="text-xs">万</span></div>
-<div class="text-xs text-blue-600 mt-1">18.0%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-slate-500">待付现金</div>
+<div class="text-sm md:text-lg font-bold text-slate-700 truncate">500.59<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-blue-600 mt-1">18.0%</div>
 </div>
 </div>
 </div>
 
-<div class="bg-blue-50 rounded-xl p-5 border border-blue-100 mt-6">
-<div class="flex items-center gap-2 mb-4">
-<span class="text-2xl">📝</span>
+<div class="bg-blue-50 rounded-xl p-4 md:p-5 border border-blue-100 mt-4 md:mt-6">
+<div class="flex items-center gap-2 mb-3 md:mb-4">
+<span class="text-xl md:text-2xl">📝</span>
 <div>
-<div class="text-lg font-bold text-blue-800">发票管理</div>
-<div class="text-sm text-blue-600">已取得 5.31亿 | 待收 2,676万</div>
+<div class="text-base md:text-lg font-bold text-blue-800">发票管理</div>
+<div class="text-xs md:text-sm text-blue-600">已取得 5.31亿 | 待收 2,676万</div>
 </div>
 </div>
 <div class="h-2 bg-blue-200 rounded-full overflow-hidden">
@@ -435,21 +435,21 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 
 <!-- 8#35#36#视图 -->
 <div id="tianyu2-8" class="tianyu-sub-content hidden">
-<div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-6 mb-6 border border-amber-100">
-<div class="flex justify-between items-center">
-<div>
+<div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-4 md:p-6 mb-4 md:mb-6 border border-amber-100">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center gap-3">
+<div class="min-w-0">
 <div class="text-sm text-amber-600 font-medium mb-1">应付金额合计</div>
-<div class="text-4xl font-bold text-amber-700">7,427.01<span class="text-xl ml-1">万</span></div>
+<div class="text-2xl md:text-4xl font-bold text-amber-700 truncate">7,427.01<span class="text-base md:text-xl ml-1">万</span></div>
 </div>
-<div class="text-right">
+<div class="text-left md:text-right min-w-0">
 <div class="text-sm text-slate-500 mb-1">付款进度</div>
-<div class="text-2xl font-bold text-green-600">52.0%</div>
+<div class="text-xl md:text-2xl font-bold text-green-600">52.0%</div>
 </div>
 </div>
 <div class="mt-4 h-3 bg-amber-200 rounded-full overflow-hidden">
 <div class="h-full bg-gradient-to-r from-amber-500 to-green-500 rounded-full" style="width: 52%"></div>
 </div>
-<div class="flex justify-between mt-2 text-sm">
+<div class="flex flex-col sm:flex-row sm:justify-between mt-2 text-sm gap-1">
 <span class="text-amber-600 font-medium">已付 3,862.33万</span>
 <span class="text-red-600 font-medium">待付 3,564.68万</span>
 </div>
@@ -460,74 +460,74 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 <span class="w-2 h-2 bg-green-500 rounded-full"></span>
 <span>已付款分布</span>
 </div>
-<div class="grid grid-cols-4 gap-3">
-<div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 text-center border-2 border-green-200">
-<div class="text-xs text-green-600 mb-1 font-medium">已付款合计</div>
-<div class="text-xl font-bold text-green-700">3,862.33<span class="text-sm ml-1">万</span></div>
-<div class="text-xs text-green-500 mt-1">52.0%</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-3 md:p-4 text-center border-2 border-green-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-green-600 mb-1 font-medium">已付款合计</div>
+<div class="text-base md:text-xl font-bold text-green-700 truncate">3,862.33<span class="text-xs ml-1">万</span></div>
+<div class="text-[10px] md:text-xs text-green-500 mt-1">52.0%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">工抵付款</div>
-<div class="text-lg font-bold text-blue-600">1,054.88<span class="text-xs ml-1">万</span></div>
-<div class="text-xs text-slate-400 mt-1">27.3%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">工抵付款</div>
+<div class="text-sm md:text-lg font-bold text-blue-600 truncate">1,054.88<span class="text-[10px] md:text-xs ml-1">万</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">27.3%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">置换付款</div>
-<div class="text-lg font-bold text-purple-600">29.00<span class="text-xs ml-1">万</span></div>
-<div class="text-xs text-slate-400 mt-1">0.8%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">置换付款</div>
+<div class="text-sm md:text-lg font-bold text-purple-600 truncate">29.00<span class="text-[10px] md:text-xs ml-1">万</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">0.8%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">现金付款</div>
-<div class="text-lg font-bold text-green-600">2,778.44<span class="text-xs ml-1">万</span></div>
-<div class="text-xs text-slate-400 mt-1">71.9%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">现金付款</div>
+<div class="text-sm md:text-lg font-bold text-green-600 truncate">2,778.44<span class="text-[10px] md:text-xs ml-1">万</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">71.9%</div>
 </div>
 </div>
 </div>
 
-<div class="daifu-section rounded-xl p-5">
-<div class="flex justify-between items-center mb-4">
+<div class="daifu-section rounded-xl p-4 md:p-5">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 gap-2">
 <div class="flex items-center gap-2">
-<span class="text-2xl">⚠️</span>
+<span class="text-xl md:text-2xl">⚠️</span>
 <div>
-<div class="text-lg font-bold text-red-800">待付金额明细</div>
-<div class="text-sm text-red-600">重点关注</div>
+<div class="text-base md:text-lg font-bold text-red-800">待付金额明细</div>
+<div class="text-xs md:text-sm text-red-600">重点关注</div>
 </div>
 </div>
-<div class="text-right bg-white rounded-lg px-4 py-2">
-<div class="text-sm text-red-600">待付合计</div>
-<div class="text-2xl font-bold text-red-700">3,564.68<span class="text-lg ml-1">万</span></div>
+<div class="text-left md:text-right bg-white rounded-lg px-3 py-2 md:px-4 md:py-2">
+<div class="text-xs md:text-sm text-red-600">待付合计</div>
+<div class="text-xl md:text-2xl font-bold text-red-700">3,564.68<span class="text-base md:text-lg ml-1">万</span></div>
 </div>
 </div>
-<div class="grid grid-cols-4 gap-3">
-<div class="bg-white rounded-lg p-3 text-center">
-<div class="text-xs text-slate-500">已签待付</div>
-<div class="text-lg font-bold text-slate-700">969.89<span class="text-xs">万</span></div>
-<div class="text-xs text-green-600 mt-1">27.2%</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="bg-white rounded-lg p-2 md:p-3 text-center flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-slate-500">已签待付</div>
+<div class="text-sm md:text-lg font-bold text-slate-700 truncate">969.89<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-green-600 mt-1">27.2%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center border-2 border-red-300">
-<div class="text-xs text-red-600 font-medium">● 合同约定工抵未签</div>
-<div class="text-lg font-bold text-red-700">312.04<span class="text-xs">万</span></div>
-<div class="text-xs text-red-500 mt-1">8.8%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center border-2 border-red-300 flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-red-600 font-medium">● 合同约定工抵未签</div>
+<div class="text-sm md:text-lg font-bold text-red-700 truncate">312.04<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-red-500 mt-1">8.8%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center">
-<div class="text-xs text-slate-500">待签工抵</div>
-<div class="text-lg font-bold text-slate-700">37.63<span class="text-xs">万</span></div>
-<div class="text-xs text-orange-600 mt-1">1.1%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-slate-500">待签工抵</div>
+<div class="text-sm md:text-lg font-bold text-slate-700 truncate">37.63<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-orange-600 mt-1">1.1%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center border-2 border-orange-300">
-<div class="text-xs text-orange-600 font-medium">● 待付现金</div>
-<div class="text-lg font-bold text-orange-700">2,245.13<span class="text-xs">万</span></div>
-<div class="text-xs text-orange-500 mt-1">63.0%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center border-2 border-orange-300 flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-orange-600 font-medium">● 待付现金</div>
+<div class="text-sm md:text-lg font-bold text-orange-700 truncate">2,245.13<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-orange-500 mt-1">63.0%</div>
 </div>
 </div>
 </div>
 
-<div class="bg-blue-50 rounded-xl p-5 border border-blue-100 mt-6">
-<div class="flex items-center gap-2 mb-4">
-<span class="text-2xl">📝</span>
+<div class="bg-blue-50 rounded-xl p-4 md:p-5 border border-blue-100 mt-4 md:mt-6">
+<div class="flex items-center gap-2 mb-3 md:mb-4">
+<span class="text-xl md:text-2xl">📝</span>
 <div>
-<div class="text-lg font-bold text-blue-800">发票管理</div>
-<div class="text-sm text-blue-600">已取得 4,246万 | 待收 3,181万</div>
+<div class="text-base md:text-lg font-bold text-blue-800">发票管理</div>
+<div class="text-xs md:text-sm text-blue-600">已取得 4,246万 | 待收 3,181万</div>
 </div>
 </div>
 <div class="h-2 bg-blue-200 rounded-full overflow-hidden">
@@ -542,21 +542,21 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 
 <!-- 载铜总包视图 -->
 <div id="tianyu2-zaitong" class="tianyu-sub-content hidden">
-<div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6 mb-6 border border-purple-100">
-<div class="flex justify-between items-center">
-<div>
+<div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-4 md:p-6 mb-4 md:mb-6 border border-purple-100">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center gap-3">
+<div class="min-w-0">
 <div class="text-sm text-purple-600 font-medium mb-1">应付金额合计</div>
-<div class="text-4xl font-bold text-purple-700">14,000.00<span class="text-xl ml-1">万</span></div>
+<div class="text-2xl md:text-4xl font-bold text-purple-700 truncate">14,000.00<span class="text-base md:text-xl ml-1">万</span></div>
 </div>
-<div class="text-right">
+<div class="text-left md:text-right min-w-0">
 <div class="text-sm text-slate-500 mb-1">付款进度</div>
-<div class="text-2xl font-bold text-orange-600">28.9%</div>
+<div class="text-xl md:text-2xl font-bold text-orange-600">28.9%</div>
 </div>
 </div>
 <div class="mt-4 h-3 bg-purple-200 rounded-full overflow-hidden">
 <div class="h-full bg-gradient-to-r from-purple-500 to-green-500 rounded-full" style="width: 28.9%"></div>
 </div>
-<div class="flex justify-between mt-2 text-sm">
+<div class="flex flex-col sm:flex-row sm:justify-between mt-2 text-sm gap-1">
 <span class="text-purple-600 font-medium">已付 4,047.24万</span>
 <span class="text-red-600 font-medium">待付 9,952.76万</span>
 </div>
@@ -567,64 +567,64 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 <span class="w-2 h-2 bg-green-500 rounded-full"></span>
 <span>已付款分布</span>
 </div>
-<div class="grid grid-cols-4 gap-3">
-<div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 text-center border-2 border-green-200">
-<div class="text-xs text-green-600 mb-1 font-medium">已付款合计</div>
-<div class="text-xl font-bold text-green-700">4,047.24<span class="text-sm ml-1">万</span></div>
-<div class="text-xs text-green-500 mt-1">28.9%</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-3 md:p-4 text-center border-2 border-green-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-green-600 mb-1 font-medium">已付款合计</div>
+<div class="text-base md:text-xl font-bold text-green-700 truncate">4,047.24<span class="text-xs ml-1">万</span></div>
+<div class="text-[10px] md:text-xs text-green-500 mt-1">28.9%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">工抵付款</div>
-<div class="text-lg font-bold text-blue-600">4,045.24<span class="text-xs ml-1">万</span></div>
-<div class="text-xs text-slate-400 mt-1">99.9%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">工抵付款</div>
+<div class="text-sm md:text-lg font-bold text-blue-600 truncate">4,045.24<span class="text-[10px] md:text-xs ml-1">万</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">99.9%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">置换付款</div>
-<div class="text-lg font-bold text-purple-600">2.00<span class="text-xs ml-1">万</span></div>
-<div class="text-xs text-slate-400 mt-1">0.1%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">置换付款</div>
+<div class="text-sm md:text-lg font-bold text-purple-600 truncate">2.00<span class="text-[10px] md:text-xs ml-1">万</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">0.1%</div>
 </div>
-<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
-<div class="text-xs text-slate-500 mb-1">现金付款</div>
-<div class="text-lg font-bold text-green-600">0<span class="text-xs ml-1">万</span></div>
-<div class="text-xs text-slate-400 mt-1">0%</div>
+<div class="bg-slate-50 rounded-xl p-3 md:p-4 text-center border border-slate-200 flex flex-col justify-center min-h-[90px] md:min-h-[110px]">
+<div class="text-[10px] md:text-xs text-slate-500 mb-1">现金付款</div>
+<div class="text-sm md:text-lg font-bold text-green-600 truncate">0<span class="text-[10px] md:text-xs ml-1">万</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">0%</div>
 </div>
 </div>
 </div>
 
-<div class="daifu-section rounded-xl p-5">
-<div class="flex justify-between items-center mb-4">
+<div class="daifu-section rounded-xl p-4 md:p-5">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 gap-2">
 <div class="flex items-center gap-2">
-<span class="text-2xl">⚠️</span>
+<span class="text-xl md:text-2xl">⚠️</span>
 <div>
-<div class="text-lg font-bold text-red-800">待付金额明细</div>
-<div class="text-sm text-red-600">重点关注</div>
+<div class="text-base md:text-lg font-bold text-red-800">待付金额明细</div>
+<div class="text-xs md:text-sm text-red-600">重点关注</div>
 </div>
 </div>
-<div class="text-right bg-white rounded-lg px-4 py-2">
-<div class="text-sm text-red-600">待付合计</div>
-<div class="text-2xl font-bold text-red-700">9,952.76<span class="text-lg ml-1">万</span></div>
+<div class="text-left md:text-right bg-white rounded-lg px-3 py-2 md:px-4 md:py-2">
+<div class="text-xs md:text-sm text-red-600">待付合计</div>
+<div class="text-xl md:text-2xl font-bold text-red-700">9,952.76<span class="text-base md:text-lg ml-1">万</span></div>
 </div>
 </div>
-<div class="grid grid-cols-4 gap-3">
-<div class="bg-white rounded-lg p-3 text-center">
-<div class="text-xs text-slate-500">已签待付</div>
-<div class="text-lg font-bold text-slate-700">0<span class="text-xs">万</span></div>
-<div class="text-xs text-slate-400 mt-1">0%</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="bg-white rounded-lg p-2 md:p-3 text-center flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-slate-500">已签待付</div>
+<div class="text-sm md:text-lg font-bold text-slate-700 truncate">0<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">0%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center">
-<div class="text-xs text-slate-500">合同约定工抵未签</div>
-<div class="text-lg font-bold text-slate-700">0<span class="text-xs">万</span></div>
-<div class="text-xs text-slate-400 mt-1">0%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-slate-500">合同约定工抵未签</div>
+<div class="text-sm md:text-lg font-bold text-slate-700 truncate">0<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">0%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center">
-<div class="text-xs text-slate-500">待签工抵</div>
-<div class="text-lg font-bold text-slate-700">9,952.76<span class="text-xs">万</span></div>
-<div class="text-xs text-orange-600 mt-1">100%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-slate-500">待签工抵</div>
+<div class="text-sm md:text-lg font-bold text-slate-700 truncate">9,952.76<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-orange-600 mt-1">100%</div>
 </div>
-<div class="bg-white rounded-lg p-3 text-center">
-<div class="text-xs text-slate-500">待付现金</div>
-<div class="text-lg font-bold text-slate-700">0<span class="text-xs">万</span></div>
-<div class="text-xs text-slate-400 mt-1">0%</div>
+<div class="bg-white rounded-lg p-2 md:p-3 text-center flex flex-col justify-center min-h-[70px] md:min-h-[90px]">
+<div class="text-[10px] md:text-xs text-slate-500">待付现金</div>
+<div class="text-sm md:text-lg font-bold text-slate-700 truncate">0<span class="text-[10px] md:text-xs">万</span></div>
+<div class="text-[10px] md:text-xs text-slate-400 mt-1">0%</div>
 </div>
 </div>
 </div>
