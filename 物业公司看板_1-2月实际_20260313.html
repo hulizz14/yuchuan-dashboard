@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物业公司2026年工作计划看板（1-2月实际数据版）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f7fa; padding: 20px; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%); color: white; padding: 25px; border-radius: 12px; margin-bottom: 20px; }
+        .header h1 { font-size: 24px; margin-bottom: 8px; }
+        .header p { opacity: 0.9; font-size: 13px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px; }
+        .stat-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; }
+        .stat-card .number { font-size: 28px; font-weight: bold; color: #1a237e; }
+        .stat-card.warning .number { color: #f44336; }
+        .stat-card.success .number { color: #4caf50; }
+        .stat-card .label { font-size: 12px; color: #666; margin-top: 5px; }
+        .section { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 20px; }
+        .section-title { font-size: 16px; font-weight: bold; color: #333; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0; }
+        .company-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        .company-table th { background: #3949ab; color: white; padding: 10px; text-align: left; }
+        .company-table td { padding: 10px; border-bottom: 1px solid #eee; }
+        .company-table tr:nth-child(even) { background: #f5f7fa; }
+        .company-yuchuan { border-left: 4px solid #2196f3; }
+        .company-yuchen { border-left: 4px solid #4caf50; }
+        .company-yuyue { border-left: 4px solid #ff9800; }
+        .progress-bar { width: 100%; background: #e0e0e0; border-radius: 10px; height: 8px; margin: 5px 0; }
+        .progress-fill { height: 8px; border-radius: 10px; }
+        .progress-green { background: #4caf50; }
+        .progress-orange { background: #ff9800; }
+        .accordion-item { margin-bottom: 10px; border-radius: 8px; overflow: hidden; }
+        .accordion-header { background: linear-gradient(135deg, #3949ab 0%, #1a237e 100%); color: white; padding: 15px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
+        .accordion-header:hover { background: linear-gradient(135deg, #5c6bc0 0%, #3949ab 100%); }
+        .accordion-icon { font-size: 20px; transition: transform 0.3s; }
+        .accordion-header.active .accordion-icon { transform: rotate(180deg); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: white; }
+        .accordion-content.show { max-height: 50000px; }
+        .month-header { background: #e8eaf6; padding: 10px 15px; font-weight: bold; color: #1a237e; border-left: 4px solid #3949ab; margin: 15px 0 10px 0; }
+        .work-item { padding: 8px 12px; margin: 5px 0; background: #f5f7fa; border-radius: 6px; font-size: 12px; }
+        .risk-item { padding: 15px; margin-bottom: 12px; border-radius: 8px; border-left: 4px solid; }
+        .risk-high { background: #ffebee; border-left-color: #f44336; }
+        .risk-medium { background: #fff3e0; border-left-color: #ff9800; }
+        .risk-title { font-weight: bold; font-size: 14px; margin-bottom: 5px; }
+        @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏢 物业公司2026年工作计划看板</h1>
+        <p>三公司运营：禹川(天屿)+禹晨(财富)+禹悦(案场) | 点击月份展开详细计划</p>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card"><div class="number">1,535</div><div class="label">年度收入目标(万)</div></div>
+        <div class="stat-card warning"><div class="number">958</div><div class="label">年度支出预算(万)</div></div>
+        <div class="stat-card success"><div class="number">577</div><div class="label">利润目标(万)</div></div>
+        <div class="stat-card"><div class="number">8.8%</div><div class="label">收入完成率(1-2月)</div></div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📊 三公司经营数据（1-2月实际）</div>
+        <table class="company-table">
+            <thead><tr><th>公司/项目</th><th>年度目标(收入/支出)</th><th>1-2月收入</th><th>1-2月支出</th><th>结余</th><th>完成率</th></tr></thead>
+            <tbody>
+                <tr class="company-yuchuan"><td><strong>禹川物业</strong><br><small>天屿花城项目</small></td><td>1,036.80万 / 617.72万</td><td style="color:#4caf50">87.60万</td><td>86.14万</td><td style="color:#4caf50">+1.46万</td><td>8.5%</td></tr>
+                <tr class="company-yuchen"><td><strong>禹晨物业</strong><br><small>财富中心项目</small></td><td>439.00万 / 280.98万</td><td style="color:#4caf50">48.04万</td><td>52.95万</td><td style="color:#f44336">-4.90万</td><td>10.9%</td></tr>
+                <tr class="company-yuyue"><td><strong>禹悦物业</strong><br><small>案场+安置房</small></td><td>58.94万 / 58.94万</td><td style="color:#f44336">0万</td><td>3.78万</td><td style="color:#f44336">-3.78万</td><td>0%</td></tr>
+                <tr style="background:#e8eaf6;font-weight:bold"><td>合计</td><td>1,534.74万 / 957.64万</td><td style="color:#333">135.65万</td><td>142.87万</td><td style="color:#f44336">-7.23万</td><td>8.8%</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📈 1-2月收入完成明细</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:15px">
+            <div style="padding:15px;background:#e3f2fd;border-radius:8px">
+                <div style="font-weight:bold;margin-bottom:10px;color:#1976d2">禹川物业-天屿花城</div>
+                <div style="font-size:13px;margin-bottom:8px"><span style="color:#666">物业费：</span><strong>82.09万</strong></div>
+                <div style="font-size:12px;color:#666;padding-left:10px;border-left:2px solid #90caf9;margin-bottom:5px">
+                    以前年度清欠：0万<br>
+                    26年度应收：68.83万<br>
+                    预收27年：0.11万
+                </div>
+                <div style="font-size:13px;margin-bottom:8px"><span style="color:#666">其他费用：</span><strong>5.52万</strong></div>
+                <div style="font-size:12px;color:#666;padding-left:10px;border-left:2px solid #90caf9">
+                    车位：3.30万 | 垃圾：0.27万<br>
+                    其他收费：1.94万
+                </div>
+                <div style="margin-top:10px;padding-top:10px;border-top:1px dashed #bbdefb">
+                    <div style="display:flex;justify-content:space-between"><span><strong>收入合计：87.60万</strong></span><span style="color:#4caf50">✓ 盈利</span></div>
+                    <div style="font-size:11px;color:#666">支出：86.14万 | 结余：+1.46万</div>
+                </div>
+            </div>
+            
+            <div style="padding:15px;background:#e8f5e9;border-radius:8px">
+                <div style="font-weight:bold;margin-bottom:10px;color:#388e3c">禹晨物业-财富中心</div>
+                <div style="font-size:13px;margin-bottom:8px"><span style="color:#666">物业费：</span><strong>33.12万</strong></div>
+                <div style="font-size:12px;color:#666;padding-left:10px;border-left:2px solid #a5d6a7;margin-bottom:5px">
+                    以前年度清欠：9.39万<br>
+                    26年度应收：23.73万
+                </div>
+                <div style="font-size:13px;margin-bottom:8px"><span style="color:#666">其他费用：</span><strong>14.92万</strong></div>
+                <div style="font-size:12px;color:#666;padding-left:10px;border-left:2px solid #a5d6a7">
+                    车位：7.21万 | 垃圾：0.54万<br>
+                    其他收费：7.18万
+                </div>
+                <div style="margin-top:10px;padding-top:10px;border-top:1px dashed #c8e6c9">
+                    <div style="display:flex;justify-content:space-between"><span><strong>收入合计：48.04万</strong></span><span style="color:#f44336">✗ 亏损</span></div>
+                    <div style="font-size:11px;color:#666">支出：52.95万 | 结余：-4.90万</div>
+                </div>
+            </div>
+            
+            <div style="padding:15px;background:#fff3e0;border-radius:8px">
+                <div style="font-weight:bold;margin-bottom:10px;color:#f57c00">禹悦物业</div>
+                <div style="font-size:13px;margin-bottom:8px"><span style="color:#666">案场收入：</span><strong style="color:#f44336">0万</strong></div>
+                <div style="font-size:12px;color:#666;padding-left:10px;border-left:2px solid #ffcc80;margin-bottom:5px">
+                    1月：0万<br>
+                    2月：0万
+                </div>
+                <div style="margin-top:10px;padding-top:10px;border-top:1px dashed #ffe0b2">
+                    <div style="display:flex;justify-content:space-between"><span><strong>收入合计：0万</strong></span><span style="color:#f44336">⚠ 零收入</span></div>
+                    <div style="font-size:11px;color:#666">支出：3.78万 | 结余：-3.78万</div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top:20px;padding:15px;background:#ffebee;border-radius:8px;border-left:4px solid #f44336">
+            <strong style="color:#c62828">🔴 三公司合计（1-2月）</strong><br>
+            <div style="font-size:13px;margin-top:8px">
+                <span style="display:inline-block;width:120px">收入：135.65万</span>
+                <span style="display:inline-block;width:120px">支出：142.87万</span>
+                <span style="display:inline-block;width:120px;color:#f44336"><strong>亏损：-7.23万</strong></span>
+            </div>
+            <div style="font-size:12px;color:#666;margin-top:5px">
+                年度目标1,534.74万 | 1-2月完成率8.8%（时间进度16.7%，落后8个百分点）
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📅 月度工作计划（点击月份展开）</div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)"><span>📅 1月工作计划（已完成）</span><span class="accordion-icon">▼</span></div>
+            <div class="accordion-content">
+                <div style="padding:15px">
+                    <div class="month-header">禹川物业-天屿花城 <span style="color:#4caf50">✓ 收入35.10万</span></div>
+                    <div class="work-item">✅ 物业费催缴（1月实收35.10万）</div>
+                    <div class="work-item">✅ 空置房清理/巡查</div>
+                    <div class="work-item">✅ 年前安全保障管控</div>
+                    <div class="work-item">✅ 园区布置（元旦）</div>
+                    <div class="month-header">禹晨物业-财富中心 <span style="color:#4caf50">✓ 收入32.12万</span></div>
+                    <div class="work-item">✅ 物业费催缴（1月实收32.12万）</div>
+                    <div class="work-item">✅ 空置房巡查</div>
+                    <div class="work-item">✅ 节前安全检查</div>
+                    <div class="month-header">禹悦物业 <span style="color:#f44336">✗ 收入0万</span></div>
+                    <div class="work-item" style="background:#ffebee">⚠️ 案场收入未实现</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)"><span>📅 2月工作计划（已完成）</span><span class="accordion-icon">▼</span></div>
+            <div class="accordion-content">
+                <div style="padding:15px">
+                    <div class="month-header">禹川物业-天屿花城 <span style="color:#4caf50">✓ 收入52.50万</span></div>
+                    <div class="work-item">✅ 物业费催缴（2月实收52.50万，其中物业费47.01万+其他5.49万）</div>
+                    <div class="work-item">✅ 空置房清理/巡查</div>
+                    <div class="work-item">✅ 绿化枯枝修剪/补种/养护</div>
+                    <div class="work-item">✅ 园区布置（春节）</div>
+                    <div class="month-header">禹晨物业-财富中心 <span style="color:#4caf50">✓ 收入15.92万</span></div>
+                    <div class="work-item">✅ 物业费催缴（2月实收15.92万）</div>
+                    <div class="work-item">✅ 节日安全保障</div>
+                    <div class="month-header">禹悦物业 <span style="color:#f44336">✗ 收入0万</span></div>
+                    <div class="work-item" style="background:#ffebee">⚠️ 案场收入持续未实现，支出3.78万（主要为工资3.39万+日常费用0.38万）</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header active" onclick="toggleAccordion(this)"><span>📅 3月工作计划 ⭐当前月</span><span class="accordion-icon">▼</span></div>
+            <div class="accordion-content show">
+                <div style="padding:15px">
+                    <div class="month-header">禹川物业-天屿花城</div>
+                    <div class="work-item" style="background:#ffebee">🔴 物业费催缴（目标约86万/月，需加强力度追回进度）</div>
+                    <div class="work-item">🔄 空置房清理/巡查</div>
+                    <div class="work-item">🔄 绿化枯枝修剪/补种/养护</div>
+                    <div class="work-item">🔄 消防设备维保跟进</div>
+                    <div class="work-item">🔄 社区文化活动</div>
+                    <div class="work-item">🔄 设施设备完好率检查</div>
+                    <div class="month-header">禹晨物业-财富中心</div>
+                    <div class="work-item">🔄 物业费催缴（目标约36万/月）</div>
+                    <div class="work-item">🔄 空置房巡查</div>
+                    <div class="work-item">🔄 消防设备检查</div>
+                    <div class="month-header">禹悦物业 ⚠️重点关注</div>
+                    <div class="work-item" style="background:#ffebee">🔴 案场收入实现（需尽快启动收费）</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)"><span>📅 4-12月工作计划</span><span class="accordion-icon">▼</span></div>
+            <div class="accordion-content">
+                <div style="padding:15px">
+                    <div class="month-header">常规工作（全年持续）</div>
+                    <div class="work-item">🔄 物业费催缴、收房（每月）</div>
+                    <div class="work-item">🔄 空置房清理/巡查（每月）</div>
+                    <div class="work-item">🔄 绿化养护（4-11月）</div>
+                    <div class="work-item">🔄 消防设备维保跟进（每月）</div>
+                    <div class="work-item">🔄 社区文化活动（每月，除11月）</div>
+                    <div class="work-item">🔄 设施设备完好率检查（每月）</div>
+                    <div class="month-header">季度重点工作</div>
+                    <div class="work-item">📋 Q2（4-6月）：年中满意度调查、夏季防汛准备</div>
+                    <div class="work-item">📋 Q3（7-9月）：夏季高温设备维护、台风防范</div>
+                    <div class="work-item">📋 Q4（10-12月）：年末收费冲刺、年度总结、元旦园区布置</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">⚠️ 风险预警（基于1-2月实际数据）</div>
+        <div class="risk-item risk-high">
+            <div class="risk-title">🔴 禹悦物业1-2月零收入</div>
+            <div style="font-size:12px;color:#666">案场收入未实现，累计支出3.78万，需立即跟进案场收费启动或调整运营模式</div>
+        </div>
+        <div class="risk-item risk-high">
+            <div class="risk-title">🔴 禹晨物业1-2月亏损4.9万</div>
+            <div style="font-size:12px;color:#666">收入48.04万 < 支出52.95万，管理费用46.23万偏高，需控制成本</div>
+        </div>
+        <div class="risk-item risk-high">
+            <div class="risk-title">🔴 整体1-2月亏损7.23万</div>
+            <div style="font-size:12px;color:#666">三公司合计收入135.65万 < 支出142.87万，与年度盈利目标577万存在较大差距</div>
+        </div>
+        <div class="risk-item risk-medium">
+            <div class="risk-title">🟡 收入完成率8.8%低于时间进度</div>
+            <div style="font-size:12px;color:#666">1-2月应完成16.7%，实际完成8.8%，落后8个百分点，后续10个月需月均完成142万才能达标</div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAccordion(header) {
+            header.classList.toggle('active');
+            const content = header.nextElementSibling;
+            content.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
