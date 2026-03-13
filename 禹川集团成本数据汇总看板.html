@@ -216,6 +216,7 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 <button class="tab-btn active" onclick="showTianyuSub('tianyu2-total')">📊 汇总</button>
 <button class="tab-btn" onclick="showTianyuSub('tianyu2-origin')">🏘️ 二期</button>
 <button class="tab-btn" onclick="showTianyuSub('tianyu2-8')">🏗️ 8#35#36#</button>
+<button class="tab-btn" onclick="showTianyuSub('tianyu2-zaitong')">🔩 载铜总包</button>
 </div>
 
 <!-- 汇总视图 -->
@@ -535,6 +536,113 @@ body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; backg
 <div class="flex justify-between mt-2 text-xs text-slate-500">
 <span>已取得 57.2%</span>
 <span class="text-orange-600">待收 42.8% ⚠️</span>
+</div>
+</div>
+</div>
+
+<!-- 载铜总包视图 -->
+<div id="tianyu2-zaitong" class="tianyu-sub-content hidden">
+<div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6 mb-6 border border-purple-100">
+<div class="flex justify-between items-center">
+<div>
+<div class="text-sm text-purple-600 font-medium mb-1">应付金额合计</div>
+<div class="text-4xl font-bold text-purple-700">14,000.00<span class="text-xl ml-1">万</span></div>
+</div>
+<div class="text-right">
+<div class="text-sm text-slate-500 mb-1">付款进度</div>
+<div class="text-2xl font-bold text-orange-600">28.9%</div>
+</div>
+</div>
+<div class="mt-4 h-3 bg-purple-200 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-purple-500 to-green-500 rounded-full" style="width: 28.9%"></div>
+</div>
+<div class="flex justify-between mt-2 text-sm">
+<span class="text-purple-600 font-medium">已付 4,047.24万</span>
+<span class="text-red-600 font-medium">待付 9,952.76万</span>
+</div>
+</div>
+
+<div class="mb-6">
+<div class="text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
+<span class="w-2 h-2 bg-green-500 rounded-full"></span>
+<span>已付款分布</span>
+</div>
+<div class="grid grid-cols-4 gap-3">
+<div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 text-center border-2 border-green-200">
+<div class="text-xs text-green-600 mb-1 font-medium">已付款合计</div>
+<div class="text-xl font-bold text-green-700">4,047.24<span class="text-sm ml-1">万</span></div>
+<div class="text-xs text-green-500 mt-1">28.9%</div>
+</div>
+<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
+<div class="text-xs text-slate-500 mb-1">工抵付款</div>
+<div class="text-lg font-bold text-blue-600">4,045.24<span class="text-xs ml-1">万</span></div>
+<div class="text-xs text-slate-400 mt-1">99.9%</div>
+</div>
+<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
+<div class="text-xs text-slate-500 mb-1">置换付款</div>
+<div class="text-lg font-bold text-purple-600">2.00<span class="text-xs ml-1">万</span></div>
+<div class="text-xs text-slate-400 mt-1">0.1%</div>
+</div>
+<div class="bg-slate-50 rounded-xl p-4 text-center border border-slate-200">
+<div class="text-xs text-slate-500 mb-1">现金付款</div>
+<div class="text-lg font-bold text-green-600">0<span class="text-xs ml-1">万</span></div>
+<div class="text-xs text-slate-400 mt-1">0%</div>
+</div>
+</div>
+</div>
+
+<div class="daifu-section rounded-xl p-5">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-2">
+<span class="text-2xl">⚠️</span>
+<div>
+<div class="text-lg font-bold text-red-800">待付金额明细</div>
+<div class="text-sm text-red-600">重点关注</div>
+</div>
+</div>
+<div class="text-right bg-white rounded-lg px-4 py-2">
+<div class="text-sm text-red-600">待付合计</div>
+<div class="text-2xl font-bold text-red-700">9,952.76<span class="text-lg ml-1">万</span></div>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-3">
+<div class="bg-white rounded-lg p-3 text-center">
+<div class="text-xs text-slate-500">已签待付</div>
+<div class="text-lg font-bold text-slate-700">0<span class="text-xs">万</span></div>
+<div class="text-xs text-slate-400 mt-1">0%</div>
+</div>
+<div class="bg-white rounded-lg p-3 text-center">
+<div class="text-xs text-slate-500">合同约定工抵未签</div>
+<div class="text-lg font-bold text-slate-700">0<span class="text-xs">万</span></div>
+<div class="text-xs text-slate-400 mt-1">0%</div>
+</div>
+<div class="bg-white rounded-lg p-3 text-center">
+<div class="text-xs text-slate-500">待签工抵</div>
+<div class="text-lg font-bold text-slate-700">9,952.76<span class="text-xs">万</span></div>
+<div class="text-xs text-orange-600 mt-1">100%</div>
+</div>
+<div class="bg-white rounded-lg p-3 text-center">
+<div class="text-xs text-slate-500">待付现金</div>
+<div class="text-lg font-bold text-slate-700">0<span class="text-xs">万</span></div>
+<div class="text-xs text-slate-400 mt-1">0%</div>
+</div>
+</div>
+</div>
+
+<div class="bg-blue-50 rounded-xl p-5 border border-blue-100 mt-6">
+<div class="flex items-center gap-2 mb-4">
+<span class="text-2xl">📝</span>
+<div>
+<div class="text-lg font-bold text-blue-800">发票管理</div>
+<div class="text-sm text-blue-600">已取得 4,082万 | 待收 9,918万</div>
+</div>
+</div>
+<div class="h-2 bg-blue-200 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 rounded-full" style="width: 29.2%"></div>
+</div>
+<div class="flex justify-between mt-2 text-xs text-slate-500">
+<span>已取得 29.2%</span>
+<span class="text-red-600">待收 70.8% ⚠️</span>
 </div>
 </div>
 </div>
