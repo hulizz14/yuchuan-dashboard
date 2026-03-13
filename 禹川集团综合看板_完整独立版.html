@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>禹川集团综合看板 - 完整版</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f1f5f9; }
+.nav-item { transition: all 0.3s; cursor: pointer; }
+.nav-item:hover { background: rgba(255,255,255,0.1); }
+.nav-item.active { background: rgba(255,255,255,0.2); border-left: 4px solid #60a5fa; }
+.page-content { display: none; padding: 20px; }
+.page-content.active { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 20px; margin-bottom: 20px; }
+.stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+.stat-green { background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: white; }
+.stat-orange { background: linear-gradient(135deg, #ea580c 0%, #f97316 100%); color: white; }
+.stat-blue { background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%); color: white; }
+.stat-red { background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%); color: white; }
+.tab-btn { padding: 10px 20px; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.3s; border: none; }
+.tab-btn.active { background: #3b82f6; color: white; }
+.tab-btn:not(.active) { background: #f1f5f9; color: #64748b; }
+.section-title { border-left: 4px solid #3b82f6; padding-left: 16px; margin-bottom: 16px; font-size: 18px; font-weight: bold; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 9999px; font-weight: 600; }
+.badge-green { background: #dcfce7; color: #16a34a; }
+.badge-orange { background: #fef3c7; color: #d97706; }
+.badge-red { background: #fee2e2; color: #dc2626; }
+.table-row:hover { background: #f8fafc; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- 顶部标题栏 -->
+<header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-4 shadow-lg flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-2xl">🏢</div>
+<div>
+<h1 class="text-xl font-bold">禹川集团综合看板</h1>
+<p class="text-sm text-blue-200">资产监控 + 负债数据 + 部门工作</p>
+</div>
+</div>
+<div class="text-sm text-blue-200">数据日期：2026-03-14</div>
+</header>
+
+<div class="flex">
+<!-- 侧边栏导航 -->
+<nav class="w-72 bg-slate-800 text-white min-h-screen overflow-y-auto p-4">
+
+<div class="text-xs text-slate-400 uppercase tracking-wider mb-2">📈 资产看板</div>
+<div class="space-y-1 mb-6">
+<div class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3 active" onclick="showPage('caifu')">
+<span class="text-xl">🏢</span>
+<div>
+<div class="font-medium">财富中心</div>
+<div class="text-xs text-slate-400">总货值12.79亿</div>
+</div>
+</div>
+<div class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('tianyu')">
+<span class="text-xl">🏘️</span>
+<div>
+<div class="font-medium">天屿花城</div>
+<div class="text-xs text-slate-400">总货值40.66亿</div>
+</div>
+</div>
+</div>
+
+<div class="text-xs text-slate-400 uppercase tracking-wider mb-2">💰 负债看板</div>
+<div class="space-y-1 mb-6">
+<div class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('fuzhai')">
+<span class="text-xl">💳</span>
+<div>
+<div class="font-medium">成本负债数据</div>
+<div class="text-xs text-slate-400">应付10.88亿</div>
+</div>
+</div>
+</div>
+
+<div class="text-xs text-slate-400 uppercase tracking-wider mb-2">📋 部门工作计划</div>
+<div class="space-y-1">
+<div class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('gongcheng')">
+<span class="text-xl">🔧</span>
+<div><div class="font-medium">工程部</div></div>
+</div>
+<div class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('wuye')">
+<span class="text-xl">🛠️</span>
+<div><div class="font-medium">物业公司</div></div>
+</div>
+<div class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center gap-3" onclick="showPage('chengben')">
+<span class="text-xl">📊</span>
+<div><div class="font-medium">成本部</div></div>
+</div>
+</div>
+</nav>
+
+<!-- 主内容区 -->
+<main class="flex-1">
+
+<!-- 财富中心 -->
+<div class="page-content active" id="page-caifu">
+<div class="card">
+<div class="text-center mb-6">
+<h2 class="text-2xl font-bold text-slate-800">🏢 财富中心资产看板</h2>
+<p class="text-slate-500 mt-2">总货值12.79亿 | 已售624套 | 去化率51.6%</p>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);">
+<div class="text-sm opacity-90">总货值</div>
+<div class="text-2xl font-bold">12.79<span class="text-sm">亿</span></div>
+</div>
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+<div class="text-sm opacity-90">已售金额</div>
+<div class="text-2xl font-bold">4.96<span class="text-sm">亿</span></div>
+<div class="text-xs">624套</div>
+</div>
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);">
+<div class="text-sm opacity-90">未售金额</div>
+<div class="text-2xl font-bold">7.83<span class="text-sm">亿</span></div>
+<div class="text-xs">574套</div>
+</div>
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);">
+<div class="text-sm opacity-90">去化率</div>
+<div class="text-2xl font-bold">51.6<span class="text-sm">%</span></div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="section-title">📊 数据变动（03-05 → 03-12）</div>
+<div class="grid grid-cols-5 gap-3 mb-4">
+<div class="bg-green-50 p-3 rounded-lg text-center border border-green-200">
+<div class="text-xs text-slate-500">已售套数</div>
+<div class="text-lg font-bold text-green-600">+34</div>
+</div>
+<div class="bg-green-50 p-3 rounded-lg text-center border border-green-200">
+<div class="text-xs text-slate-500">已售金额</div>
+<div class="text-lg font-bold text-green-600">+0.32亿</div>
+</div>
+<div class="bg-blue-50 p-3 rounded-lg text-center border border-blue-200">
+<div class="text-xs text-slate-500">去化率</div>
+<div class="text-lg font-bold text-blue-600">+12.8%</div>
+</div>
+<div class="bg-orange-50 p-3 rounded-lg text-center border border-orange-200">
+<div class="text-xs text-slate-500">待售金额</div>
+<div class="text-lg font-bold text-orange-600">-0.32亿</div>
+</div>
+<div class="bg-green-50 p-3 rounded-lg text-center border">
+<div class="text-xs text-slate-500">状态</div>
+<div class="text-lg font-bold text-green-600">↗️ 上升</div>
+</div>
+</div>
+
+<div class="overflow-x-auto">
+<table class="w-full text-sm border rounded-lg">
+<thead class="bg-slate-50">
+<tr><th class="py-2 px-3 text-left border-b">楼栋</th><th class="py-2 px-3 text-center border-b">业态</th><th class="py-2 px-3 text-center border-b">总套数</th><th class="py-2 px-3 text-center border-b">已售</th><th class="py-2 px-3 text-center border-b">去化率</th><th class="py-2 px-3 text-center border-b">未售</th></tr>
+</thead>
+<tbody>
+<tr class="border-b"><td class="py-2 px-3 font-bold text-blue-600" rowspan="3">1号楼</td><td class="py-2 px-3">写字楼</td><td class="text-center">227</td><td class="text-center text-green-600">123</td><td class="text-center"><span class="badge badge-orange">54.2%</span></td><td class="text-center">104</td></tr>
+<tr class="border-b"><td class="py-2 px-3">底商</td><td class="text-center">11</td><td class="text-center text-green-600">6</td><td class="text-center"><span class="badge badge-orange">54.5%</span></td><td class="text-center">5</td></tr>
+<tr class="border-b"><td class="py-2 px-3">顶层</td><td class="text-center">1</td><td class="text-center">0</td><td class="text-center"><span class="badge badge-red">0%</span></td><td class="text-center">1</td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-bold text-blue-600" rowspan="3">2号楼</td><td class="py-2 px-3">公寓</td><td class="text-center">565</td><td class="text-center text-green-600">397</td><td class="text-center"><span class="badge badge-green">70.3%</span></td><td class="text-center">168</td></tr>
+<tr class="border-b"><td class="py-2 px-3">底商</td><td class="text-center">19</td><td class="text-center text-green-600">13</td><td class="text-center"><span class="badge badge-green">68.4%</span></td><td class="text-center">6</td></tr>
+<tr class="border-b"><td class="py-2 px-3">顶层</td><td class="text-center">1</td><td class="text-center">0</td><td class="text-center"><span class="badge badge-red">0%</span></td><td class="text-center">1</td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-bold text-blue-600" rowspan="3">3号楼</td><td class="py-2 px-3">公寓</td><td class="text-center">360</td><td class="text-center text-green-600">42</td><td class="text-center"><span class="badge badge-red">11.7%</span></td><td class="text-center">318</td></tr>
+<tr class="border-b"><td class="py-2 px-3">底商</td><td class="text-center">11</td><td class="text-center text-green-600">6</td><td class="text-center"><span class="badge badge-orange">54.5%</span></td><td class="text-center">5</td></tr>
+<tr class="border-b"><td class="py-2 px-3">顶层</td><td class="text-center">1</td><td class="text-center">0</td><td class="text-center"><span class="badge badge-red">0%</span></td><td class="text-center">1</td></tr>
+<tr class="bg-blue-50 font-bold"><td colspan="2" class="py-2 px-3">合计</td><td class="text-center">1,199</td><td class="text-center text-green-600">590</td><td class="text-center">51.6%</td><td class="text-center">609</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- 天屿花城 -->
+<div class="page-content" id="page-tianyu">
+<div class="card">
+<div class="text-center mb-6">
+<h2 class="text-2xl font-bold text-slate-800">🏘️ 天屿花城资产看板</h2>
+<p class="text-slate-500 mt-2">总货值40.66亿 | 已售2,232套 | 去化率77.2% | 不含车位</p>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);">
+<div class="text-sm opacity-90">总货值</div>
+<div class="text-2xl font-bold">40.66<span class="text-sm">亿</span></div>
+</div>
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+<div class="text-sm opacity-90">已售金额</div>
+<div class="text-2xl font-bold">28.04<span class="text-sm">亿</span></div>
+<div class="text-xs">2,232套</div>
+</div>
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);">
+<div class="text-sm opacity-90">未售金额</div>
+<div class="text-2xl font-bold">12.60<span class="text-sm">亿</span></div>
+<div class="text-xs">659套</div>
+</div>
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);">
+<div class="text-sm opacity-90">去化率</div>
+<div class="text-2xl font-bold">77.2<span class="text-sm">%</span></div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="section-title">📊 数据变动（03-06 → 03-10）</div>
+<div class="grid grid-cols-6 gap-3 mb-4">
+<div class="bg-slate-50 p-3 rounded-lg text-center border"><div class="text-xs text-slate-500">总货值</div><div class="text-lg font-bold">—</div></div>
+<div class="bg-slate-50 p-3 rounded-lg text-center border"><div class="text-xs text-slate-500">已售套数</div><div class="text-lg font-bold">—</div></div>
+<div class="bg-slate-50 p-3 rounded-lg text-center border"><div class="text-xs text-slate-500">已售金额</div><div class="text-lg font-bold">—</div></div>
+<div class="bg-slate-50 p-3 rounded-lg text-center border"><div class="text-xs text-slate-500">去化率</div><div class="text-lg font-bold">—</div></div>
+<div class="bg-slate-50 p-3 rounded-lg text-center border"><div class="text-xs text-slate-500">待售金额</div><div class="text-lg font-bold">—</div></div>
+<div class="bg-slate-50 p-3 rounded-lg text-center border"><div class="text-xs text-slate-500">状态</div><div class="text-lg font-bold text-slate-400">—</div></div>
+</div>
+<p class="text-sm text-slate-500 text-center">本期间数据无变动，保持稳定</p>
+</div>
+
+<div class="card">
+<div class="section-title">🏝️ 各岛去化情况（关键数据）</div>
+<div class="overflow-x-auto">
+<table class="w-full text-sm border rounded-lg">
+<thead class="bg-slate-50">
+<tr><th class="py-2 px-3 text-left border-b">岛屿</th><th class="py-2 px-3 text-center border-b">总套数</th><th class="py-2 px-3 text-center border-b">已售</th><th class="py-2 px-3 text-center border-b">待售</th><th class="py-2 px-3 text-center border-b">去化率</th></tr>
+</thead>
+<tbody>
+<tr class="border-b"><td class="py-2 px-3 font-bold">牡丹岛</td><td class="text-center">199</td><td class="text-center text-green-600">3</td><td class="text-center text-orange-600">196</td><td class="text-center"><span class="badge badge-red">1.5%</span></td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-bold">海棠岛</td><td class="text-center">470</td><td class="text-center text-green-600">470</td><td class="text-center">0</td><td class="text-center"><span class="badge badge-green">100%</span></td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-bold">芙蓉岛</td><td class="text-center">296</td><td class="text-center text-green-600">296</td><td class="text-center">0</td><td class="text-center"><span class="badge badge-green">100%</span></td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-bold">紫薇岛</td><td class="text-center">570</td><td class="text-center text-green-600">547</td><td class="text-center text-orange-600">23</td><td class="text-center"><span class="badge badge-green">96.0%</span></td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-bold">桂花岛</td><td class="text-center">212</td><td class="text-center text-green-600">0</td><td class="text-center text-orange-600">212</td><td class="text-center"><span class="badge badge-red">0%</span></td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-bold">玫瑰岛</td><td class="text-center">208</td><td class="text-center text-green-600">204</td><td class="text-center text-orange-600">4</td><td class="text-center"><span class="badge badge-green">98.1%</span></td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-bold">樱花岛</td><td class="text-center">412</td><td class="text-center text-green-600">401</td><td class="text-center text-orange-600">11</td><td class="text-center"><span class="badge badge-green">97.3%</span></td></tr>
+<tr class="bg-blue-50 font-bold"><td class="py-2 px-3">合计</td><td class="text-center">2,891</td><td class="text-center text-green-600">2,232</td><td class="text-center text-orange-600">659</td><td class="text-center">77.2%</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- 负债看板 -->
+<div class="page-content" id="page-fuzhai">
+<div class="card">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h2 class="text-2xl font-bold text-slate-800">💰 成本负债数据看板</h2>
+<p class="text-slate-500 mt-2">多项目成本汇总 | 应付 · 已付 · 待付 · 发票</p>
+</div>
+<div class="text-right">
+<div class="text-sm text-slate-500">数据更新</div>
+<div class="text-lg font-semibold text-slate-700">2026-03-07</div>
+</div>
+</div>
+
+<div class="grid grid-cols-5 gap-4 mb-6">
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+<div class="text-xs opacity-90">集团应付合计</div>
+<div class="text-2xl font-bold">10.88<span class="text-sm">亿</span></div>
+</div>
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+<div class="text-xs opacity-90">已付款合计</div>
+<div class="text-2xl font-bold">9.86<span class="text-sm">亿</span></div>
+<div class="text-xs">90.6%</div>
+</div>
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);">
+<div class="text-xs opacity-90">待付合计</div>
+<div class="text-2xl font-bold">1.02<span class="text-sm">亿</span></div>
+<div class="text-xs">9.4%⚠️</div>
+</div>
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);">
+<div class="text-xs opacity-90">已取得发票</div>
+<div class="text-2xl font-bold">10.0<span class="text-sm">亿</span></div>
+<div class="text-xs">92.0%</div>
+</div>
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);">
+<div class="text-xs opacity-90">待收发票</div>
+<div class="text-2xl font-bold">8,743<span class="text-sm">万</span></div>
+<div class="text-xs">8.0%</div>
+</div>
+</div>
+
+<div class="flex gap-2 mb-4">
+<button class="tab-btn active" onclick="showFuzhaiSub('fuzhai-caifu')">🏢 财富中心</button>
+<button class="tab-btn" onclick="showFuzhaiSub('fuzhai-tianyu')">🏘️ 天屿二期</button>
+</div>
+
+<div id="fuzhai-caifu" class="fuzhai-sub-content">
+<div class="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl p-6 mb-4 border border-indigo-100">
+<div class="flex justify-between items-center">
+<div>
+<div class="text-sm text-indigo-600 font-medium">应付金额合计</div>
+<div class="text-3xl font-bold text-indigo-700">45,576.72<span class="text-xl">万</span></div>
+</div>
+<div class="text-right">
+<div class="text-sm text-slate-500">付款进度</div>
+<div class="text-2xl font-bold text-green-600">91.4%</div>
+</div>
+</div>
+<div class="mt-4 h-3 bg-indigo-200 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-indigo-500 to-green-500 rounded-full" style="width: 91.4%"></div>
+</div>
+<div class="flex justify-between mt-2 text-sm">
+<span class="text-indigo-600">已付 41,662.84万</span>
+<span class="text-red-600">待付 3,913.88万</span>
+</div>
+</div>
+
+<div class="grid grid-cols-4 gap-3 mb-4">
+<div class="bg-green-50 rounded-xl p-4 text-center border-2 border-green-200">
+<div class="text-xs text-green-600 mb-1">已付款合计</div>
+<div class="text-xl font-bold text-green-700">4.17<span class="text-sm">亿</span></div>
+</div>
+<div class="bg-slate-50 rounded-xl p-4 text-center border">
+<div class="text-xs text-slate-500 mb-1">工抵付款</div>
+<div class="text-lg font-bold text-blue-600">7,029<span class="text-xs">万</span></div>
+</div>
+<div class="bg-slate-50 rounded-xl p-4 text-center border">
+<div class="text-xs text-slate-500 mb-1">置换付款</div>
+<div class="text-lg font-bold text-purple-600">172<span class="text-xs">万</span></div>
+</div>
+<div class="bg-slate-50 rounded-xl p-4 text-center border">
+<div class="text-xs text-slate-500 mb-1">现金付款</div>
+<div class="text-lg font-bold text-green-600">3.45<span class="text-xs">亿</span></div>
+</div>
+</div>
+
+<div class="bg-red-50 rounded-xl p-5 border-2 border-red-200">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-2">
+<span class="text-2xl">⚠️</span>
+<div>
+<div class="text-lg font-bold text-red-800">待付金额明细</div>
+<div class="text-sm text-red-600">3,913.88万</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-3">
+<div class="bg-white rounded-lg p-3 text-center">
+<div class="text-xs text-slate-500">已签待付</div>
+<div class="text-lg font-bold">1,758.59<span class="text-xs">万</span></div>
+</div>
+<div class="bg-white rounded-lg p-3 text-center border-2 border-red-300">
+<div class="text-xs text-red-600">合同约定工抵未签</div>
+<div class="text-lg font-bold text-red-700">1,241.02<span class="text-xs">万</span></div>
+</div>
+<div class="bg-white rounded-lg p-3 text-center">
+<div class="text-xs text-slate-500">待签工抵</div>
+<div class="text-lg font-bold">664.17<span class="text-xs">万</span></div>
+</div>
+<div class="bg-white rounded-lg p-3 text-center">
+<div class="text-xs text-slate-500">待付现金</div>
+<div class="text-lg font-bold">250.10<span class="text-xs">万</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="fuzhai-tianyu" class="fuzhai-sub-content hidden">
+<div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-6 mb-4 border border-emerald-100">
+<div class="flex justify-between items-center">
+<div>
+<div class="text-sm text-emerald-600 font-medium">应付金额合计（含8#35#36#+载铜）</div>
+<div class="text-3xl font-bold text-emerald-700">63,195.34<span class="text-xl">万</span></div>
+</div>
+<div class="text-right">
+<div class="text-sm text-slate-500">付款进度</div>
+<div class="text-2xl font-bold text-green-600">89.9%</div>
+</div>
+</div>
+<div class="mt-4 h-3 bg-emerald-200 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-emerald-500 to-green-500 rounded-full" style="width: 89.9%"></div>
+</div>
+<div class="flex justify-between mt-2 text-sm">
+<span class="text-emerald-600">已付 56,846.25万</span>
+<span class="text-red-600">待付 6,349.09万</span>
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div class="bg-slate-50 rounded-xl p-4 border">
+<div class="font-bold text-slate-700 mb-2">📊 天屿二期（原）</div>
+<div class="text-sm text-slate-500">应付5.58亿 | 已付95.0%</div>
+</div>
+<div class="bg-slate-50 rounded-xl p-4 border">
+<div class="font-bold text-slate-700 mb-2">🏗️ 8#35#36#</div>
+<div class="text-sm text-slate-500">应付0.74亿 | 已付52.0%</div>
+</div>
+<div class="bg-slate-50 rounded-xl p-4 border">
+<div class="font-bold text-slate-700 mb-2">🔩 载铜总包</div>
+<div class="text-sm text-slate-500">应付1.4亿 | 已付28.9% ⚠️</div>
+</div>
+<div class="bg-red-50 rounded-xl p-4 border border-red-200">
+<div class="font-bold text-red-700 mb-2">⚠️ 重点关注</div>
+<div class="text-sm text-red-600">载铜待付9,952.76万（待签工抵）</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 工程部 -->
+<div class="page-content" id="page-gongcheng">
+<div class="card text-center py-20">
+<div class="text-6xl mb-4">🔧</div>
+<h2 class="text-2xl font-bold text-slate-800 mb-4">工程部工作计划</h2>
+<p class="text-slate-500 mb-4">详细工作计划请查看独立看板文件</p>
+<div class="text-sm text-slate-400">工程部2026年工作计划看板_确认版.html</div>
+</div>
+</div>
+
+<!-- 物业公司 -->
+<div class="page-content" id="page-wuye">
+<div class="card">
+<div class="text-center mb-6">
+<h2 class="text-2xl font-bold text-slate-800">🛠️ 物业公司工作计划</h2>
+<p class="text-slate-500 mt-2">三公司对比 | 2026年1-2月实际数据</p>
+</div>
+
+<div class="grid grid-cols-3 gap-4 mb-6">
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);">
+<div class="text-sm opacity-90">年度收入目标</div>
+<div class="text-2xl font-bold">1,535<span class="text-sm">万</span></div>
+</div>
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);">
+<div class="text-sm opacity-90">年度支出预算</div>
+<div class="text-2xl font-bold">958<span class="text-sm">万</span></div>
+</div>
+<div class="p-4 rounded-xl text-white" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+<div class="text-sm opacity-90">利润目标</div>
+<div class="text-2xl font-bold">577<span class="text-sm">万</span></div>
+</div>
+</div>
+
+<div class="overflow-x-auto">
+<table class="w-full text-sm border rounded-lg">
+<thead class="bg-slate-50">
+<tr><th class="py-2 px-3 text-left border-b">公司</th><th class="py-2 px-3 text-center border-b">1-2月收入</th><th class="py-2 px-3 text-center border-b">1-2月支出</th><th class="py-2 px-3 text-center border-b">结余</th><th class="py-2 px-3 text-center border-b">完成率</th></tr>
+</thead>
+<tbody>
+<tr class="border-b"><td class="py-2 px-3 font-bold">禹川物业（天屿）</td><td class="text-center text-green-600">87.60万</td><td class="text-center">86.14万</td><td class="text-center text-green-600">+1.46万</td><td class="text-center">8.5%</td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-bold">禹晨物业（财富）</td><td class="text-center text-green-600">48.04万</td><td class="text-center">52.95万</td><td class="text-center text-red-600">-4.90万</td><td class="text-center">10.9%</td></tr>
+<tr class="border-b"><td class="py-2 px-3 font-bold">禹悦物业</td><td class="text-center text-red-600">0万</td><td class="text-center">3.78万</td><td class="text-center text-red-600">-3.78万</td><td class="text-center">0%</td></tr>
+<tr class="bg-blue-50 font-bold"><td class="py-2 px-3">合计</td><td class="text-center">135.65万</td><td class="text-center">142.87万</td><td class="text-center text-red-600">-7.23万</td><td class="text-center">8.8%</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- 成本部 -->
+<div class="page-content" id="page-chengben">
+<div class="card text-center py-20">
+<div class="text-6xl mb-4">📊</div>
+<h2 class="text-2xl font-bold text-slate-800 mb-4">成本部工作计划</h2>
+<p class="text-slate-500 mb-4">详细结算计划请查看独立看板文件</p>
+<div class="text-sm text-slate-400">成本部2026年工作计划看板_确认版.html</div>
+</div>
+</div>
+
+</main>
+</div>
+
+<script>
+function showPage(pageId) {
+  // 隐藏所有页面
+  document.querySelectorAll('.page-content').forEach(page => {
+    page.classList.remove('active');
+  });
+  // 移除所有导航激活状态
+  document.querySelectorAll('.nav-item').forEach(nav => {
+    nav.classList.remove('active');
+  });
+  // 显示目标页面
+  document.getElementById('page-' + pageId).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+function showFuzhaiSub(subId) {
+  // 隐藏所有负债子视图
+  document.querySelectorAll('.fuzhai-sub-content').forEach(el => {
+    el.classList.add('hidden');
+  });
+  // 显示选中视图
+  document.getElementById(subId).classList.remove('hidden');
+  // 更新按钮样式
+  const buttons = event.target.parentElement.querySelectorAll('.tab-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
